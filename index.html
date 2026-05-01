@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GIS Portfolio | Ethan Schatz</title>
+  <style>
+    :root {
+      --purple: #4b2e83;
+      --byu-blue: #002e5d;
+      --utah-red: #cc0000;
+      --light-bg: #f6f7fb;
+      --text-dark: #1f2937;
+      --text-light: #ffffff;
+      --card-bg: #ffffff;
+      --border: #d1d5db;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--light-bg);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    header {
+      background: var(--purple);
+      color: var(--text-light);
+      padding: 1.5rem 2rem;
+      transition: background 0.35s ease;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.18);
+    }
+
+    header.byu-active {
+      background: var(--byu-blue);
+    }
+
+    header.utah-active {
+      background: var(--utah-red);
+    }
+
+    .header-content {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .site-title h1 {
+      font-size: 1.8rem;
+      letter-spacing: 0.5px;
+    }
+
+    .site-title p {
+      font-size: 0.95rem;
+      opacity: 0.9;
+    }
+
+    nav {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .tab-group {
+      position: relative;
+    }
+
+    .tab-button {
+      border: 2px solid rgba(255, 255, 255, 0.55);
+      background: rgba(255, 255, 255, 0.12);
+      color: var(--text-light);
+      padding: 0.65rem 1rem;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .tab-button:hover,
+    .tab-button:focus {
+      background: rgba(255, 255, 255, 0.24);
+      transform: translateY(-1px);
+      outline: none;
+    }
+
+    .dropdown {
+      display: none;
+      position: absolute;
+      top: 115%;
+      right: 0;
+      min-width: 180px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+      overflow: hidden;
+      z-index: 10;
+      border: 1px solid var(--border);
+    }
+
+    .dropdown.show {
+      display: block;
+    }
+
+    .dropdown button {
+      width: 100%;
+      border: none;
+      background: white;
+      color: var(--text-dark);
+      padding: 0.85rem 1rem;
+      text-align: left;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: background 0.2s ease;
+    }
+
+    .dropdown button:hover,
+    .dropdown button:focus {
+      background: #eef2ff;
+      outline: none;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 2rem auto;
+      padding: 0 1.25rem;
+    }
+
+    .hero {
+      background: var(--card-bg);
+      border-radius: 18px;
+      padding: 2rem;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h2 {
+      font-size: 2rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero p {
+      max-width: 760px;
+      color: #4b5563;
+    }
+
+    .portfolio-section {
+      display: none;
+      background: var(--card-bg);
+      border-radius: 18px;
+      padding: 1.5rem;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    .portfolio-section.active {
+      display: block;
+    }
+
+    .section-heading {
+      margin-bottom: 1rem;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 0.75rem;
+    }
+
+    .section-heading h2 {
+      font-size: 1.5rem;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .project-card {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1rem;
+      background: #fafafa;
+    }
+
+    .project-card h3 {
+      margin-bottom: 0.4rem;
+      color: #111827;
+    }
+
+    .project-card p {
+      color: #4b5563;
+      font-size: 0.95rem;
+    }
+
+    .project-card a {
+      display: inline-block;
+      margin-top: 0.75rem;
+      color: #1d4ed8;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .project-card a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      max-width: 1100px;
+      margin: 2rem auto;
+      padding: 1rem 1.25rem;
+      color: #6b7280;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    @media (max-width: 700px) {
+      .header-content {
+        align-items: flex-start;
+      }
+
+      nav {
+        width: 100%;
+      }
+
+      .tab-group {
+        width: 100%;
+      }
+
+      .tab-button {
+        width: 100%;
+        text-align: left;
+      }
+
+      .dropdown {
+        left: 0;
+        right: auto;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header id="pageHeader">
+    <div class="header-content">
+      <div class="site-title">
+        <h1>Ethan Schatz GIS Portfolio</h1>
+        <p>Cartography, spatial analysis, GIS projects, and academic work</p>
+      </div>
+
+      <nav aria-label="Portfolio navigation">
+        <div class="tab-group">
+          <button class="tab-button" onclick="toggleDropdown('byuDropdown', 'byu')">
+            BYU Work ▾
+          </button>
+          <div class="dropdown" id="byuDropdown">
+            <button onclick="showSection('byu-2022', 'byu')">2022</button>
+            <button onclick="showSection('byu-2023', 'byu')">2023</button>
+            <button onclick="showSection('byu-2024', 'byu')">2024</button>
+          </div>
+        </div>
+
+        <div class="tab-group">
+          <button class="tab-button" onclick="toggleDropdown('utahDropdown', 'utah')">
+            University of Utah Work ▾
+          </button>
+          <div class="dropdown" id="utahDropdown">
+            <button onclick="showSection('utah-2025', 'utah')">2025</button>
+            <button onclick="showSection('utah-2026', 'utah')">2026</button>
+            <button onclick="showSection('utah-capstone', 'utah')">Capstone</button>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="homeSection">
+      <h2>GIS Portfolio</h2>
+      <p>
+        Welcome to my GIS portfolio. Use the tabs above to view selected work from BYU and the University of Utah.
+        Each section can be updated with project descriptions, screenshots, maps, PDFs, web maps, dashboards, or GitHub links.
+      </p>
+    </section>
+
+    <section class="portfolio-section" id="byu-2022">
+      <div class="section-heading">
+        <h2>BYU Work — 2022</h2>
+        <p>Projects from 2022.</p>
+      </div>
+      <div class="project-grid">
+        <article class="project-card">
+          <h3>Project Title</h3>
+          <p>Add a short description of your 2022 BYU GIS project here.</p>
+          <a href="#">View Project</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="portfolio-section" id="byu-2023">
+      <div class="section-heading">
+        <h2>BYU Work — 2023</h2>
+        <p>Projects from 2023.</p>
+      </div>
+      <div class="project-grid">
+        <article class="project-card">
+          <h3>Project Title</h3>
+          <p>Add a short description of your 2023 BYU GIS project here.</p>
+          <a href="#">View Project</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="portfolio-section" id="byu-2024">
+      <div class="section-heading">
+        <h2>BYU Work — 2024</h2>
+        <p>Projects from 2024.</p>
+      </div>
+      <div class="project-grid">
+        <article class="project-card">
+          <h3>Project Title</h3>
+          <p>Add a short description of your 2024 BYU GIS project here.</p>
+          <a href="#">View Project</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="portfolio-section" id="utah-2025">
+      <div class="section-heading">
+        <h2>University of Utah Work — 2025</h2>
+        <p>Projects from 2025.</p>
+      </div>
+      <div class="project-grid">
+        <article class="project-card">
+          <h3>Project Title</h3>
+          <p>Add a short description of your 2025 University of Utah GIS project here.</p>
+          <a href="#">View Project</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="portfolio-section" id="utah-2026">
+      <div class="section-heading">
+        <h2>University of Utah Work — 2026</h2>
+        <p>Projects from 2026.</p>
+      </div>
+      <div class="project-grid">
+        <article class="project-card">
+          <h3>Project Title</h3>
+          <p>Add a short description of your 2026 University of Utah GIS project here.</p>
+          <a href="#">View Project</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="portfolio-section" id="utah-capstone">
+      <div class="section-heading">
+        <h2>University of Utah — Capstone</h2>
+        <p>Capstone project materials.</p>
+      </div>
+      <div class="project-grid">
+        <article class="project-card">
+          <h3>Capstone Project Title</h3>
+          <p>Add your capstone summary, maps, dashboard links, methodology, and final deliverables here.</p>
+          <a href="#">View Capstone</a>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Ethan Schatz. Built for GitHub Pages.</p>
+  </footer>
+
+  <script>
+    const header = document.getElementById('pageHeader');
+    const dropdowns = document.querySelectorAll('.dropdown');
+    const sections = document.querySelectorAll('.portfolio-section');
+    const homeSection = document.getElementById('homeSection');
+
+    function toggleDropdown(dropdownId, school) {
+      dropdowns.forEach(dropdown => {
+        if (dropdown.id !== dropdownId) {
+          dropdown.classList.remove('show');
+        }
+      });
+
+      document.getElementById(dropdownId).classList.toggle('show');
+      setHeaderTheme(school);
+    }
+
+    function showSection(sectionId, school) {
+      homeSection.style.display = 'none';
+
+      sections.forEach(section => {
+        section.classList.remove('active');
+      });
+
+      document.getElementById(sectionId).classList.add('active');
+      setHeaderTheme(school);
+
+      dropdowns.forEach(dropdown => {
+        dropdown.classList.remove('show');
+      });
+    }
+
+    function setHeaderTheme(school) {
+      header.classList.remove('byu-active', 'utah-active');
+
+      if (school === 'byu') {
+        header.classList.add('byu-active');
+      }
+
+      if (school === 'utah') {
+        header.classList.add('utah-active');
+      }
+    }
+
+    window.addEventListener('click', event => {
+      if (!event.target.closest('.tab-group')) {
+        dropdowns.forEach(dropdown => {
+          dropdown.classList.remove('show');
+        });
+      }
+    });
+  </script>
+</body>
+</html>
