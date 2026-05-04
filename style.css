@@ -1,0 +1,78 @@
+:root {
+  --purple: #4b2e83;
+  --byu-blue: #002e5d;
+  --utah-red: #cc0000;
+  --bg: #f6f7fb;
+  --text: #1f2937;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+header {
+  background: var(--purple);
+  color: white;
+  padding: 1.5rem;
+  transition: 0.3s;
+}
+
+header.byu { background: var(--byu-blue); }
+header.utah { background: var(--utah-red); }
+
+.header-content {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  max-width:1100px;
+  margin:auto;
+}
+
+nav { display:flex; gap:1rem; }
+
+.tab-button {
+  background: rgba(255,255,255,0.2);
+  border:none;
+  color:white;
+  padding:0.5rem 1rem;
+  border-radius:20px;
+  cursor:pointer;
+}
+
+.dropdown {
+  display:none;
+  position:absolute;
+  background:white;
+  color:black;
+  margin-top:5px;
+  border-radius:10px;
+}
+
+.dropdown.show { display:block; }
+
+.dropdown button {
+  display:block;
+  width:100%;
+  border:none;
+  padding:0.5rem 1rem;
+  text-align:left;
+  background:white;
+  cursor:pointer;
+}
+
+.dropdown button:hover { background:#eee; }
+
+main { max-width:1100px; margin:2rem auto; padding:1rem; }
+
+.hero {
+  background:white;
+  padding:2rem;
+  border-radius:10px;
+}
+
+.portfolio-section { display:none; }
+.portfolio-section.active { display:block; }
