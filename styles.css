@@ -1,61 +1,56 @@
-/* --- Global Styles & Resets --- */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+/* ========================= styles.css ========================= */
+
+:root {
+  --purple: #4b2e83;
+  --byu-blue: #002e5d;
+  --utah-red: #cc0000;
+  --bg: #f6f7fb;
+  --text: #1f2937;
+  --white: #ffffff;
+}
+
+* { 
+  margin: 0; 
+  padding: 0; 
+  box-sizing: border-box; 
 }
 
 body {
-  background-color: #f4f7f6;
-  color: #333;
+  font-family: Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
   line-height: 1.6;
 }
 
-/* --- Header & Branding --- */
+/* --- Header & Theming --- */
 header {
-  background-color: #2c3e50; /* Default Slate */
-  color: white;
-  padding: 1.5rem 2rem;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  transition: background-color 0.4s ease;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+  background: var(--purple);
+  color: var(--white);
+  padding: 1.5rem;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
-/* Theme Switching Classes */
-header.byu {
-  background-color: #002e5d; /* BYU Navy */
-}
-
-header.utah {
-  background-color: #cc0000; /* Utah Crimson */
-}
+header.byu { background: var(--byu-blue); }
+header.utah { background: var(--utah-red); }
 
 .header-content {
-  max-width: 1200px;
-  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
-}
-
-.site-title h1 {
-  font-size: 1.8rem;
-  letter-spacing: 1px;
+  max-width: 1100px;
+  margin: auto;
 }
 
 .site-title p {
   font-size: 0.9rem;
-  opacity: 0.9;
+  opacity: 0.8;
 }
 
-/* --- Navigation & Dropdowns --- */
-nav {
-  display: flex;
-  gap: 20px;
+/* --- Navigation --- */
+nav { 
+  display: flex; 
+  gap: 1rem; 
 }
 
 .tab-group {
@@ -63,106 +58,96 @@ nav {
 }
 
 .tab-button {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  color: white;
-  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: var(--white);
+  padding: 0.6rem 1.2rem;
+  border-radius: 20px;
   cursor: pointer;
-  border-radius: 4px;
-  font-weight: 600;
-  transition: all 0.3s ease;
+  font-weight: bold;
+  transition: 0.2s;
 }
 
 .tab-button:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.3);
 }
 
+/* --- Dropdowns --- */
 .dropdown {
   display: none;
   position: absolute;
-  top: 100%;
-  left: 0;
-  background-color: white;
-  min-width: 160px;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-  border-radius: 0 0 4px 4px;
+  background: var(--white);
+  min-width: 150px;
+  margin-top: 8px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
   overflow: hidden;
-  margin-top: 5px;
+  z-index: 100;
 }
 
-.dropdown.show {
-  display: block;
-  animation: fadeIn 0.2s ease-out;
+.dropdown.show { 
+  display: block; 
 }
 
 .dropdown button {
-  color: #333;
-  padding: 12px 16px;
-  text-decoration: none;
   display: block;
   width: 100%;
   border: none;
-  background: none;
+  padding: 0.75rem 1rem;
   text-align: left;
+  background: var(--white);
+  color: var(--text);
   cursor: pointer;
-  border-bottom: 1px solid #eee;
+  font-size: 0.9rem;
+  transition: background 0.2s;
 }
 
-.dropdown button:hover {
-  background-color: #f1f1f1;
+.dropdown button:hover { 
+  background: #f0f0f0; 
 }
 
-/* --- Main Content Areas --- */
-main {
-  max-width: 1100px;
-  margin: 40px auto;
-  padding: 0 20px;
+/* --- Main Content --- */
+main { 
+  max-width: 1100px; 
+  margin: 2rem auto; 
+  padding: 1rem; 
 }
 
 .hero {
+  background: var(--white);
+  padding: 3rem 2rem;
+  border-radius: 15px;
   text-align: center;
-  padding: 80px 20px;
-  background: white;
-  border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
-.portfolio-section {
-  display: none; /* Hidden by default */
-  background: white;
-  padding: 40px;
-  border-radius: 8px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  animation: slideUp 0.4s ease-out;
+.hero h2 {
+  margin-bottom: 1rem;
+  font-size: 2rem;
 }
 
-.portfolio-section.active {
-  display: block;
+.portfolio-section { 
+  display: none; 
+  background: var(--white);
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
 }
 
-h2 {
-  margin-bottom: 20px;
-  border-bottom: 3px solid #eee;
-  padding-bottom: 10px;
+.portfolio-section.active { 
+  display: block; 
 }
 
-/* --- Animations --- */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
+.portfolio-section h2 {
+  color: var(--text);
+  margin-bottom: 1.5rem;
 }
 
-@keyframes slideUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* --- Responsive --- */
+/* --- Mobile Responsiveness --- */
 @media (max-width: 768px) {
   .header-content {
     flex-direction: column;
+    gap: 1.5rem;
     text-align: center;
-    gap: 20px;
   }
 }
-.portfolio-section.active { display:block; }
