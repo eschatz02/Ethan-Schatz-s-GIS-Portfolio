@@ -216,3 +216,9 @@ main {
     width: 100%;
   }
 }
+
+.media-row iframe {
+  width: 50%;
+  height: 300px;
+  border-radius: 10px;
+}
