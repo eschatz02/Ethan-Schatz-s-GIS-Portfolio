@@ -7,11 +7,23 @@
 
   <!-- Link to external CSS -->
   <link rel="stylesheet" href="styles.css" />
+  
+  <style>
+    /* Essential functional CSS if not in your styles.css */
+    .portfolio-section { display: none; }
+    .portfolio-section.active { display: block; }
+    .dropdown { display: none; position: absolute; }
+    .dropdown.show { display: block; z-index: 100; }
+    .hero { display: block; }
+    /* Example color themes */
+    header.byu { border-bottom: 5px solid #002255; }
+    header.utah { border-bottom: 5px solid #CC0000; }
+  </style>
 </head>
 <body>
   <header id="pageHeader">
     <div class="header-content">
-      <div class="site-title">
+      <div class="site-title" style="cursor:pointer;" onclick="goHome()">
         <h1>Ethan Schatz's Portfolio</h1>
         <p>Cartography & GIS projects</p>
       </div>
@@ -48,111 +60,87 @@
       <p>Select a category above to view your work.</p>
     </section>
 
-<section class="portfolio-section" id="byu-2022">
-  <h2>BYU 2022</h2>
+    <!-- BYU SECTIONS -->
+    <section class="portfolio-section" id="byu-2022">
+      <h2>BYU 2022</h2>
+      <div class="project-card">
+        <img src="Atlas Map Layout.jpg" alt="Geography 312 Atlas Map of Portugal">
+        <h3>Atlas Map</h3>
+        <p>The atlas map I created of Portugal for Geography 312 during the fall semester of 2022.</p>
+      </div>
+    </section>
 
-  <div class="project-card">
-    <img src="Atlas Map Layout.jpg" alt="Geography 312 Atlas Map">
-    <h3>Atlas Map</h3>
-    <p>The atlas map I created of Portugal for Geography 312 during the fall semester of 2022.</p>
-  </div>
-</section>
+    <section class="portfolio-section" id="byu-2023">
+      <h2>BYU 2023</h2>
+      <div class="project-card">
+        <img src="LDS Church Sites in Indonesia Draft Layout Final.jpg" alt="LDS Church sites in Indonesia map">
+        <h3>Map of LDS Church Sites in Indonesia</h3>
+        <p>A project I made for a client that will be published in a book about Church history in Indonesia.</p>
+      </div>
 
-<section class="portfolio-section" id="byu-2023">
-  <h2>BYU 2023</h2>
+      <div class="project-card">
+        <div class="image-row">
+          <img src="Early Kingdoms On the Korean Peninsula fixed2.jpg" alt="Early Kingdoms on the Korean Peninsula map">
+          <img src="Parhae and the Provinces of Unified Shilla fixed2.jpg" alt="Parhae and the Provinces of Unified Shilla map">
+        </div>
+        <h3>Three Kingdoms Maps</h3>
+        <p>A series created for a book regarding early kingdoms on the Korean Peninsula.</p>
+      </div>
+    </section>
 
-  <div class="project-card">
-    <img src="LDS Church Sites in Indonesia Draft Layout Final.jpg" alt="LDS Church sites in Indonesia map">
-    <h3>Map of LDS Church Sites in Indonesia</h3>
-    <p>A project I made for a client while working at my professor's company over the summer of 2023 that will be published in a book about The Church of Jesus Christ of Latter-day Saints' history in Indonesia.</p>
-  </div>
+    <section class="portfolio-section" id="byu-2024">
+      <h2>BYU 2024</h2>
+      <div class="project-card">
+        <img src="Mapping the Decline of Major Watersheds in Nevada.png" alt="Geography 305 Nevada Watersheds poster">
+        <h3>Geography 305: Nevada Watershed</h3>
+        <p>Presented at the 2024 National AAG conference in Hawaii.</p>
+      </div>
+    </section>
 
-  <div class="project-card">
-    <div class="image-row">
-      <img src="Early Kingdoms On the Korean Peninsula fixed2.jpg" alt="Early Kingdoms on the Korean Peninsula map">
-      <img src="Parhae and the Provinces of Unified Shilla fixed2.jpg" alt="Parhae and the Provinces of Unified Shilla map">
-    </div>
+    <!-- UTAH SECTIONS -->
+    <section class="portfolio-section" id="utah-2025">
+      <h2>Utah 2025</h2>
+      <h3>Spring 2025</h3>
+      <div class="project-card">
+        <div class="image-row">
+          <img src="Forecasted 2030 Growth Rates of Utah County Communities (%).jpg" alt="Growth Rates Map">
+          <img src="Forecasted 2030 Population of Utah County Communities .jpg" alt="Population Map">
+        </div>
+        <h3>Forecasting Utah County Population Growth</h3>
+        <p>Used Python to model population growth trends for Geography 6150.</p>
+      </div>
 
-    <h3>Three Kingdoms Maps</h3>
-    <p>A project I made for a client while working at my professor's company over the summer of 2023 that will be published in a book about early kingdoms on the Korean Peninsula.</p>
-  </div>
-</section>
+      <h3>Fall 2025</h3>
+      <div class="project-card">
+        <img src="Bills.png" alt="LGBTQ+ Harm Risk 2024 Map">
+        <h3>LGBTQ+ Harm Risk (GEOG 6000)</h3>
+        <p>Modeling the impact of anti-LGBTQ+ legislation on mental health.</p>
+      </div>
+    </section>
 
-<section class="portfolio-section" id="byu-2024">
-  <h2>BYU 2024</h2>
+    <section class="portfolio-section" id="utah-2026">
+      <h2>Utah 2026</h2>
+      <h3>Coming Soon!!!</h3>
+    </section>
 
-  <div class="project-card">
-    <img src="Mapping the Decline of Major Watersheds in Nevada.png" alt="Geography 305 Nevada Watersheds poster">
-    <h3>Geography 305: Nevada Watershed</h3>
-    <p>A poster I presented at the 2024 National AAG conference in Hawaii that analyzes the decline of major watersheds and how factors such as precipitation, population growth, and water management practices affect it.</p>
-  </div>
-</section>
-<section class="portfolio-section" id="utah-2025">
-  <h2>Utah 2025</h2>
-
-  <h1>Spring 2025</h1>
-
-  <div class="project-card">
-    <h2>Forecasted Population Growth for Utah County (GEOG 6150)</h2>
-
-    <div class="image-row">
-      <img src="Forecasted 2030 Growth Rates of Utah County Communities (%).jpg" alt="Forecasted Population Growth 2030">
-      <img src="Forecasted 2030 Population of Utah County Communities .jpg" alt="Forecasted Population 2030">
-    </div>
-
-    <h3>Forecasting Utah County Population Growth</h3>
-    <p>A project I did for Geography 6150 that used Python to model population growth for Utah County based on population growth trends.</p>
-  </div>
-
-  <div class="project-card">
-    <img src="Utah's U.S. Highways.png" alt="Historic U.S. Highways">
-    <h3>Historic U.S. Highways in Utah</h3>
-    <p>A map showing historical U.S. Highways in the state of Utah.</p>
-  </div>
-
-  <h1>Fall 2025</h1>
-
-  <div class="project-card">
-    <h2>LGBTQ+ Harm Risk (GEOG 6000)</h2>
-    <img src="Bills.png" alt="LGBTQ+ Harm Risk 2024">
-    <h3>LGBTQ+ Harm Risk</h3>
-    <p>A map modeling the impact anti-LGBTQ+ bills have on LGBTQ+ mental health.</p>
-  </div>
-
-  <div class="project-card">
-    <h2>Modeling Sustainability for Undeveloped Wasatch Front Parcels (GEOG 6165)</h2>
-    <img src="2050 Climate Sustainability of Wastach Front Parcels.jpg" alt="Modeling Sustainability for Undeveloped Wasatch Front Parcels">
-    <h3>Modeling Sustainability for Undeveloped Wasatch Front Parcels</h3>
-    <p>A map modeling optimal parcels for development along the Wasatch Front based on criteria such as precipitation and temperature.</p>
-  </div>
-</section>
-
-<section class="portfolio-section" id="utah-2026">
-  <h2>Utah 2026</h2>
-  <h1>Coming Soon!!!</h1>
-</section>
-
-<section class="portfolio-section" id="utah-capstone">
-  <h2>Capstone</h2>
-
-  <div class="project-card">
-    <h2>Utah Prairie Dog Dashboard</h2>
-
-    <div class="media-row">
-      <img src="Capstone Poster Final.png" alt="Capstone Poster">
-
-      <iframe 
-        src="https://www.youtube.com/embed/wXUNR4JPbWI"
-        title="Dashboard Demo"
-        frameborder="0"
-        allowfullscreen>
-      </iframe>
-    </div>
-
-    <h3>Utah Prairie Dog Dashboard</h3>
-    <p>Ethan Schatz's GIS capstone project. This project encompassed merging all of DWR's prairie dog count data into one file geodatabase, then building an updated dashboard with the FGDB as the backbone.</p>
-  </div>
-</section>
+    <section class="portfolio-section" id="utah-capstone">
+      <h2>Capstone</h2>
+      <div class="project-card">
+        <h3>Utah Prairie Dog Dashboard</h3>
+        <div class="media-row">
+          <img src="Capstone Poster Final.png" alt="Capstone Poster">
+          <iframe 
+            width="560" height="315"
+            src="https://www.youtube.com/embed/wXUNR4JPbWI" 
+            title="Dashboard Demo" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+          </iframe>
+        </div>
+        <p>Ethan Schatz's GIS capstone project focused on merging DWR prairie dog count data into a unified file geodatabase and building a dashboard backbone.</p>
+      </div>
+    </section>
   </main>
 
   <script>
@@ -162,36 +150,44 @@
     const home = document.getElementById('homeSection');
 
     function toggleDropdown(id, school){
-      dropdowns.forEach(d => d.id !== id && d.classList.remove('show'));
+      // Close other dropdowns
+      dropdowns.forEach(d => {
+        if(d.id !== id) d.classList.remove('show');
+      });
       document.getElementById(id).classList.toggle('show');
       setTheme(school);
     }
 
     function showSection(id, school){
       home.style.display = 'none';
+      // Hide all sections then show the target
       sections.forEach(s => s.classList.remove('active'));
-      document.getElementById(id).classList.add('active');
+      const target = document.getElementById(id);
+      if(target) target.classList.add('active');
+      
+      // Close dropdowns after selection
+      dropdowns.forEach(d => d.classList.remove('show'));
       setTheme(school);
     }
 
-function setTheme(school){
-  header.classList.remove('byu','utah');
+    function goHome() {
+      sections.forEach(s => s.classList.remove('active'));
+      home.style.display = 'block';
+      header.classList.remove('byu', 'utah');
+    }
 
-  if(school === 'byu') {
-    header.classList.add('byu');
-  }
+    function setTheme(school){
+      header.classList.remove('byu','utah');
+      if(school === 'byu') header.classList.add('byu');
+      if(school === 'utah') header.classList.add('utah');
+    }
 
-  if(school === 'utah') {
-    header.classList.add('utah');
-  }
-}
-
-// Close dropdowns when clicking outside
-window.addEventListener('click', function(event) {
-  if (!event.target.closest('.tab-group')) {
-    dropdowns.forEach(d => d.classList.remove('show'));
-  }
-});
+    // Close dropdowns when clicking outside
+    window.addEventListener('click', function(event) {
+      if (!event.target.closest('.tab-group')) {
+        dropdowns.forEach(d => d.classList.remove('show'));
+      }
+    });
   </script>
 </body>
 </html>
