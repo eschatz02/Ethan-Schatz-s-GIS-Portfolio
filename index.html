@@ -5,17 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GIS Portfolio | Ethan Schatz</title>
 
-  <!-- Link to external CSS -->
   <link rel="stylesheet" href="styles.css" />
   
   <style>
-    /* Essential functional CSS if not in your styles.css */
     .portfolio-section { display: none; }
     .portfolio-section.active { display: block; }
     .dropdown { display: none; position: absolute; }
     .dropdown.show { display: block; z-index: 100; }
     .hero { display: block; }
-    /* Example color themes */
     header.byu { border-bottom: 5px solid #002255; }
     header.utah { border-bottom: 5px solid #CC0000; }
   </style>
@@ -30,9 +27,7 @@
 
       <nav>
         <div class="tab-group">
-          <button class="tab-button" onclick="toggleDropdown('byuDropdown', 'byu')">
-            BYU Work ▾
-          </button>
+          <button class="tab-button" onclick="toggleDropdown('byuDropdown', 'byu')">BYU Work ▾</button>
           <div class="dropdown" id="byuDropdown">
             <button onclick="showSection('byu-2022','byu')">2022</button>
             <button onclick="showSection('byu-2023','byu')">2023</button>
@@ -41,9 +36,7 @@
         </div>
 
         <div class="tab-group">
-          <button class="tab-button" onclick="toggleDropdown('utahDropdown', 'utah')">
-            University of Utah Work ▾
-          </button>
+          <button class="tab-button" onclick="toggleDropdown('utahDropdown', 'utah')">University of Utah Work ▾</button>
           <div class="dropdown" id="utahDropdown">
             <button onclick="showSection('utah-2025','utah')">2025</button>
             <button onclick="showSection('utah-2026','utah')">2026</button>
@@ -57,7 +50,9 @@
   <main>
     <section class="hero" id="homeSection">
       <h2>GIS Portfolio</h2>
-      <p>Select a category above to view your work.</p>
+      <p>Featured Project</p>
+
+      <div id="featured-project"></div>
     </section>
 
     <!-- BYU SECTIONS -->
@@ -148,9 +143,76 @@
     const dropdowns = document.querySelectorAll('.dropdown');
     const sections = document.querySelectorAll('.portfolio-section');
     const home = document.getElementById('homeSection');
+    const featuredProject = document.getElementById('featured-project');
+
+    const projects = [
+      {
+        title: "Atlas Map",
+        img: "Atlas Map Layout.jpg",
+        desc: "Atlas map of Portugal created for Geography 312.",
+        sectionId: "byu-2022",
+        school: "byu"
+      },
+      {
+        title: "LDS Church Sites in Indonesia",
+        img: "LDS Church Sites in Indonesia Draft Layout Final.jpg",
+        desc: "Client map project for a publication about Church history in Indonesia.",
+        sectionId: "byu-2023",
+        school: "byu"
+      },
+      {
+        title: "Three Kingdoms Maps",
+        img: "Early Kingdoms On the Korean Peninsula fixed2.jpg",
+        desc: "Historical maps of early kingdoms on the Korean Peninsula.",
+        sectionId: "byu-2023",
+        school: "byu"
+      },
+      {
+        title: "Nevada Watersheds",
+        img: "Mapping the Decline of Major Watersheds in Nevada.png",
+        desc: "AAG 2024 poster analyzing major watershed decline in Nevada.",
+        sectionId: "byu-2024",
+        school: "byu"
+      },
+      {
+        title: "Forecasting Utah County Population Growth",
+        img: "Forecasted 2030 Population of Utah County Communities .jpg",
+        desc: "Python-based population growth modeling for Geography 6150.",
+        sectionId: "utah-2025",
+        school: "utah"
+      },
+      {
+        title: "LGBTQ+ Harm Risk",
+        img: "Bills Layout.jpg",
+        desc: "Map modeling the impact of anti-LGBTQ+ legislation on mental health.",
+        sectionId: "utah-2025",
+        school: "utah"
+      },
+      {
+        title: "Utah Prairie Dog Dashboard",
+        img: "Capstone Poster Final.png",
+        desc: "Capstone project focused on DWR prairie dog count data and dashboard development.",
+        sectionId: "utah-capstone",
+        school: "utah"
+      }
+    ];
+
+    function showRandomProject() {
+      const random = projects[Math.floor(Math.random() * projects.length)];
+
+      featuredProject.innerHTML = `
+        <div class="project-card">
+          <img src="${random.img}" alt="${random.title}">
+          <h3>${random.title}</h3>
+          <p>${random.desc}</p>
+          <button class="tab-button" onclick="showSection('${random.sectionId}', '${random.school}')">
+            View Project
+          </button>
+        </div>
+      `;
+    }
 
     function toggleDropdown(id, school){
-      // Close other dropdowns
       dropdowns.forEach(d => {
         if(d.id !== id) d.classList.remove('show');
       });
@@ -160,12 +222,11 @@
 
     function showSection(id, school){
       home.style.display = 'none';
-      // Hide all sections then show the target
       sections.forEach(s => s.classList.remove('active'));
+
       const target = document.getElementById(id);
       if(target) target.classList.add('active');
-      
-      // Close dropdowns after selection
+
       dropdowns.forEach(d => d.classList.remove('show'));
       setTheme(school);
     }
@@ -174,6 +235,7 @@
       sections.forEach(s => s.classList.remove('active'));
       home.style.display = 'block';
       header.classList.remove('byu', 'utah');
+      showRandomProject();
     }
 
     function setTheme(school){
@@ -182,12 +244,14 @@
       if(school === 'utah') header.classList.add('utah');
     }
 
-    // Close dropdowns when clicking outside
     window.addEventListener('click', function(event) {
       if (!event.target.closest('.tab-group')) {
         dropdowns.forEach(d => d.classList.remove('show'));
       }
     });
+
+    showRandomProject();
+    setInterval(showRandomProject, 8000);
   </script>
 </body>
 </html>
