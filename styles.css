@@ -222,3 +222,7 @@ main {
   height: 300px;
   border-radius: 10px;
 }
+
+#featured-project {
+  margin-top: 2rem;
+}
