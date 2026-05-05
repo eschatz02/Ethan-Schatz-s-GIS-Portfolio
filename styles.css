@@ -223,6 +223,44 @@ main {
   border-radius: 10px;
 }
 
-#featured-project {
-  margin-top: 2rem;
+#featured-project .project-card {
+  max-width: 420px;
+  margin: 2rem auto 0;
+  padding: 0;
+  border-radius: 10px;
+  overflow: hidden;
+  text-align: left;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+#featured-project .project-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  margin-bottom: 0;
+  border-radius: 0;
+}
+
+#featured-project .project-card h3 {
+  padding: 0.75rem 1rem 0.25rem;
+  font-size: 1rem;
+}
+
+#featured-project .project-card p {
+  padding: 0 1rem 0.75rem;
+  font-size: 0.9rem;
+}
+
+#featured-project .project-card .tab-button {
+  display: block;
+  width: 100%;
+  border-radius: 0;
+  background: var(--white);
+  color: var(--text);
+  text-align: left;
+  padding: 0.75rem 1rem;
+}
+
+#featured-project .project-card .tab-button:hover {
+  background: #f0f0f0;
 }
