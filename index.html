@@ -3,237 +3,363 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>GIS Portfolio | Ethan Schatz</title>
-  
+
+  <link rel="stylesheet" href="styles.css" />
+
   <style>
-    :root {
-      --byu-blue: #002255;
-      --utah-red: #CC0000;
-      --bg-color: #f4f4f4;
+    .portfolio-section {
+      display: none;
     }
 
-    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; background: var(--bg-color); display: flex; flex-direction: column; min-height: 100vh; }
-    
-    header { background: #fff; padding: 1rem 2rem; box-shadow: 0 2px 5px rgba(0,0,0,0.1); transition: border-bottom 0.3s ease; border-bottom: 5px solid transparent; }
-    header.byu { border-bottom: 5px solid var(--byu-blue); }
-    header.utah { border-bottom: 5px solid var(--utah-red); }
+    .portfolio-section.active {
+      display: block;
+    }
 
-    .header-content { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; }
-    .site-title h1 { margin: 0; font-size: 1.5rem; }
-    .site-title p { margin: 0; color: #666; }
+    .dropdown {
+      display: none;
+      position: absolute;
+    }
 
-    nav { display: flex; gap: 20px; }
-    .tab-group { position: relative; }
-    .tab-button { background: #eee; border: none; padding: 10px 15px; cursor: pointer; border-radius: 4px; font-weight: bold; }
-    .tab-button:hover { background: #ddd; }
+    .dropdown.show {
+      display: block;
+      z-index: 100;
+    }
 
-    .dropdown { display: none; position: absolute; background: white; box-shadow: 0 8px 16px rgba(0,0,0,0.2); min-width: 160px; z-index: 100; border-radius: 4px; top: 100%; }
-    .dropdown.show { display: block; }
-    .dropdown button { width: 100%; padding: 12px 16px; border: none; background: none; text-align: left; cursor: pointer; }
-    .dropdown button:hover { background-color: #f1f1f1; }
+    .hero {
+      display: block;
+    }
 
-    .main-layout { display: grid; grid-template-columns: 300px 1fr; gap: 2rem; max-width: 1200px; margin: 2rem auto; padding: 0 1rem; flex: 1; }
-    
-    .about-me-sidebar { background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); height: fit-content; }
-    .about-me-sidebar img { width: 100%; border-radius: 50%; margin-bottom: 1rem; }
-    
-    .portfolio-section { display: none; background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-    .portfolio-section.active { display: block; animation: fadeIn 0.5s ease; }
-    
-    .hero { display: block; background: white; padding: 2rem; border-radius: 8px; text-align: center; }
-    
-    .project-card { border: 1px solid #ddd; padding: 1rem; margin-bottom: 1.5rem; border-radius: 8px; }
-    .project-card img { max-width: 100%; height: auto; border-radius: 4px; }
-    .image-row, .media-row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 1rem; }
-    .image-row img, .media-row img { flex: 1; min-width: 250px; }
+    header.byu {
+      border-bottom: 5px solid #002255;
+    }
 
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-    @media (max-width: 768px) { .main-layout { grid-template-columns: 1fr; } }
+    header.utah {
+      border-bottom: 5px solid #cc0000;
+    }
   </style>
 </head>
-<body>
 
+<body>
   <header id="pageHeader">
     <div class="header-content">
-      <div class="site-title" style="cursor:pointer;" onclick="goHome()">
+      <div class="site-title" style="cursor: pointer;" onclick="goHome()">
         <h1>Ethan Schatz's Portfolio</h1>
-        <p>Cartography & GIS projects</p>
+        <p>Cartography &amp; GIS projects</p>
       </div>
 
       <nav>
         <div class="tab-group">
           <button class="tab-button" onclick="toggleDropdown('byuDropdown', 'byu')">BYU Work ▾</button>
+
           <div class="dropdown" id="byuDropdown">
-            <button onclick="showSection('byu-2022','byu')">2022</button>
-            <button onclick="showSection('byu-2023','byu')">2023</button>
-            <button onclick="showSection('byu-2024','byu')">2024</button>
+            <button onclick="showSection('byu-2022', 'byu')">2022</button>
+            <button onclick="showSection('byu-2023', 'byu')">2023</button>
+            <button onclick="showSection('byu-2024', 'byu')">2024</button>
           </div>
         </div>
 
         <div class="tab-group">
-          <button class="tab-button" onclick="toggleDropdown('utahDropdown', 'utah')">U of U Work ▾</button>
+          <button class="tab-button" onclick="toggleDropdown('utahDropdown', 'utah')">University of Utah Work ▾</button>
+
           <div class="dropdown" id="utahDropdown">
-            <button onclick="showSection('utah-2025','utah')">2025</button>
-            <button onclick="showSection('utah-2026','utah')">2026</button>
-            <button onclick="showSection('utah-capstone','utah')">Capstone</button>
+            <button onclick="showSection('utah-2025', 'utah')">2025</button>
+            <button onclick="showSection('utah-2026', 'utah')">2026</button>
+            <button onclick="showSection('utah-capstone', 'utah')">Capstone</button>
           </div>
         </div>
       </nav>
     </div>
   </header>
 
-  <main class="main-layout">
-    <aside class="about-me-sidebar">
-      <img src="Resized_BeautyPlus_20211011205536894_save.JPG" alt="Ethan Schatz">
-      <h3>About Me</h3>
-      <p>MSGIS student at the University of Utah, Class of 2027. Aspiring GIS professional with interests in transportation and local planning.</p>
-      <h4>Skills</h4>
-      <ul><li>ArcGIS Pro</li><li>Python</li><li>R</li><li>Excel</li><li>qGIS</li></ul>
-      <div class="contact-info">
-        <p><strong>Email:</strong> <a href="mailto:ethan.m.schatz@gmail.com">ethan.m.schatz@gmail.com</a></p>
-        <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/ethan-schatz-5a4738211" target="_blank">Profile</a></p>
+  <main>
+    <section class="hero" id="homeSection">
+      <aside class="about-me-sidebar">
+        <img src="Resized_BeautyPlus_20211011205536894_save.JPG" alt="Ethan Schatz" />
+
+        <h3>About Me</h3>
+
+        <p>
+          My name is Ethan Schatz, and I'm a MSGIS student at the University of Utah, Class of 2027.
+          I am an aspiring GIS professional with an interest in cartography, specifically transportation
+          and local planning.
+        </p>
+
+        <h4>Skills</h4>
+        <ul>
+          <li>ArcGIS Pro</li>
+          <li>Python</li>
+          <li>R</li>
+          <li>Microsoft Excel</li>
+          <li>QGIS</li>
+        </ul>
+
+        <h4>Accomplishments</h4>
+        <ul>
+          <li>Second Place Individually at the 2024 AAG World Geography Bowl</li>
+          <li>Third Place Individually, First Place Team at the 2023 AAG GPRM Geography Bowl</li>
+          <li>Haslam Scholarship: 2023</li>
+          <li>BYU Geography Department Merit Award: 2023</li>
+        </ul>
+
+        <div class="contact-info">
+          <p>Please contact me for any inquiries.</p>
+          <p><strong>Email:</strong> <a href="mailto:ethan.m.schatz@gmail.com">ethan.m.schatz@gmail.com</a></p>
+          <p><strong>Phone:</strong> 801-510-0327</p>
+          <p>
+            <strong>LinkedIn:</strong>
+            <a href="https://www.linkedin.com/in/ethan-schatz-5a4738211" target="_blank" rel="noopener noreferrer">Profile</a>
+          </p>
+        </div>
+      </aside>
+
+      <div class="hero-content">
+        <h2>GIS Portfolio</h2>
+        <p>Featured Project</p>
+        <div id="featured-project"></div>
       </div>
-    </aside>
+    </section>
 
-    <div id="content-area">
-      <section class="hero" id="homeSection">
-        <div class="hero-content">
-          <h2>Welcome</h2>
-          <p>Featured Project (Rotates Every 8s)</p>
-          <div id="featured-project"></div>
-        </div>
-      </section>
+    <section class="portfolio-section" id="byu-2022">
+      <h2>BYU 2022</h2>
 
-      <!-- BYU SECTIONS -->
-      <section class="portfolio-section" id="byu-2022">
-        <h2>BYU 2022</h2>
-        <div class="project-card">
-          <img src="Atlas Map Layout.jpg" alt="Portugal Map">
-          <h3>Atlas Map</h3>
-          <p>Created for Geography 312, Fall 2022.</p>
-        </div>
-      </section>
+      <div class="project-card">
+        <img src="Atlas Map Layout.jpg" alt="Geography 312 Atlas Map of Portugal" />
+        <h3>Atlas Map</h3>
+        <p>The atlas map I created of Portugal for Geography 312 during the fall semester of 2022.</p>
+      </div>
+    </section>
 
-      <section class="portfolio-section" id="byu-2023">
-        <h2>BYU 2023</h2>
-        <div class="project-card">
-          <img src="LDS Church Sites in Indonesia Draft Layout Final.jpg" alt="Indonesia Map">
-          <h3>LDS Church Sites in Indonesia</h3>
-          <p>Published in a book regarding Church history in Indonesia.</p>
-        </div>
-        <div class="project-card">
-          <div class="image-row">
-            <img src="Early Kingdoms On the Korean Peninsula fixed2.jpg" alt="Korea 1">
-            <img src="Parhae and the Provinces of Unified Shilla fixed2.jpg" alt="Korea 2">
-          </div>
-          <h3>Three Kingdoms Maps</h3>
-          <p>Created for: <i>The Three Kingdoms of Korea: Lost Civilizations</i></p>
-        </div>
-      </section>
+    <section class="portfolio-section" id="byu-2023">
+      <h2>BYU 2023</h2>
 
-      <section class="portfolio-section" id="byu-2024">
-        <h2>BYU 2024</h2>
-        <div class="project-card">
-          <img src="Mapping the Decline of Major Watersheds in Nevada.png" alt="Nevada Poster">
-          <h3>Nevada Watersheds</h3>
-          <p>Presented at the 2024 National AAG conference.</p>
-        </div>
-      </section>
+      <div class="project-card">
+        <img src="LDS Church Sites in Indonesia Draft Layout Final.jpg" alt="LDS Church sites in Indonesia map" />
+        <h3>Map of LDS Church Sites in Indonesia</h3>
+        <p>A project I made for a client that will be published in a book about Church history in Indonesia.</p>
+      </div>
 
-      <!-- UTAH SECTIONS -->
-      <section class="portfolio-section" id="utah-2025">
-        <h2>Utah 2025</h2>
-        <div class="project-card">
-          <div class="image-row">
-            <img src="Forecasted 2030 Growth Rates of Utah County.jpg" alt="Growth">
-            <img src="Forecasted 2030 Population of Utah County Communities .jpg" alt="Pop">
-          </div>
-          <h3>Forecasting Population Growth</h3>
-          <p>Python modeling for GEOG 6150.</p>
+      <div class="project-card">
+        <div class="image-row">
+          <img src="Early Kingdoms On the Korean Peninsula fixed2.jpg" alt="Early Kingdoms on the Korean Peninsula map" />
+          <img src="Parhae and the Provinces of Unified Shilla fixed2.jpg" alt="Parhae and the Provinces of Unified Shilla map" />
         </div>
-        <div class="project-card">
-          <img src="Bills Layout.jpg" alt="LGBTQ+ Map">
-          <h3>LGBTQ+ Harm Risk</h3>
-          <p>Modeling impacts of legislation on mental health.</p>
-        </div>
-      </section>
 
-      <section class="portfolio-section" id="utah-2026">
-        <h2>Utah 2026</h2>
-        <h3>Coming Soon!!!</h3>
-      </section>
+        <h3>Three Kingdoms Maps</h3>
 
-      <section class="portfolio-section" id="utah-capstone">
-        <h2>Capstone</h2>
-        <div class="project-card">
-          <h3>Utah Prairie Dog Dashboard</h3>
-          <div class="media-row">
-            <img src="Capstone Poster Final.png" alt="Poster">
-            <iframe width="100%" height="315" src="https://www.youtube.com/embed/wXUNR4JPbWI" frameborder="0" allowfullscreen></iframe>
-          </div>
-          <p>Merging DWR data into a unified file geodatabase and dashboard.</p>
+        <p>A series of maps created for a client's book regarding early kingdoms on the Korean Peninsula.</p>
+
+        <p>
+          🔍
+          <a href="https://www.amazon.com/Three-Kingdoms-Korea-Lost-Civilizations-ebook/dp/B0CXYHSG5X" target="_blank" rel="noopener noreferrer">
+            The Three Kingdoms of Korea: Lost Civilizations
+          </a>
+        </p>
+      </div>
+    </section>
+
+    <section class="portfolio-section" id="byu-2024">
+      <h2>BYU 2024</h2>
+
+      <div class="project-card">
+        <img src="Mapping the Decline of Major Watersheds in Nevada.png" alt="Geography 305 Nevada Watersheds poster" />
+        <h3>Geography 305: Nevada Watershed</h3>
+        <p>Presented at the 2024 National AAG conference in Hawaii.</p>
+      </div>
+    </section>
+
+    <section class="portfolio-section" id="utah-2025">
+      <h2>Utah 2025</h2>
+
+      <h3>Spring 2025</h3>
+
+      <div class="project-card">
+        <div class="image-row">
+          <img src="Forecasted 2030 Growth Rates of Utah County.jpg" alt="Growth Rates Map" />
+          <img src="Forecasted 2030 Population of Utah County Communities .jpg" alt="Population Map" />
         </div>
-      </section>
-    </div>
+
+        <h3>Forecasting Utah County Population Growth</h3>
+        <p>Used Python to model population growth trends for Geography 6150.</p>
+      </div>
+
+      <h3>Fall 2025</h3>
+
+      <div class="project-card">
+        <img src="Bills Layout.jpg" alt="LGBTQ+ Harm Risk 2024 Map" />
+        <h3>LGBTQ+ Harm Risk GEOG 6000</h3>
+        <p>Modeling the impact of anti-LGBTQ+ legislation on mental health.</p>
+      </div>
+    </section>
+
+    <section class="portfolio-section" id="utah-2026">
+      <h2>Utah 2026</h2>
+      <h3>Coming Soon!!!</h3>
+    </section>
+
+    <section class="portfolio-section" id="utah-capstone">
+      <h2>Capstone</h2>
+
+      <div class="project-card">
+        <h3>Utah Prairie Dog Dashboard</h3>
+
+        <div class="media-row">
+          <img src="Capstone Poster Final.png" alt="Capstone Poster" />
+
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/wXUNR4JPbWI"
+            title="Dashboard Demo"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+
+        <p>
+          Ethan Schatz's GIS capstone project focused on merging DWR prairie dog count data into a unified
+          file geodatabase and building a dashboard backbone.
+        </p>
+      </div>
+    </section>
   </main>
 
   <script>
-    const header = document.getElementById('pageHeader');
-    const dropdowns = document.querySelectorAll('.dropdown');
-    const sections = document.querySelectorAll('.portfolio-section');
-    const home = document.getElementById('homeSection');
-    const featuredProject = document.getElementById('featured-project');
+    const header = document.getElementById("pageHeader");
+    const dropdowns = document.querySelectorAll(".dropdown");
+    const sections = document.querySelectorAll(".portfolio-section");
+    const home = document.getElementById("homeSection");
+    const featuredProject = document.getElementById("featured-project");
 
     const projects = [
-      { title: "Atlas Map", img: "Atlas Map Layout.jpg", desc: "Portugal map for GEOG 312.", sectionId: "byu-2022", school: "byu" },
-      { title: "Indonesia Church Sites", img: "LDS Church Sites in Indonesia Draft Layout Final.jpg", desc: "Professional publication project.", sectionId: "byu-2023", school: "byu" },
-      { title: "Nevada Watersheds", img: "Mapping the Decline of Major Watersheds in Nevada.png", desc: "AAG 2024 Conference Poster.", sectionId: "byu-2024", school: "byu" },
-      { title: "Utah Growth Forecast", img: "Forecasted 2030 Population of Utah County Communities .jpg", desc: "Python modeling.", sectionId: "utah-2025", school: "utah" },
-      { title: "Prairie Dog Dashboard", img: "Capstone Poster Final.png", desc: "DWR Capstone Project.", sectionId: "utah-capstone", school: "utah" }
+      {
+        title: "Atlas Map",
+        img: "Atlas Map Layout.jpg",
+        desc: "Atlas map of Portugal created for Geography 312.",
+        sectionId: "byu-2022",
+        school: "byu"
+      },
+      {
+        title: "LDS Church Sites in Indonesia",
+        img: "LDS Church Sites in Indonesia Draft Layout Final.jpg",
+        desc: "Client map project for a publication about Church history in Indonesia.",
+        sectionId: "byu-2023",
+        school: "byu"
+      },
+      {
+        title: "Three Kingdoms Maps",
+        img: "Early Kingdoms On the Korean Peninsula fixed2.jpg",
+        desc: "Historical maps of early kingdoms on the Korean Peninsula.",
+        sectionId: "byu-2023",
+        school: "byu"
+      },
+      {
+        title: "Nevada Watersheds",
+        img: "Mapping the Decline of Major Watersheds in Nevada.png",
+        desc: "AAG 2024 poster analyzing major watershed decline in Nevada.",
+        sectionId: "byu-2024",
+        school: "byu"
+      },
+      {
+        title: "Forecasting Utah County Population Growth",
+        img: "Forecasted 2030 Population of Utah County Communities .jpg",
+        desc: "Python-based population growth modeling for Geography 6150.",
+        sectionId: "utah-2025",
+        school: "utah"
+      },
+      {
+        title: "LGBTQ+ Harm Risk",
+        img: "Bills Layout.jpg",
+        desc: "Map modeling the impact of anti-LGBTQ+ legislation on mental health.",
+        sectionId: "utah-2025",
+        school: "utah"
+      },
+      {
+        title: "Utah Prairie Dog Dashboard",
+        img: "Capstone Poster Final.png",
+        desc: "Capstone project focused on DWR prairie dog count data and dashboard development.",
+        sectionId: "utah-capstone",
+        school: "utah"
+      }
     ];
 
     function showRandomProject() {
       const random = projects[Math.floor(Math.random() * projects.length)];
+
       featuredProject.innerHTML = `
         <div class="project-card">
           <img src="${random.img}" alt="${random.title}">
           <h3>${random.title}</h3>
           <p>${random.desc}</p>
-          <button class="tab-button" onclick="showSection('${random.sectionId}', '${random.school}')">View Category</button>
-        </div>`;
+          <button class="tab-button" onclick="showSection('${random.sectionId}', '${random.school}')">
+            View Project
+          </button>
+        </div>
+      `;
     }
 
-    function toggleDropdown(id, school){
-      event.stopPropagation();
-      dropdowns.forEach(d => { if(d.id !== id) d.classList.remove('show'); });
-      document.getElementById(id).classList.toggle('show');
+    function toggleDropdown(id, school) {
+      dropdowns.forEach(dropdown => {
+        if (dropdown.id !== id) {
+          dropdown.classList.remove("show");
+        }
+      });
+
+      document.getElementById(id).classList.toggle("show");
+      setTheme(school);
     }
 
-    function showSection(id, school){
-      home.style.display = 'none';
-      sections.forEach(s => s.classList.remove('active'));
+    function showSection(id, school) {
+      home.style.display = "none";
+
+      sections.forEach(section => {
+        section.classList.remove("active");
+      });
+
       const target = document.getElementById(id);
-      if(target) target.classList.add('active');
-      dropdowns.forEach(d => d.classList.remove('show'));
+
+      if (target) {
+        target.classList.add("active");
+      }
+
+      dropdowns.forEach(dropdown => {
+        dropdown.classList.remove("show");
+      });
+
       setTheme(school);
     }
 
     function goHome() {
-      sections.forEach(s => s.classList.remove('active'));
-      home.style.display = 'block';
-      header.className = '';
+      sections.forEach(section => {
+        section.classList.remove("active");
+      });
+
+      home.style.display = "block";
+      header.classList.remove("byu", "utah");
       showRandomProject();
     }
 
-    function setTheme(school){
-      header.className = school;
+    function setTheme(school) {
+      header.classList.remove("byu", "utah");
+
+      if (school === "byu") {
+        header.classList.add("byu");
+      }
+
+      if (school === "utah") {
+        header.classList.add("utah");
+      }
     }
 
-    window.onclick = (e) => {
-      if (!e.target.matches('.tab-button')) {
-        dropdowns.forEach(d => d.classList.remove('show'));
+    window.addEventListener("click", function(event) {
+      if (!event.target.closest(".tab-group")) {
+        dropdowns.forEach(dropdown => {
+          dropdown.classList.remove("show");
+        });
       }
-    };
+    });
 
     showRandomProject();
     setInterval(showRandomProject, 8000);
