@@ -27,8 +27,42 @@
       z-index: 100;
     }
 
+    .hero-wrapper {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 2rem;
+      max-width: 1400px;
+      margin: 3rem auto;
+      padding: 0 2rem;
+    }
+
     .hero {
-      display: block;
+      flex: 1;
+      max-width: 900px;
+    }
+
+    .hero-content {
+      background: white;
+      border-radius: 28px;
+      padding: 2rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+
+    .about-me-sidebar {
+      width: 320px;
+      background: white;
+      border-radius: 24px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      position: sticky;
+      top: 2rem;
+    }
+
+    .about-me-sidebar img {
+      width: 100%;
+      border-radius: 20px;
+      margin-bottom: 1rem;
     }
 
     header.byu {
@@ -74,7 +108,15 @@
   </header>
 
   <main>
-    <section class="hero" id="homeSection">
+    <section class="hero-wrapper" id="homeSection">
+      <section class="hero">
+        <div class="hero-content">
+          <h2>GIS Portfolio</h2>
+          <p>Featured Project</p>
+          <div id="featured-project"></div>
+        </div>
+      </section>
+
       <aside class="about-me-sidebar">
         <img src="Resized_BeautyPlus_20211011205536894_save.JPG" alt="Ethan Schatz" />
 
@@ -113,12 +155,6 @@
           </p>
         </div>
       </aside>
-
-      <div class="hero-content">
-        <h2>GIS Portfolio</h2>
-        <p>Featured Project</p>
-        <div id="featured-project"></div>
-      </div>
     </section>
 
     <section class="portfolio-section" id="byu-2022">
@@ -336,7 +372,7 @@
         section.classList.remove("active");
       });
 
-      home.style.display = "block";
+      home.style.display = "flex";
       header.classList.remove("byu", "utah");
       showRandomProject();
     }
