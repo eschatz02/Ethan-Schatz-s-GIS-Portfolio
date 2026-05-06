@@ -322,38 +322,46 @@ main {
       flex: 3;
     }
 
-    /* About Me Sidebar */
-    .about-me-sidebar {
-      flex: 1;
-      background: #f4f4f4;
-      padding: 20px;
-      border-radius: 8px;
-      border-left: 4px solid #002255;
-      position: sticky;
-      top: 20px;
-    }
+/* About Me Sidebar */
+.about-me-sidebar {
+  flex: 1;
+  background: #f4f4f4;
+  padding: 20px;
+  border-radius: 8px;
+  /* Moved the border to the right side to match the text alignment */
+  border-right: 4px solid #002255; 
+  border-left: none; 
+  position: sticky;
+  top: 20px;
+  
+  /* Right justify all text */
+  text-align: right; 
+}
 
-    .about-me-sidebar img {
-      width: 100%;
-      height: auto;
-      border-radius: 50%;
-      margin-bottom: 15px;
-      border: 3px solid #fff;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
+.about-me-sidebar img {
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+  margin-bottom: 15px;
+  border: 3px solid #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
 
-    .about-me-sidebar h3 {
-      margin-top: 0;
-      color: #333;
-    }
+.about-me-sidebar h3, 
+.about-me-sidebar h4 {
+  margin-top: 0;
+  color: #333;
+}
 
-    /* Responsive adjustment for mobile */
-    @media (max-width: 768px) {
-      #homeSection {
-        flex-direction: column;
-      }
-      .about-me-sidebar {
-        width: 100%;
-        position: static;
-      }
-    }
+/* Adjusting lists for right alignment */
+.about-me-sidebar ul {
+  list-style-type: none; /* Removing bullets often looks better when right-justified */
+  padding: 0;
+  margin-bottom: 15px;
+}
+
+.about-me-sidebar li {
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+  line-height: 1.4;
+}
