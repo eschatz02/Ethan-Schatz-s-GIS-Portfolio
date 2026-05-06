@@ -23,6 +23,7 @@
       background-color: var(--bg-light);
       color: #333;
       line-height: 1.6;
+      overflow-x: hidden; /* Prevent horizontal scroll */
     }
 
     /* Header & Navigation */
@@ -30,16 +31,17 @@
       background: #4B2E83; 
       color: white;
       padding: 1rem 0;
-      transition: border-bottom 0.3s ease;
+      z-index: 2000;
+      position: relative;
     }
 
     .header-content {
-      max-width: 1400px;
+      max-width: 100%;
       margin: 0 auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 0 2rem;
+      padding: 0 4rem;
     }
 
     .site-title h1 { margin: 0; font-size: 1.5rem; }
@@ -88,29 +90,47 @@
 
     .dropdown button:hover { background: #f0f0f0; }
 
-    /* Layout Structure - UPDATED order for Right Sidebar */
+    /* Layout Structure - UPDATED for Dead Center Logic */
     .hero-wrapper {
-      display: flex;
-      flex-direction: row; 
+      display: grid;
+      /* Three columns: 
+         1. Empty space to balance the sidebar 
+         2. The Portfolio Highlights (Centered)
+         3. The Sidebar (Far Right) 
+      */
+      grid-template-columns: 350px 1fr 350px; 
       align-items: flex-start;
-      justify-content: center;
-      gap: 3rem;
-      max-width: 1600px; 
-      margin: 3rem auto;
+      width: 100%;
+      margin: 3rem 0;
       padding: 0 2rem;
+      box-sizing: border-box;
     }
 
-    /* Sidebar Styling - UPDATED (Border Removed) */
+    /* Main Portfolio Area - DEAD CENTER */
+    .hero {
+      grid-column: 2; /* Forces it into the middle column */
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .hero-content {
+      background: white;
+      border-radius: 28px;
+      padding: 2.5rem;
+      box-shadow: var(--card-shadow);
+    }
+
+    /* Sidebar Styling - FAR RIGHT */
     .about-me-sidebar {
-      flex: 0 0 320px; 
+      grid-column: 3; /* Forces it to the right-most column */
       background: white;
       border-radius: 24px;
       padding: 2rem;
       box-shadow: var(--card-shadow);
       position: sticky;
       top: 2rem;
-      /* Border removed here to get rid of the black line */
-      border: none; 
+      border: none;
     }
 
     .about-me-sidebar img {
@@ -123,20 +143,7 @@
       margin-top: 1.5rem;
       padding-top: 1.5rem;
       border-top: 1px solid #eee;
-      font-size: 0.9rem;
-    }
-
-    /* Main Portfolio Area */
-    .hero {
-      flex: 2; 
-      max-width: 1100px;
-    }
-
-    .hero-content {
-      background: white;
-      border-radius: 28px;
-      padding: 2.5rem;
-      box-shadow: var(--card-shadow);
+      font-size: 0.85rem;
     }
 
     .portfolio-section {
@@ -189,15 +196,18 @@
     header.utah { border-bottom: 8px solid var(--primary-red); }
 
     /* Mobile Responsiveness */
-    @media (max-width: 1024px) {
+    @media (max-width: 1200px) {
       .hero-wrapper {
-        flex-direction: column;
-        align-items: center;
+        grid-template-columns: 1fr; /* Stack on smaller screens */
+        padding: 0 1rem;
       }
-      .about-me-sidebar {
-        position: static;
-        width: 100%;
-        max-width: 500px;
+      .hero { grid-column: 1; }
+      .about-me-sidebar { 
+        grid-column: 1; 
+        position: static; 
+        width: 100%; 
+        max-width: 500px; 
+        margin: 2rem auto;
       }
     }
   </style>
@@ -236,7 +246,10 @@
   <main>
     <section class="hero-wrapper" id="homeSection">
       
-      <!-- Portfolio Content First (Left) -->
+      <!-- Empty space to balance the layout and keep portfolio centered -->
+      <div class="spacer"></div>
+
+      <!-- Portfolio Content (Centered Column) -->
       <section class="hero">
         <div class="hero-content">
           <h2 style="margin-top: 0;">GIS Portfolio Highlights</h2>
@@ -246,7 +259,7 @@
         </div>
       </section>
 
-      <!-- Sidebar Second (Right) -->
+      <!-- Sidebar (Right Column) -->
       <aside class="about-me-sidebar">
         <img src="Resized_BeautyPlus_20211011205536894_save.JPG" alt="Ethan Schatz" />
         <h3>About Me</h3>
@@ -265,13 +278,6 @@
           <li>QGIS</li>
         </ul>
 
-        <h4>Accomplishments</h4>
-        <ul style="padding-left: 20px;">
-          <li>Second Place: 2024 AAG World Geography Bowl</li>
-          <li>Haslam Scholarship: 2023</li>
-          <li>BYU Geography Merit Award: 2023</li>
-        </ul>
-
         <div class="contact-info">
           <p><strong>Email:</strong> <a href="mailto:ethan.m.schatz@gmail.com">ethan.m.schatz@gmail.com</a></p>
           <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/ethan-schatz-5a4738211" target="_blank">Profile</a></p>
@@ -280,7 +286,7 @@
 
     </section>
 
-    <!-- Portfolio Sections -->
+    <!-- Project Sections -->
     <section class="portfolio-section" id="byu-2022">
       <h2>BYU 2022 Projects</h2>
       <div class="project-card">
@@ -342,7 +348,7 @@
           <iframe width="500" height="300" src="https://www.youtube.com/embed/wXUNR4JPbWI" frameborder="0" allowfullscreen></iframe>
         </div>
         <p>
-          Focused on merging DWR count data into a unified file geodatabase and 
+          Focused on merging DWR prairie dog count data into a unified file geodatabase and 
           building a comprehensive dashboard backbone.
         </p>
       </div>
@@ -396,7 +402,7 @@
 
     function goHome() {
       sections.forEach(s => s.classList.remove("active"));
-      home.style.display = "flex";
+      home.style.display = "grid";
       header.className = "";
       showRandomProject();
     }
