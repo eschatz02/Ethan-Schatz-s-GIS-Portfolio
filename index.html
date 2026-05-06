@@ -27,7 +27,7 @@
 
     /* Header & Navigation */
     header {
-      background: #4B2E83; /* Example Purple Theme */
+      background: #4B2E83; 
       color: white;
       padding: 1rem 0;
       transition: border-bottom 0.3s ease;
@@ -88,27 +88,29 @@
 
     .dropdown button:hover { background: #f0f0f0; }
 
-    /* Layout Structure - UPDATED */
+    /* Layout Structure - UPDATED order for Right Sidebar */
     .hero-wrapper {
       display: flex;
-      flex-direction: row; /* Sidebar left, Portfolio right */
+      flex-direction: row; 
       align-items: flex-start;
       justify-content: center;
       gap: 3rem;
-      max-width: 1600px; /* Larger container */
+      max-width: 1600px; 
       margin: 3rem auto;
       padding: 0 2rem;
     }
 
-    /* Sidebar Styling - UPDATED */
+    /* Sidebar Styling - UPDATED (Border Removed) */
     .about-me-sidebar {
-      flex: 0 0 320px; /* Fixed width */
+      flex: 0 0 320px; 
       background: white;
       border-radius: 24px;
       padding: 2rem;
       box-shadow: var(--card-shadow);
       position: sticky;
       top: 2rem;
+      /* Border removed here to get rid of the black line */
+      border: none; 
     }
 
     .about-me-sidebar img {
@@ -124,9 +126,9 @@
       font-size: 0.9rem;
     }
 
-    /* Main Portfolio Area - UPDATED */
+    /* Main Portfolio Area */
     .hero {
-      flex: 2; /* Occupies more space */
+      flex: 2; 
       max-width: 1100px;
     }
 
@@ -189,7 +191,7 @@
     /* Mobile Responsiveness */
     @media (max-width: 1024px) {
       .hero-wrapper {
-        flex-direction: column-reverse;
+        flex-direction: column;
         align-items: center;
       }
       .about-me-sidebar {
@@ -234,7 +236,17 @@
   <main>
     <section class="hero-wrapper" id="homeSection">
       
-      <!-- Sidebar moved to left -->
+      <!-- Portfolio Content First (Left) -->
+      <section class="hero">
+        <div class="hero-content">
+          <h2 style="margin-top: 0;">GIS Portfolio Highlights</h2>
+          <p>Featured Project (Updates every 8 seconds)</p>
+          <hr style="border: 0; border-top: 1px solid #eee; margin: 1.5rem 0;">
+          <div id="featured-project"></div>
+        </div>
+      </section>
+
+      <!-- Sidebar Second (Right) -->
       <aside class="about-me-sidebar">
         <img src="Resized_BeautyPlus_20211011205536894_save.JPG" alt="Ethan Schatz" />
         <h3>About Me</h3>
@@ -266,19 +278,9 @@
         </div>
       </aside>
 
-      <!-- Centered Portfolio Content -->
-      <section class="hero">
-        <div class="hero-content">
-          <h2 style="margin-top: 0;">GIS Portfolio Highlights</h2>
-          <p>Featured Project (Updates every 8 seconds)</p>
-          <hr style="border: 0; border-top: 1px solid #eee; margin: 1.5rem 0;">
-          <div id="featured-project"></div>
-        </div>
-      </section>
-
     </section>
 
-    <!-- BYU 2022 -->
+    <!-- Portfolio Sections -->
     <section class="portfolio-section" id="byu-2022">
       <h2>BYU 2022 Projects</h2>
       <div class="project-card">
@@ -288,7 +290,6 @@
       </div>
     </section>
 
-    <!-- BYU 2023 -->
     <section class="portfolio-section" id="byu-2023">
       <h2>BYU 2023 Projects</h2>
       <div class="project-card">
@@ -306,7 +307,6 @@
       </div>
     </section>
 
-    <!-- BYU 2024 -->
     <section class="portfolio-section" id="byu-2024">
       <h2>BYU 2024 Projects</h2>
       <div class="project-card">
@@ -316,7 +316,6 @@
       </div>
     </section>
 
-    <!-- Utah 2025 -->
     <section class="portfolio-section" id="utah-2025">
       <h2>University of Utah 2025</h2>
       <div class="project-card">
@@ -334,7 +333,6 @@
       </div>
     </section>
 
-    <!-- Utah Capstone -->
     <section class="portfolio-section" id="utah-capstone">
       <h2>Capstone Project</h2>
       <div class="project-card">
