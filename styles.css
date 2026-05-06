@@ -36,12 +36,7 @@ header.utah { background:var(--utah-red); border-bottom:5px solid #cc0000; }
 .site-title h1 { font-size:2rem; letter-spacing:.5px; }
 .site-title p { font-size:1rem; opacity:.9; }
 
-nav {
-  display:flex;
-  gap:1rem;
-  flex-wrap:wrap;
-}
-
+nav { display:flex; gap:1rem; flex-wrap:wrap; }
 .tab-group { position:relative; }
 
 .tab-button {
@@ -96,27 +91,21 @@ main {
   padding:1rem;
 }
 
-.hero-wrapper,
-#homeSection {
-  display:flex;
-  align-items:flex-start;
-  gap:2rem;
-}
-
 .hero-wrapper {
-  justify-content:center;
-  max-width:1400px;
+  display:grid;
+  grid-template-columns:320px minmax(700px,900px) 320px;
+  gap:2rem;
+  max-width:1600px;
   margin:3rem auto;
   padding:0 2rem;
+  align-items:flex-start;
 }
 
-#homeSection {
-  flex-direction:row-reverse;
-  text-align:left;
-}
+#homeSection { text-align:left; }
 
 .hero {
-  flex:1;
+  grid-column:2;
+  width:100%;
   max-width:900px;
 }
 
@@ -130,7 +119,7 @@ main {
 }
 
 .hero-content {
-  flex:3;
+  width:100%;
   background:var(--white);
   border-radius:28px;
   padding:2rem;
@@ -138,7 +127,7 @@ main {
 }
 
 .about-me-sidebar {
-  flex:1;
+  grid-column:1;
   width:320px;
   background:var(--white);
   padding:1.5rem;
@@ -232,17 +221,27 @@ main {
 }
 
 @media (max-width:768px) {
-  #homeSection,
+  .hero-wrapper {
+    display:flex;
+    flex-direction:column;
+    padding:0 1rem;
+  }
+
+  .hero,
+  .about-me-sidebar {
+    width:100%;
+    max-width:100%;
+  }
+
+  .about-me-sidebar {
+    position:static;
+    margin-bottom:20px;
+  }
+
   .header-content,
   .image-row,
   .media-row {
     flex-direction:column;
-  }
-
-  .about-me-sidebar {
-    width:100%;
-    position:static;
-    margin-bottom:20px;
   }
 
   .header-content { text-align:center; }
