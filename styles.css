@@ -166,19 +166,22 @@ main {
 }
 
 .home-layout {
-  display:grid;
-  grid-template-columns:320px minmax(700px,900px);
-  gap:2rem;
-  width:fit-content;
-  margin:3rem 0 3rem 1rem;
-  align-items:start;
+  position: relative;
+  min-height: 700px;
 }
 
 .about-me-sidebar {
-  position:sticky;
-  top:2rem;
-  padding:1.75rem;
-  background:var(--white);
+  position: absolute;
+  left: 2rem;
+  top: 0;
+
+  width: 320px;
+
+  background: var(--white);
+  padding: 1.75rem;
+  border-radius: 26px;
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--soft-border);
 }
 
 .about-me-sidebar img {
@@ -324,10 +327,10 @@ main {
     transform:translateX(-50%);
   }
 
-  .hero,
-  .portfolio-section {
-    padding:1.5rem;
-  }
+  .hero {
+  width: min(900px, 90vw);
+  margin: 3rem auto;
+}
 
   .image-row,
   .media-row {
