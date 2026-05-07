@@ -4,65 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GIS Portfolio | Ethan Schatz</title>
-
   <link rel="stylesheet" href="styles.css" />
-  
-  <style>
-    /* Layout and Navigation Styles */
-    .portfolio-section { display: none; }
-    .portfolio-section.active { display: block; }
-    .dropdown { display: none; position: absolute; background: white; border: 1px solid #ccc; }
-    .dropdown.show { display: block; z-index: 100; }
-    header.byu { border-bottom: 5px solid #002255; }
-    header.utah { border-bottom: 5px solid #CC0000; }
-
-    /* Flexbox Layout for the Home Section */
-    .home-layout {
-      display: flex;
-      gap: 2rem;
-      align-items: flex-start;
-      margin-top: 20px;
-    }
-
-    .about-me-sidebar {
-      flex: 1;
-      max-width: 300px;
-      padding: 20px;
-      background-color: #f9f9f9;
-      border-radius: 8px;
-      border: 1px solid #ddd;
-    }
-
-    .about-me-sidebar img {
-      max-width: 100%;
-      border-radius: 50%;
-      margin-bottom: 15px;
-    }
-
-    .hero {
-      flex: 3;
-    }
-
-    .project-card img {
-      max-width: 100%;
-      height: auto;
-    }
-
-    .image-row, .media-row {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    @media (max-width: 768px) {
-      .home-layout {
-        flex-direction: column;
-      }
-      .about-me-sidebar {
-        max-width: 100%;
-      }
-    }
-  </style>
 </head>
 <body>
 
@@ -96,7 +38,7 @@
   </header>
 
   <main>
-    <!-- MERGED HOME SECTION WITH SIDEBAR -->
+    <!-- HOME SECTION WITH SIDEBAR AND HERO -->
     <section class="home-layout" id="homeSection">
       <aside class="about-me-sidebar">
         <img src="Resized_BeautyPlus_20211011205536894_save.JPG" alt="Ethan Schatz" />
@@ -274,7 +216,7 @@
 
     function goHome() {
       sections.forEach(s => s.classList.remove('active'));
-      home.style.display = 'flex'; // Reset to flex for side-by-side
+      home.style.display = 'block'; // Block vs Flex depends on your CSS logic, but 'block' works best for relative/absolute hybrid layouts
       header.classList.remove('byu', 'utah');
       showRandomProject();
     }
