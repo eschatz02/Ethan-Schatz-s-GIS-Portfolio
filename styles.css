@@ -117,14 +117,15 @@ nav {
 main {
   width: 100%;
   max-width: none;
-  margin: 2rem 0;
-  padding: 1rem;
+  margin: 0;
+  padding: 0;
 }
 
 .home-layout {
   position: relative;
   width: 100%;
-  min-height: 700px;
+  min-height: 750px;
+  padding-top: 3rem;
 }
 
 /* --- Reusable Section Styling --- */
@@ -140,9 +141,13 @@ main {
 
 /* --- Hero Section --- */
 .hero {
+  position: absolute;
+  top: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
   width: 900px;
   max-width: 90vw;
-  margin: 3rem auto 0 auto;
+  margin: 0;
   padding: 2.5rem;
   text-align: center;
 }
@@ -308,9 +313,18 @@ main {
 @media (max-width: 900px) {
   .home-layout {
     width: 100%;
-    margin: 2rem 0;
-    padding: 0;
-    /* Removed grid reference as display wasn't defined as grid above */
+    margin: 0;
+    padding: 1rem;
+    min-height: auto;
+  }
+
+  .hero {
+    position: relative;
+    top: 0;
+    left: 0;
+    transform: none;
+    width: 100%;
+    margin: 0 auto 2rem;
   }
 
   .about-me-sidebar {
@@ -337,11 +351,6 @@ main {
   .dropdown {
     left: 50%;
     transform: translateX(-50%);
-  }
-
-  .hero {
-    width: min(900px, 90vw);
-    margin: 3rem auto;
   }
 
   .image-row,
