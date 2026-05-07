@@ -7,16 +7,22 @@
     <link href="https://fonts.googleapis.com/css2?family=Chivo+Mono&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-deep: #080a10;
-            --glass-purple: rgba(75, 46, 131, 0.4); 
-            --glass-blue: rgba(0, 46, 93, 0.6);   
-            --accent-red: #cc0000;
-            --text-main: #f0f3f8;
-            --text-muted: #abb8c9;
+            /* Earthy Light Mode Palette */
+            --bg-deep: #ffffff;         
+            --earth-green: #2d4c36;     
+            --earth-brown: #a65d37;     
+            --accent-orange: #8e4a2b;   
+            --text-main: #1a1c1a;       
+            --text-muted: #5c665e;      
             --font-mono: 'Chivo Mono', monospace;
             --font-sans: 'Inter', sans-serif;
-            --shadow-core: 0 15px 50px rgba(0,0,0,0.5);
-            --border-soft: rgba(255, 255, 255, 0.08);
+            --shadow-core: 0 10px 30px rgba(0,0,0,0.08);
+            --border-soft: rgba(0, 0, 0, 0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
         }
 
         body {
@@ -25,10 +31,10 @@
             color: var(--text-main);
             margin: 0;
             overflow-x: hidden;
-            background-image: radial-gradient(circle at 50% 50%, #1a1f35 0%, #080a10 100%);
-            background-attachment: fixed;
+            line-height: 1.5;
         }
 
+        /* --- LAYOUT STRUCTURE --- */
         .main-container {
             width: 100%;
             max-width: 1600px;
@@ -42,13 +48,11 @@
 
         /* --- SIDEBAR --- */
         .immersive-sidebar {
-            background-color: rgba(255, 255, 255, 0.03);
+            background-color: #fcfcf9; /* Off-white paper feel */
             border: 1px solid var(--border-soft);
             border-radius: 20px;
             padding: 30px;
             box-shadow: var(--shadow-core);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
             align-self: start;
             position: sticky;
             top: 40px;
@@ -59,9 +63,10 @@
             height: 140px;
             border-radius: 50%;
             object-fit: cover;
-            border: 3px solid rgba(255,255,255,0.2);
+            border: 3px solid var(--earth-green);
             margin: 0 auto 20px auto;
             display: block;
+            box-shadow: 0 5px 15px rgba(45, 76, 54, 0.15);
             background-image: url('Resized_BeautyPlus_20211011205536894_save.JPG');
             background-size: cover;
             background-position: center;
@@ -69,11 +74,11 @@
 
         .section-header-mono {
             font-family: var(--font-mono);
-            font-size: 0.9rem;
-            color: var(--text-muted);
+            font-size: 0.85rem;
+            color: var(--accent-orange);
             text-transform: uppercase;
             letter-spacing: 0.15em;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid var(--border-soft);
             padding-bottom: 10px;
             margin: 25px 0 15px 0;
         }
@@ -81,63 +86,84 @@
         .info-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 10px;
+            gap: 12px;
         }
 
         .info-grid-item {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.06);
+            background: #f4f4f0;
+            border: 1px solid var(--border-soft);
             border-radius: 10px;
             padding: 12px;
+            transition: all 0.3s ease;
         }
 
-        .info-label { font-size: 0.7rem; color: var(--text-muted); }
-        .info-value { font-weight: 600; font-size: 0.9rem; }
+        .info-grid-item:hover {
+            background: #ebebe5;
+            border-color: var(--earth-green);
+        }
 
-        /* --- MAIN CONTENT --- */
-        .main-showcase { display: flex; flex-direction: column; gap: 40px; }
+        .info-label { font-size: 0.7rem; color: var(--text-muted); margin-bottom: 4px; }
+        .info-value { font-weight: 600; font-size: 0.9rem; color: var(--text-main); }
 
-        .command-center { display: flex; justify-content: flex-end; }
+        /* --- MAIN SHOWCASE --- */
+        .main-showcase { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 40px; 
+        }
+
+        .command-center { 
+            display: flex; 
+            justify-content: flex-end; 
+        }
+
         .cmd-bar {
-            background-color: rgba(255,255,255,0.05);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255,255,255,0.1);
+            background-color: #f4f4f0;
+            border: 1px solid var(--border-soft);
             border-radius: 99px;
-            padding: 5px;
+            padding: 6px;
             display: flex;
             gap: 5px;
         }
 
         .tab-group { position: relative; }
+
         .cmd-btn {
             background: none;
             border: none;
             color: var(--text-muted);
             font-family: var(--font-mono);
-            font-size: 0.85rem;
-            padding: 10px 20px;
+            font-size: 0.8rem;
+            padding: 10px 22px;
             cursor: pointer;
             border-radius: 99px;
             transition: all 0.3s ease;
         }
 
-        .cmd-btn:hover { background: rgba(255,255,255,0.1); color: white; }
-        .active-tab { background: var(--glass-purple); color: white; }
+        .cmd-btn:hover { 
+            background: #ebebe5; 
+            color: var(--text-main); 
+        }
+
+        .active-tab { 
+            background: var(--earth-green); 
+            color: white; 
+            box-shadow: 0 4px 12px rgba(45, 76, 54, 0.2);
+        }
 
         .dropdown {
             position: absolute;
             top: 100%;
             right: 0;
-            background: #151a28;
-            border: 1px solid rgba(255,255,255,0.1);
+            background: #ffffff;
+            border: 1px solid var(--border-soft);
             border-radius: 12px;
             display: none;
             flex-direction: column;
-            min-width: 160px;
+            min-width: 180px;
             z-index: 100;
             overflow: hidden;
-            margin-top: 10px;
+            margin-top: 12px;
             box-shadow: var(--shadow-core);
         }
 
@@ -145,66 +171,94 @@
             background: none;
             border: none;
             color: var(--text-muted);
-            padding: 12px 16px;
+            padding: 14px 20px;
             text-align: left;
             cursor: pointer;
             font-family: var(--font-mono);
             font-size: 0.8rem;
-            transition: background 0.2s;
+            transition: 0.2s;
         }
 
-        .dropdown button:hover { background: var(--glass-blue); color: white; }
+        .dropdown button:hover { 
+            background: #f4f4f0; 
+            color: var(--earth-green); 
+        }
+
         .show { display: flex; }
 
         .portfolio-section { display: none; }
-        .portfolio-section.active { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; animation: fadeIn 0.4s ease; }
+        .portfolio-section.active { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); 
+            gap: 25px; 
+            animation: fadeIn 0.4s ease;
+        }
 
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
+        /* --- PROJECT CARDS --- */
         .project-card {
-            background: rgba(255,255,255,0.03);
+            background: #ffffff;
             border: 1px solid var(--border-soft);
             border-radius: 20px;
             padding: 24px;
-            transition: 0.3s;
+            transition: 0.4s ease;
+        }
+
+        .project-card:hover { 
+            transform: translateY(-5px); 
+            border-color: var(--earth-brown);
+            box-shadow: var(--shadow-core);
         }
 
         .project-card img {
             width: 100%;
-            height: 250px;
+            height: 240px;
             object-fit: cover;
             border-radius: 12px;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            filter: sepia(0.15); /* Subtle warm paper tint */
+            transition: 0.3s;
             cursor: zoom-in;
-            transition: transform 0.3s;
         }
 
-        .project-card img:hover { transform: scale(1.01); }
+        .project-card:hover img { filter: sepia(0); }
 
         .image-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px; }
         .image-row img { height: 180px; margin-bottom: 0; }
 
+        /* --- HERO FEATURED --- */
         .hero-featured {
-            background: linear-gradient(135deg, var(--glass-purple), var(--glass-blue));
-            border-radius: 25px;
-            padding: 40px;
-            min-height: 400px;
+            background: var(--earth-green);
+            color: white;
+            border-radius: 30px;
+            padding: 60px;
+            min-height: 450px;
             display: grid;
             grid-template-columns: 1.2fr 1fr;
-            gap: 30px;
+            gap: 40px;
             align-items: center;
+            position: relative;
+            overflow: hidden;
         }
 
-        .hero-content h2 { font-size: 2.5rem; margin: 10px 0; line-height: 1.2; }
+        .hero-content h2 { 
+            font-size: 3rem; 
+            margin: 10px 0 20px 0; 
+            line-height: 1.1;
+            font-weight: 700;
+            color: white;
+        }
+
         .hero-img { 
             width: 100%; 
             height: 350px; 
-            border-radius: 15px; 
+            border-radius: 18px; 
             background-size: cover; 
             background-position: center;
-            box-shadow: var(--shadow-core);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            border: 4px solid rgba(255,255,255,0.1);
             cursor: zoom-in;
-            border: 1px solid rgba(255,255,255,0.1);
         }
 
         /* --- POPUP MODAL --- */
@@ -237,13 +291,14 @@
             to { transform: scale(1); opacity: 1; }
         }
 
+        /* --- FOOTER --- */
         footer {
             margin-top: auto;
             padding: 40px 0;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            font-family: var(--font-mono);
-            font-size: 0.8rem;
+            border-top: 1px solid var(--border-soft);
             color: var(--text-muted);
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
             display: flex;
             justify-content: space-between;
         }
@@ -289,7 +344,7 @@
     <main class="main-showcase">
         <div class="command-center">
             <div class="cmd-bar">
-                <button class="cmd-btn active-tab" onclick="goHome()">Home</button>
+                <button class="cmd-btn active-tab" id="homeBtn" onclick="goHome()">Home</button>
                 <div class="tab-group">
                     <button class="cmd-btn" onclick="toggleDropdown('byuDrop')">BYU_Archive ▾</button>
                     <div class="dropdown" id="byuDrop">
@@ -367,7 +422,6 @@
                 <h3>Utah Prairie Dog Dashboard</h3>
                 <p>DWR count data integration and dashboard visualization. This project involved processing geospatial base data sets into a unified file geodatabase.</p>
                 
-                <!-- Video Embed -->
                 <div style="margin-top: 25px; position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 15px; border: 1px solid var(--border-soft);">
                     <iframe 
                         style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" 
@@ -389,25 +443,25 @@
 
 <script>
     const projects = [
-    { 
-        title: "South Korea Historical Series", 
-        img: "Early Kingdoms On the Korean Peninsula fixed2.jpg", 
-        desc: "Mapping the Early Kingdoms and Parhae provinces for the 'Lost Civilizations' publication.", 
-        id: "byu-2023" 
-    },
-    { 
-        title: "Nevada Watersheds", 
-        img: "Mapping the Decline of Major Watersheds in Nevada.png", 
-        desc: "A geospatial investigation into watershed decline presented at the National AAG 2024 conference.", 
-        id: "byu-2024" 
-    },
-    { 
-        title: "Utah Prairie Dog Capstone", 
-        img: "Capstone Poster Final.png", 
-        desc: "Integration of DWR count data into a unified file geodatabase and interactive dashboard.", 
-        id: "utah-capstone" 
-    }
-];
+        { 
+            title: "South Korea Historical Series", 
+            img: "Early Kingdoms On the Korean Peninsula fixed2.jpg", 
+            desc: "Mapping the Early Kingdoms and Parhae provinces for the 'Lost Civilizations' publication.", 
+            id: "byu-2023" 
+        },
+        { 
+            title: "Nevada Watersheds", 
+            img: "Mapping the Decline of Major Watersheds in Nevada.png", 
+            desc: "A geospatial investigation into watershed decline presented at the National AAG 2024 conference.", 
+            id: "byu-2024" 
+        },
+        { 
+            title: "Utah Prairie Dog Capstone", 
+            img: "Capstone Poster Final.png", 
+            desc: "Integration of DWR count data into a unified file geodatabase and interactive dashboard.", 
+            id: "utah-capstone" 
+        }
+    ];
 
     let heroInterval;
 
@@ -417,10 +471,10 @@
         if (hero) {
             hero.innerHTML = `
                 <div class="hero-content">
-                    <div style="font-family:var(--font-mono); font-size:0.8rem; margin-bottom:10px;">FEATURED_PROJECT //</div>
+                    <div style="font-family:var(--font-mono); font-size:0.8rem; margin-bottom:10px; color:rgba(255,255,255,0.7);">FEATURED_PROJECT //</div>
                     <h2>${random.title}</h2>
-                    <p>${random.desc}</p>
-                    <button class="cmd-btn" style="background:white; color:black; margin-top:20px;" onclick="showSection('${random.id}')">View Full Project</button>
+                    <p style="color:rgba(255,255,255,0.85);">${random.desc}</p>
+                    <button class="cmd-btn" style="background:white; color:var(--earth-green); font-weight:700; margin-top:20px;" onclick="showSection('${random.id}')">View Full Project</button>
                 </div>
                 <div class="hero-img" style="background-image: url('${random.img}')" onclick="openModal('${random.img}')"></div>
             `;
@@ -449,19 +503,21 @@
         document.getElementById('homeSection').style.display = 'none';
         document.querySelectorAll('.portfolio-section').forEach(s => s.classList.remove('active'));
         document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('show'));
+        document.querySelectorAll('.cmd-btn').forEach(b => b.classList.remove('active-tab'));
         
         const target = document.getElementById(id);
         if(target) target.classList.add('active');
         
-        // Stop hero rotation when looking at projects
         clearInterval(heroInterval);
     }
 
     function goHome() {
-        document.getElementById('homeSection').style.display = 'block';
         document.querySelectorAll('.portfolio-section').forEach(s => s.classList.remove('active'));
+        document.querySelectorAll('.cmd-btn').forEach(b => b.classList.remove('active-tab'));
+        document.getElementById('homeBtn').classList.add('active-tab');
+        document.getElementById('homeSection').style.display = 'block';
         showRandomProject();
-        // Restart rotation
+        clearInterval(heroInterval);
         heroInterval = setInterval(showRandomProject, 12000);
     }
 
