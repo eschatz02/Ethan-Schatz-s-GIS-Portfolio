@@ -2,7 +2,6 @@
   --purple:#4b2e83;
   --byu-blue:#002e5d;
   --utah-red:#cc0000;
-  --bg:#eef2f7;
   --text:#1f2937;
   --muted:#5f6b7a;
   --white:#fff;
@@ -167,10 +166,10 @@ main {
 
 .home-layout {
   display:grid;
-  grid-template-columns:320px minmax(700px, 900px);
+  grid-template-columns:320px minmax(700px,900px);
   gap:2rem;
   width:fit-content;
-  margin:3rem 0 3rem 4rem;
+  margin:3rem 0 3rem 0.5rem;
   align-items:start;
 }
 
@@ -297,6 +296,9 @@ main {
 @media (max-width:900px) {
   .home-layout {
     grid-template-columns:1fr;
+    width:100%;
+    margin:2rem 0;
+    padding:0;
   }
 
   .about-me-sidebar {
