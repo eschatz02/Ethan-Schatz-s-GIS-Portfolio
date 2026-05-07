@@ -32,6 +32,31 @@
             margin: 0;
             overflow-x: hidden;
             line-height: 1.5;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* --- HEADER --- */
+        header {
+            background-color: var(--earth-green);
+            color: white;
+            padding: 15px 40px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-family: var(--font-mono);
+            font-size: 1.1rem;
+            margin: 0;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
         /* --- LAYOUT STRUCTURE --- */
@@ -42,20 +67,20 @@
             grid-template-columns: 350px 1fr;
             gap: 40px;
             padding: 40px;
-            min-height: 100vh;
+            flex: 1;
             margin: 0 auto;
         }
 
         /* --- SIDEBAR --- */
         .immersive-sidebar {
-            background-color: #fcfcf9; /* Off-white paper feel */
+            background-color: #fcfcf9; 
             border: 1px solid var(--border-soft);
             border-radius: 20px;
             padding: 30px;
             box-shadow: var(--shadow-core);
             align-self: start;
             position: sticky;
-            top: 40px;
+            top: 100px; /* Offset for header */
         }
 
         .profile-img {
@@ -217,7 +242,7 @@
             object-fit: cover;
             border-radius: 12px;
             margin-bottom: 20px;
-            filter: sepia(0.15); /* Subtle warm paper tint */
+            filter: sepia(0.15); 
             transition: 0.3s;
             cursor: zoom-in;
         }
@@ -293,18 +318,24 @@
 
         /* --- FOOTER --- */
         footer {
-            margin-top: auto;
-            padding: 40px 0;
+            background-color: var(--earth-green);
+            color: white;
+            padding: 30px 40px;
             border-top: 1px solid var(--border-soft);
-            color: var(--text-muted);
             font-family: var(--font-mono);
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             display: flex;
             justify-content: space-between;
+            align-items: center;
+            margin-top: 60px;
         }
     </style>
 </head>
 <body>
+
+<header>
+    <h1>Ethan Schatz's GIS Portfolio</h1>
+</header>
 
 <!-- MODAL POPUP -->
 <div id="imgModal" class="image-modal" onclick="closeModal()">
@@ -328,7 +359,7 @@
             <div class="info-grid-item"><div class="info-label">DATA</div><div class="info-value">Excel / SQL</div></div>
         </div>
 
-        <h3 class="section-header-mono">Acomplishments</h3>
+        <h3 class="section-header-mono">Accomplishments</h3>
         <ul style="font-size: 0.8rem; padding-left: 15px; color: var(--text-muted);">
             <li>AAG World Geography Bowl (2nd)</li>
             <li>AAG GPRM Geography Bowl (3rd Ind.) (1st Team)</li>
@@ -437,7 +468,7 @@
 
         <footer>
             <div>M.S. GIS | 2027</div>
-            <div style="letter-spacing: 2px;">SYSTEM_STATUS: ONLINE</div>
+            <div>Ethan Schatz 2026</div>
         </footer>
     </main>
 </div>
@@ -522,7 +553,6 @@
         heroInterval = setInterval(showRandomProject, 12000);
     }
 
-    // Initialize
     showRandomProject();
     heroInterval = setInterval(showRandomProject, 12000);
 
