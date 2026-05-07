@@ -8,16 +8,64 @@
   <link rel="stylesheet" href="styles.css" />
   
   <style>
+    /* Layout and Navigation Styles */
     .portfolio-section { display: none; }
     .portfolio-section.active { display: block; }
-    .dropdown { display: none; position: absolute; }
+    .dropdown { display: none; position: absolute; background: white; border: 1px solid #ccc; }
     .dropdown.show { display: block; z-index: 100; }
-    .hero { display: block; }
     header.byu { border-bottom: 5px solid #002255; }
     header.utah { border-bottom: 5px solid #CC0000; }
+
+    /* Flexbox Layout for the Home Section */
+    .home-layout {
+      display: flex;
+      gap: 2rem;
+      align-items: flex-start;
+      margin-top: 20px;
+    }
+
+    .about-me-sidebar {
+      flex: 1;
+      max-width: 300px;
+      padding: 20px;
+      background-color: #f9f9f9;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+    }
+
+    .about-me-sidebar img {
+      max-width: 100%;
+      border-radius: 50%;
+      margin-bottom: 15px;
+    }
+
+    .hero {
+      flex: 3;
+    }
+
+    .project-card img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .image-row, .media-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      .home-layout {
+        flex-direction: column;
+      }
+      .about-me-sidebar {
+        max-width: 100%;
+      }
+    }
   </style>
 </head>
 <body>
+
   <header id="pageHeader">
     <div class="header-content">
       <div class="site-title" style="cursor:pointer;" onclick="goHome()">
@@ -48,11 +96,48 @@
   </header>
 
   <main>
-    <section class="hero" id="homeSection">
-      <h2>GIS Portfolio</h2>
-      <p>Featured Project</p>
+    <!-- MERGED HOME SECTION WITH SIDEBAR -->
+    <section class="home-layout" id="homeSection">
+      <aside class="about-me-sidebar">
+        <img src="Resized_BeautyPlus_20211011205536894_save.JPG" alt="Ethan Schatz" />
 
-      <div id="featured-project"></div>
+        <h3>About Me</h3>
+        <p>
+          My name is Ethan Schatz, and I'm a MSGIS student at the University of Utah, Class of 2027.
+          I am an aspiring GIS professional with an interest in cartography, specifically transportation
+          and local planning.
+        </p>
+
+        <h4>Skills</h4>
+        <ul>
+          <li>ArcGIS Pro</li>
+          <li>Python</li>
+          <li>R</li>
+          <li>Microsoft Excel</li>
+          <li>QGIS</li>
+        </ul>
+
+        <h4>Accomplishments</h4>
+        <ul>
+          <li>Second Place Individually at the 2024 AAG World Geography Bowl</li>
+          <li>Third Place Individually, First Place Team at the 2023 AAG GPRM Geography Bowl</li>
+          <li>Haslam Scholarship: 2023</li>
+          <li>BYU Geography Department Merit Award: 2023</li>
+        </ul>
+
+        <div class="contact-info">
+          <p>Please contact me for any inquiries.</p>
+          <p><strong>Email:</strong> <a href="mailto:ethan.m.schatz@gmail.com">ethan.m.schatz@gmail.com</a></p>
+          <p><strong>Phone:</strong> 801-510-0327</p>
+          <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/ethan-schatz-5a4738211" target="_blank" rel="noopener noreferrer">Profile</a></p>
+        </div>
+      </aside>
+
+      <section class="hero">
+        <h2>GIS Portfolio</h2>
+        <p>Featured Project</p>
+        <div id="featured-project"></div>
+      </section>
     </section>
 
     <!-- BYU SECTIONS -->
@@ -79,15 +164,8 @@
           <img src="Parhae and the Provinces of Unified Shilla fixed2.jpg" alt="Parhae and the Provinces of Unified Shilla map">
         </div>
         <h3>Three Kingdoms Maps</h3>
-        <p>
-  A series of maps created for a client's book regarding early kingdoms on the Korean Peninsula.
-</p>
-
-<p>
-  🔍 <a href="https://www.amazon.com/Three-Kingdoms-Korea-Lost-Civilizations-ebook/dp/B0CXYHSG5X" target="_blank" rel="noopener noreferrer">
-    The Three Kingdoms of Korea: Lost Civilizations
-  </a>
-</p>
+        <p>A series of maps created for a client's book regarding early kingdoms on the Korean Peninsula.</p>
+        <p>🔍 <a href="https://www.amazon.com/Three-Kingdoms-Korea-Lost-Civilizations-ebook/dp/B0CXYHSG5X" target="_blank" rel="noopener noreferrer">The Three Kingdoms of Korea: Lost Civilizations</a></p>
       </div>
     </section>
 
@@ -154,60 +232,17 @@
     const featuredProject = document.getElementById('featured-project');
 
     const projects = [
-      {
-        title: "Atlas Map",
-        img: "Atlas Map Layout.jpg",
-        desc: "Atlas map of Portugal created for Geography 312.",
-        sectionId: "byu-2022",
-        school: "byu"
-      },
-      {
-        title: "LDS Church Sites in Indonesia",
-        img: "LDS Church Sites in Indonesia Draft Layout Final.jpg",
-        desc: "Client map project for a publication about Church history in Indonesia.",
-        sectionId: "byu-2023",
-        school: "byu"
-      },
-      {
-        title: "Three Kingdoms Maps",
-        img: "Early Kingdoms On the Korean Peninsula fixed2.jpg",
-        desc: "Historical maps of early kingdoms on the Korean Peninsula.",
-        sectionId: "byu-2023",
-        school: "byu"
-      },
-      {
-        title: "Nevada Watersheds",
-        img: "Mapping the Decline of Major Watersheds in Nevada.png",
-        desc: "AAG 2024 poster analyzing major watershed decline in Nevada.",
-        sectionId: "byu-2024",
-        school: "byu"
-      },
-      {
-        title: "Forecasting Utah County Population Growth",
-        img: "Forecasted 2030 Population of Utah County Communities .jpg",
-        desc: "Python-based population growth modeling for Geography 6150.",
-        sectionId: "utah-2025",
-        school: "utah"
-      },
-      {
-        title: "LGBTQ+ Harm Risk",
-        img: "Bills Layout.jpg",
-        desc: "Map modeling the impact of anti-LGBTQ+ legislation on mental health.",
-        sectionId: "utah-2025",
-        school: "utah"
-      },
-      {
-        title: "Utah Prairie Dog Dashboard",
-        img: "Capstone Poster Final.png",
-        desc: "Capstone project focused on DWR prairie dog count data and dashboard development.",
-        sectionId: "utah-capstone",
-        school: "utah"
-      }
+      { title: "Atlas Map", img: "Atlas Map Layout.jpg", desc: "Atlas map of Portugal created for Geography 312.", sectionId: "byu-2022", school: "byu" },
+      { title: "LDS Church Sites in Indonesia", img: "LDS Church Sites in Indonesia Draft Layout Final.jpg", desc: "Client map project for a publication about Church history in Indonesia.", sectionId: "byu-2023", school: "byu" },
+      { title: "Three Kingdoms Maps", img: "Early Kingdoms On the Korean Peninsula fixed2.jpg", desc: "Historical maps of early kingdoms on the Korean Peninsula.", sectionId: "byu-2023", school: "byu" },
+      { title: "Nevada Watersheds", img: "Mapping the Decline of Major Watersheds in Nevada.png", desc: "AAG 2024 poster analyzing major watershed decline in Nevada.", sectionId: "byu-2024", school: "byu" },
+      { title: "Forecasting Utah County Population Growth", img: "Forecasted 2030 Population of Utah County Communities .jpg", desc: "Python-based population growth modeling for Geography 6150.", sectionId: "utah-2025", school: "utah" },
+      { title: "LGBTQ+ Harm Risk", img: "Bills Layout.jpg", desc: "Map modeling the impact of anti-LGBTQ+ legislation on mental health.", sectionId: "utah-2025", school: "utah" },
+      { title: "Utah Prairie Dog Dashboard", img: "Capstone Poster Final.png", desc: "Capstone project focused on DWR prairie dog count data and dashboard development.", sectionId: "utah-capstone", school: "utah" }
     ];
 
     function showRandomProject() {
       const random = projects[Math.floor(Math.random() * projects.length)];
-
       featuredProject.innerHTML = `
         <div class="project-card">
           <img src="${random.img}" alt="${random.title}">
@@ -231,17 +266,15 @@
     function showSection(id, school){
       home.style.display = 'none';
       sections.forEach(s => s.classList.remove('active'));
-
       const target = document.getElementById(id);
       if(target) target.classList.add('active');
-
       dropdowns.forEach(d => d.classList.remove('show'));
       setTheme(school);
     }
 
     function goHome() {
       sections.forEach(s => s.classList.remove('active'));
-      home.style.display = 'block';
+      home.style.display = 'flex'; // Reset to flex for side-by-side
       header.classList.remove('byu', 'utah');
       showRandomProject();
     }
