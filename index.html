@@ -1,567 +1,498 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GIS Portfolio | Ethan Schatz</title>
-    <link href="https://fonts.googleapis.com/css2?family=Chivo+Mono&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            /* Earthy Light Mode Palette */
-            --bg-deep: #ffffff;         
-            --earth-green: #2d4c36;     
-            --earth-brown: #a65d37;     
-            --accent-orange: #8e4a2b;   
-            --text-main: #1a1c1a;       
-            --text-muted: #5c665e;      
-            --font-mono: 'Chivo Mono', monospace;
-            --font-sans: 'Inter', sans-serif;
-            --shadow-core: 0 10px 30px rgba(0,0,0,0.08);
-            --border-soft: rgba(0, 0, 0, 0.08);
-        }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>GIS Portfolio | Ethan Schatz</title>
+<link href="https://fonts.googleapis.com/css2?family=Chivo+Mono&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
-        * {
-            box-sizing: border-box;
-            -webkit-font-smoothing: antialiased;
-        }
+<style>
+:root{
+  --green:#2d4c36;
+  --brown:#a65d37;
+  --orange:#8e4a2b;
+  --text:#1a1c1a;
+  --muted:#5c665e;
+  --soft:#f4f4f0;
+  --card:#fcfcf9;
+  --border:rgba(0,0,0,.08);
+  --shadow:0 10px 30px rgba(0,0,0,.08);
+  --mono:'Chivo Mono',monospace;
+  --sans:'Inter',sans-serif;
+}
 
-        body {
-            font-family: var(--font-sans);
-            background-color: var(--bg-deep);
-            color: var(--text-main);
-            margin: 0;
-            overflow-x: hidden;
-            line-height: 1.5;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
+*{box-sizing:border-box;-webkit-font-smoothing:antialiased}
+body{
+  margin:0;
+  font-family:var(--sans);
+  color:var(--text);
+  background:white;
+  line-height:1.5;
+  overflow-x:hidden;
+}
 
-        /* --- HEADER --- */
-        header {
-            background-color: var(--earth-green);
-            color: white;
-            padding: 15px 40px;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
+header,footer{
+  background:var(--green);
+  color:white;
+  padding:15px 40px;
+  font-family:var(--mono);
+}
 
-        header h1 {
-            font-family: var(--font-mono);
-            font-size: 1.1rem;
-            margin: 0;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
+header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  box-shadow:0 2px 10px rgba(0,0,0,.1);
+}
 
-        /* --- LAYOUT STRUCTURE --- */
-        .main-container {
-            width: 100%;
-            max-width: 1600px;
-            display: grid;
-            grid-template-columns: 350px 1fr;
-            gap: 40px;
-            padding: 40px;
-            flex: 1;
-            margin: 0 auto;
-        }
+header h1{
+  margin:0;
+  font-size:1.1rem;
+  text-transform:uppercase;
+  letter-spacing:1px;
+}
 
-        /* --- SIDEBAR --- */
-        .immersive-sidebar {
-            background-color: #fcfcf9; 
-            border: 1px solid var(--border-soft);
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: var(--shadow-core);
-            align-self: start;
-            position: sticky;
-            top: 100px; /* Offset for header */
-        }
+.main-container{
+  max-width:1600px;
+  margin:auto;
+  padding:40px;
+  display:grid;
+  grid-template-columns:350px 1fr;
+  gap:40px;
+}
 
-        .profile-img {
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid var(--earth-green);
-            margin: 0 auto 20px auto;
-            display: block;
-            box-shadow: 0 5px 15px rgba(45, 76, 54, 0.15);
-            background-image: url('Resized_BeautyPlus_20211011205536894_save.JPG');
-            background-size: cover;
-            background-position: center;
-        }
+.immersive-sidebar,.project-card,.dropdown{
+  background:white;
+  border:1px solid var(--border);
+  box-shadow:var(--shadow);
+}
 
-        .section-header-mono {
-            font-family: var(--font-mono);
-            font-size: 0.85rem;
-            color: var(--accent-orange);
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            border-bottom: 1px solid var(--border-soft);
-            padding-bottom: 10px;
-            margin: 25px 0 15px 0;
-        }
+.immersive-sidebar{
+  position:sticky;
+  top:100px;
+  align-self:start;
+  padding:30px;
+  border-radius:20px;
+  background:var(--card);
+}
 
-        .info-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 12px;
-        }
+.profile-img{
+  width:140px;
+  height:140px;
+  margin:0 auto 20px;
+  border-radius:50%;
+  border:3px solid var(--green);
+  display:block;
+  object-fit:cover;
+  background:url("Resized_BeautyPlus_20211011205536894_save.JPG") center/cover;
+}
 
-        .info-grid-item {
-            background: #f4f4f0;
-            border: 1px solid var(--border-soft);
-            border-radius: 10px;
-            padding: 12px;
-            transition: all 0.3s ease;
-        }
+.section-header-mono{
+  margin:25px 0 15px;
+  padding-bottom:10px;
+  border-bottom:1px solid var(--border);
+  font:700 .85rem var(--mono);
+  color:var(--orange);
+  text-transform:uppercase;
+  letter-spacing:.15em;
+}
 
-        .info-grid-item:hover {
-            background: #ebebe5;
-            border-color: var(--earth-green);
-        }
+.sidebar-text,.sidebar-list,.contact{font-size:.85rem}
+.sidebar-list{padding-left:18px;color:var(--muted)}
 
-        .info-label { font-size: 0.7rem; color: var(--text-muted); margin-bottom: 4px; }
-        .info-value { font-weight: 600; font-size: 0.9rem; color: var(--text-main); }
+.info-grid{display:grid;gap:12px}
+.info-grid-item{
+  padding:12px;
+  border:1px solid var(--border);
+  border-radius:10px;
+  background:var(--soft);
+  transition:.3s;
+}
+.info-grid-item:hover{background:#ebebe5;border-color:var(--green)}
+.info-label{font-size:.7rem;color:var(--muted)}
+.info-value{font-weight:600;font-size:.9rem}
 
-        /* --- MAIN SHOWCASE --- */
-        .main-showcase { 
-            display: flex; 
-            flex-direction: column; 
-            gap: 40px; 
-        }
+.main-showcase{display:flex;flex-direction:column;gap:40px}
+.command-center{display:flex;justify-content:flex-end}
 
-        .command-center { 
-            display: flex; 
-            justify-content: flex-end; 
-        }
+.cmd-bar{
+  display:flex;
+  gap:5px;
+  padding:6px;
+  border:1px solid var(--border);
+  border-radius:99px;
+  background:var(--soft);
+}
 
-        .cmd-bar {
-            background-color: #f4f4f0;
-            border: 1px solid var(--border-soft);
-            border-radius: 99px;
-            padding: 6px;
-            display: flex;
-            gap: 5px;
-        }
+.tab-group{position:relative}
 
-        .tab-group { position: relative; }
+.cmd-btn{
+  border:0;
+  border-radius:99px;
+  padding:10px 22px;
+  background:none;
+  color:var(--muted);
+  font:.8rem var(--mono);
+  cursor:pointer;
+  transition:.3s;
+}
 
-        .cmd-btn {
-            background: none;
-            border: none;
-            color: var(--text-muted);
-            font-family: var(--font-mono);
-            font-size: 0.8rem;
-            padding: 10px 22px;
-            cursor: pointer;
-            border-radius: 99px;
-            transition: all 0.3s ease;
-        }
+.cmd-btn:hover{background:#ebebe5;color:var(--text)}
+.active-tab,.cmd-btn.active-tab{
+  background:var(--green);
+  color:white;
+  box-shadow:0 4px 12px rgba(45,76,54,.2);
+}
 
-        .cmd-btn:hover { 
-            background: #ebebe5; 
-            color: var(--text-main); 
-        }
+.dropdown{
+  position:absolute;
+  top:100%;
+  right:0;
+  z-index:100;
+  display:none;
+  flex-direction:column;
+  min-width:180px;
+  margin-top:12px;
+  border-radius:12px;
+  overflow:hidden;
+}
+.dropdown.show{display:flex}
+.dropdown button{
+  border:0;
+  padding:14px 20px;
+  background:white;
+  color:var(--muted);
+  text-align:left;
+  font:.8rem var(--mono);
+  cursor:pointer;
+}
+.dropdown button:hover{background:var(--soft);color:var(--green)}
 
-        .active-tab { 
-            background: var(--earth-green); 
-            color: white; 
-            box-shadow: 0 4px 12px rgba(45, 76, 54, 0.2);
-        }
+.portfolio-section{display:none}
+.portfolio-section.active{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(400px,1fr));
+  gap:25px;
+  animation:fadeIn .4s ease;
+}
 
-        .dropdown {
-            position: absolute;
-            top: 100%;
-            right: 0;
-            background: #ffffff;
-            border: 1px solid var(--border-soft);
-            border-radius: 12px;
-            display: none;
-            flex-direction: column;
-            min-width: 180px;
-            z-index: 100;
-            overflow: hidden;
-            margin-top: 12px;
-            box-shadow: var(--shadow-core);
-        }
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
 
-        .dropdown button {
-            background: none;
-            border: none;
-            color: var(--text-muted);
-            padding: 14px 20px;
-            text-align: left;
-            cursor: pointer;
-            font-family: var(--font-mono);
-            font-size: 0.8rem;
-            transition: 0.2s;
-        }
+.project-card{
+  padding:24px;
+  border-radius:20px;
+  transition:.4s;
+}
+.project-card:hover{
+  transform:translateY(-5px);
+  border-color:var(--brown);
+}
+.span-2{grid-column:span 2}
 
-        .dropdown button:hover { 
-            background: #f4f4f0; 
-            color: var(--earth-green); 
-        }
+.project-card img,.hero-img{
+  width:100%;
+  border-radius:12px;
+  cursor:zoom-in;
+  object-fit:cover;
+}
 
-        .show { display: flex; }
+.project-card img{
+  height:240px;
+  margin-bottom:20px;
+  filter:sepia(.15);
+  transition:.3s;
+}
+.project-card:hover img{filter:sepia(0)}
 
-        .portfolio-section { display: none; }
-        .portfolio-section.active { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); 
-            gap: 25px; 
-            animation: fadeIn 0.4s ease;
-        }
+.image-row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-bottom:15px;
+}
+.image-row img{height:180px;margin:0}
 
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+.hero-featured{
+  min-height:450px;
+  padding:60px;
+  border-radius:30px;
+  display:grid;
+  grid-template-columns:1.2fr 1fr;
+  gap:40px;
+  align-items:center;
+  background:var(--green);
+  color:white;
+  overflow:hidden;
+}
 
-        /* --- PROJECT CARDS --- */
-        .project-card {
-            background: #ffffff;
-            border: 1px solid var(--border-soft);
-            border-radius: 20px;
-            padding: 24px;
-            transition: 0.4s ease;
-        }
+.hero-content h2{
+  margin:10px 0 20px;
+  font-size:3rem;
+  line-height:1.1;
+  color:white;
+}
+.hero-content p{color:rgba(255,255,255,.85)}
+.hero-label{
+  font:.8rem var(--mono);
+  margin-bottom:10px;
+  color:rgba(255,255,255,.7);
+}
+.hero-img{
+  height:350px;
+  border:4px solid rgba(255,255,255,.1);
+  background:center/cover;
+  box-shadow:0 15px 35px rgba(0,0,0,.2);
+}
 
-        .project-card:hover { 
-            transform: translateY(-5px); 
-            border-color: var(--earth-brown);
-            box-shadow: var(--shadow-core);
-        }
+.video-wrap{
+  margin-top:25px;
+  position:relative;
+  padding-bottom:56.25%;
+  height:0;
+  overflow:hidden;
+  border-radius:15px;
+  border:1px solid var(--border);
+}
+.video-wrap iframe{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  border:0;
+}
 
-        .project-card img {
-            width: 100%;
-            height: 240px;
-            object-fit: cover;
-            border-radius: 12px;
-            margin-bottom: 20px;
-            filter: sepia(0.15); 
-            transition: 0.3s;
-            cursor: zoom-in;
-        }
+.image-modal{
+  position:fixed;
+  inset:0;
+  z-index:2000;
+  display:none;
+  justify-content:center;
+  align-items:center;
+  background:rgba(0,0,0,.9);
+  backdrop-filter:blur(10px);
+  cursor:zoom-out;
+}
+.modal-content{
+  max-width:90%;
+  max-height:90%;
+  border-radius:10px;
+  box-shadow:0 0 30px rgba(0,0,0,.5);
+  animation:zoomIn .3s cubic-bezier(.165,.84,.44,1);
+}
+@keyframes zoomIn{from{transform:scale(.8);opacity:0}to{transform:scale(1);opacity:1}}
 
-        .project-card:hover img { filter: sepia(0); }
+footer{
+  margin-top:60px;
+  display:flex;
+  justify-content:space-between;
+  font-size:.8rem;
+}
 
-        .image-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px; }
-        .image-row img { height: 180px; margin-bottom: 0; }
-
-        /* --- HERO FEATURED --- */
-        .hero-featured {
-            background: var(--earth-green);
-            color: white;
-            border-radius: 30px;
-            padding: 60px;
-            min-height: 450px;
-            display: grid;
-            grid-template-columns: 1.2fr 1fr;
-            gap: 40px;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-content h2 { 
-            font-size: 3rem; 
-            margin: 10px 0 20px 0; 
-            line-height: 1.1;
-            font-weight: 700;
-            color: white;
-        }
-
-        .hero-img { 
-            width: 100%; 
-            height: 350px; 
-            border-radius: 18px; 
-            background-size: cover; 
-            background-position: center;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-            border: 4px solid rgba(255,255,255,0.1);
-            cursor: zoom-in;
-        }
-
-        /* --- POPUP MODAL --- */
-        .image-modal {
-            display: none;
-            position: fixed;
-            z-index: 2000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.9);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            justify-content: center;
-            align-items: center;
-            cursor: zoom-out;
-        }
-
-        .modal-content {
-            max-width: 90%;
-            max-height: 90%;
-            border-radius: 10px;
-            box-shadow: 0 0 30px rgba(0,0,0,0.5);
-            animation: zoomIn 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
-        }
-
-        @keyframes zoomIn {
-            from { transform: scale(0.8); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
-        }
-
-        /* --- FOOTER --- */
-        footer {
-            background-color: var(--earth-green);
-            color: white;
-            padding: 30px 40px;
-            border-top: 1px solid var(--border-soft);
-            font-family: var(--font-mono);
-            font-size: 0.8rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 60px;
-        }
-    </style>
+@media(max-width:900px){
+  .main-container{grid-template-columns:1fr;padding:25px}
+  .immersive-sidebar{position:static}
+  .hero-featured{grid-template-columns:1fr;padding:35px}
+  .portfolio-section.active{grid-template-columns:1fr}
+  .span-2{grid-column:auto}
+}
+</style>
 </head>
+
 <body>
+<header><h1>Ethan Schatz's GIS Portfolio</h1></header>
 
-<header>
-    <h1>Ethan Schatz's GIS Portfolio</h1>
-</header>
-
-<!-- MODAL POPUP -->
 <div id="imgModal" class="image-modal" onclick="closeModal()">
-    <img class="modal-content" id="modalImg" src="" alt="Zoomed view">
+  <img class="modal-content" id="modalImg" alt="Zoomed view">
 </div>
 
 <div class="main-container">
-    <aside class="immersive-sidebar">
-        <div class="profile-img"></div>
-        <h3 class="section-header-mono"> Profile</h3>
-        <p style="font-size: 0.9rem; line-height: 1.6;">
-            <strong>Ethan Schatz</strong><br>
-            MSGIS Student @ University of Utah<br>
-            Class of 2027
-        </p>
+  <aside class="immersive-sidebar">
+    <div class="profile-img"></div>
 
-        <h3 class="section-header-mono">Skills</h3>
-        <div class="info-grid">
-            <div class="info-grid-item"><div class="info-label">GIS</div><div class="info-value">ArcGIS Pro / QGIS</div></div>
-            <div class="info-grid-item"><div class="info-label">DEV</div><div class="info-value">Python / R</div></div>
-            <div class="info-grid-item"><div class="info-label">DATA</div><div class="info-value">Excel / SQL</div></div>
+    <h3 class="section-header-mono">Profile</h3>
+    <p class="sidebar-text">
+      <strong>Ethan Schatz</strong><br>
+      MSGIS Student @ University of Utah<br>
+      Class of 2027
+    </p>
+
+    <h3 class="section-header-mono">Skills</h3>
+    <div class="info-grid">
+      <div class="info-grid-item"><div class="info-label">GIS</div><div class="info-value">ArcGIS Pro / QGIS</div></div>
+      <div class="info-grid-item"><div class="info-label">DEV</div><div class="info-value">Python / R</div></div>
+      <div class="info-grid-item"><div class="info-label">DATA</div><div class="info-value">Excel / SQL</div></div>
+    </div>
+
+    <h3 class="section-header-mono">Accomplishments</h3>
+    <ul class="sidebar-list">
+      <li>AAG World Geography Bowl — 2nd</li>
+      <li>AAG GPRM Geography Bowl — 3rd Individual / 1st Team</li>
+      <li>Haslam Scholarship 2023</li>
+      <li>BYU Geography Merit Award</li>
+    </ul>
+
+    <div class="contact">
+      <p>✉️ ethan.m.schatz@gmail.com</p>
+      <p>📞 801-510-0327</p>
+      <p>📎 www.linkedin.com/in/ethan-schatz-5a4738211</p>
+    </div>
+  </aside>
+
+  <main class="main-showcase">
+    <div class="command-center">
+      <div class="cmd-bar">
+        <button class="cmd-btn active-tab" id="homeBtn" onclick="goHome()">Home</button>
+
+        <div class="tab-group">
+          <button class="cmd-btn" onclick="toggleDropdown('byuDrop')">BYU ▾</button>
+          <div class="dropdown" id="byuDrop">
+            <button onclick="showSection('byu-2022')">2022</button>
+            <button onclick="showSection('byu-2023')">2023</button>
+            <button onclick="showSection('byu-2024')">2024</button>
+          </div>
         </div>
 
-        <h3 class="section-header-mono">Accomplishments</h3>
-        <ul style="font-size: 0.8rem; padding-left: 15px; color: var(--text-muted);">
-            <li>AAG World Geography Bowl (2nd)</li>
-            <li>AAG GPRM Geography Bowl (3rd Ind.) (1st Team)</li>
-            <li>Haslam Scholarship 2023</li>
-            <li>BYU Geography Merit Award</li>
-        </ul>
-        
-        <div style="margin-top: 30px; font-size: 0.8rem;">
-            <p>✉️ ethan.m.schatz@gmail.com</p>
-            <p>📞 801-510-0327</p>
-            <p>📎 www.linkedin.com/in/ethan-schatz-5a4738211</p>
+        <div class="tab-group">
+          <button class="cmd-btn" onclick="toggleDropdown('utahDrop')">U of U ▾</button>
+          <div class="dropdown" id="utahDrop">
+            <button onclick="showSection('utah-2025')">2025</button>
+            <button onclick="showSection('utah-capstone')">Capstone</button>
+          </div>
         </div>
-    </aside>
+      </div>
+    </div>
 
-    <main class="main-showcase">
-        <div class="command-center">
-            <div class="cmd-bar">
-                <button class="cmd-btn active-tab" id="homeBtn" onclick="goHome()">Home</button>
-                <div class="tab-group">
-                    <button class="cmd-btn" onclick="toggleDropdown('byuDrop')">BYU ▾</button>
-                    <div class="dropdown" id="byuDrop">
-                        <button onclick="showSection('byu-2022')">2022</button>
-                        <button onclick="showSection('byu-2023')">2023</button>
-                        <button onclick="showSection('byu-2024')">2024</button>
-                    </div>
-                </div>
-                <div class="tab-group">
-                    <button class="cmd-btn" onclick="toggleDropdown('utahDrop')">U of U ▾</button>
-                    <div class="dropdown" id="utahDrop">
-                        <button onclick="showSection('utah-2025')">2025</button>
-                        <button onclick="showSection('utah-capstone')">Capstone</button>
-                    </div>
-                </div>
-            </div>
+    <section id="homeSection">
+      <div class="hero-featured" id="featured-hero"></div>
+    </section>
+
+    <section class="portfolio-section" id="byu-2022">
+      <div class="project-card span-2">
+        <img src="Atlas Map Layout.jpg" alt="Portugal Map" onclick="openModal(this.src)">
+        <h3>Atlas Map: Portugal</h3>
+        <p>Geography 312: Cartographic design and layout.</p>
+      </div>
+    </section>
+
+    <section class="portfolio-section" id="byu-2023">
+      <div class="project-card">
+        <img src="LDS Church Sites in Indonesia Draft Layout Final.jpg" alt="Indonesia Mapping" onclick="openModal(this.src)">
+        <h3>Indonesia Mapping</h3>
+        <p>Client project for Church history publication.</p>
+      </div>
+
+      <div class="project-card">
+        <div class="image-row">
+          <img src="Early Kingdoms On the Korean Peninsula fixed2.jpg" alt="Korea Map 1" onclick="openModal(this.src)">
+          <img src="Parhae and the Provinces of Unified Shilla fixed2.jpg" alt="Korea Map 2" onclick="openModal(this.src)">
         </div>
+        <h3>Korean Peninsula History</h3>
+        <p>Historical map series for <em>Lost Civilizations</em>.</p>
+      </div>
+    </section>
 
-        <section id="homeSection">
-            <div class="hero-featured" id="featured-hero"></div>
-        </section>
+    <section class="portfolio-section" id="byu-2024">
+      <div class="project-card span-2">
+        <img src="Mapping the Decline of Major Watersheds in Nevada.png" alt="Nevada Watersheds" onclick="openModal(this.src)">
+        <h3>Nevada Watersheds</h3>
+        <p>National AAG conference research presentation.</p>
+      </div>
+    </section>
 
-        <!-- PORTFOLIO SECTIONS -->
-        <section class="portfolio-section" id="byu-2022">
-            <div class="project-card" style="grid-column: span 2;">
-                <img src="Atlas Map Layout.jpg" alt="Portugal Map" onclick="openModal(this.src)">
-                <h3>Atlas Map: Portugal</h3>
-                <p>Geography 312: Cartographic design and layout.</p>
-            </div>
-        </section>
+    <section class="portfolio-section" id="utah-2025">
+      <div class="project-card">
+        <div class="image-row">
+          <img src="Forecasted 2030 Growth Rates of Utah County.jpg" alt="Utah Growth Rates" onclick="openModal(this.src)">
+          <img src="Forecasted 2030 Population of Utah County Communities .jpg" alt="Utah Population Forecast" onclick="openModal(this.src)">
+        </div>
+        <h3>Growth Forecasting</h3>
+        <p>Python modeling for Utah County.</p>
+      </div>
 
-        <section class="portfolio-section" id="byu-2023">
-            <div class="project-card">
-                <img src="LDS Church Sites in Indonesia Draft Layout Final.jpg" alt="Indonesia Mapping" onclick="openModal(this.src)">
-                <h3>Indonesia Mapping</h3>
-                <p>Client project for Church history publication.</p>
-            </div>
-            <div class="project-card">
-                <div class="image-row">
-                    <img src="Early Kingdoms On the Korean Peninsula fixed2.jpg" alt="Korea Map 1" onclick="openModal(this.src)">
-                    <img src="Parhae and the Provinces of Unified Shilla fixed2.jpg" alt="Korea Map 2" onclick="openModal(this.src)">
-                </div>
-                <h3>Korean Peninsula History</h3>
-                <p>Historical map series for "Lost Civilizations".</p>
-            </div>
-        </section>
+      <div class="project-card">
+        <img src="Bills Layout.jpg" alt="Risk Modeling" onclick="openModal(this.src)">
+        <h3>Legislation Risk Modeling</h3>
+        <p>GEOG 6000: Health impacts analysis.</p>
+      </div>
+    </section>
 
-        <section class="portfolio-section" id="byu-2024">
-            <div class="project-card" style="grid-column: span 2;">
-                <img src="Mapping the Decline of Major Watersheds in Nevada.png" alt="Nevada Watersheds" onclick="openModal(this.src)">
-                <h3>Nevada Watersheds</h3>
-                <p>National AAG conference research presentation.</p>
-            </div>
-        </section>
+    <section class="portfolio-section" id="utah-capstone">
+      <div class="project-card span-2">
+        <img src="Capstone Poster Final.png" alt="Capstone Poster" onclick="openModal(this.src)">
+        <h3>Utah Prairie Dog Dashboard</h3>
+        <p>DWR count data integration and dashboard visualization using a unified file geodatabase.</p>
 
-        <section class="portfolio-section" id="utah-2025">
-            <div class="project-card">
-                <div class="image-row">
-                    <img src="Forecasted 2030 Growth Rates of Utah County.jpg" alt="Utah Growth 1" onclick="openModal(this.src)">
-                    <img src="Forecasted 2030 Population of Utah County Communities .jpg" alt="Utah Growth 2" onclick="openModal(this.src)">
-                </div>
-                <h3>Growth Forecasting</h3>
-                <p>Python modeling for Utah County.</p>
-            </div>
-            <div class="project-card">
-                <img src="Bills Layout.jpg" alt="Risk Modeling" onclick="openModal(this.src)">
-                <h3>Legislation Risk Modeling</h3>
-                <p>GEOG 6000: Health impacts analysis.</p>
-            </div>
-        </section>
+        <div class="video-wrap">
+          <iframe src="https://www.youtube.com/embed/wXUNR4JPbWI"
+            title="Utah Prairie Dog Dashboard Demo"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+        </div>
+      </div>
+    </section>
 
-        <section class="portfolio-section" id="utah-capstone">
-            <div class="project-card" style="grid-column: span 2;">
-                <img src="Capstone Poster Final.png" alt="Capstone Poster" onclick="openModal(this.src)">
-                <h3>Utah Prairie Dog Dashboard</h3>
-                <p>DWR count data integration and dashboard visualization. This project involved processing geospatial base data sets into a unified file geodatabase.</p>
-                
-                <div style="margin-top: 25px; position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 15px; border: 1px solid var(--border-soft);">
-                    <iframe 
-                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" 
-                        src="https://www.youtube.com/embed/wXUNR4JPbWI" 
-                        title="Utah Prairie Dog Dashboard Demo" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen>
-                    </iframe>
-                </div>
-            </div>
-        </section>
-
-        <footer>
-            <div>Ethan Schatz 2026</div>
-        </footer>
-    </main>
+    <footer><div>Ethan Schatz 2026</div></footer>
+  </main>
 </div>
 
 <script>
-    const projects = [
-        { 
-            title: "South Korea Historical Series", 
-            img: "Early Kingdoms On the Korean Peninsula fixed2.jpg", 
-            desc: "Mapping the Early Kingdoms and Parhae provinces for the 'Lost Civilizations' publication.", 
-            id: "byu-2023" 
-        },
-        { 
-            title: "Nevada Watersheds", 
-            img: "Mapping the Decline of Major Watersheds in Nevada.png", 
-            desc: "A geospatial investigation into watershed decline presented at the National AAG 2024 conference.", 
-            id: "byu-2024" 
-        },
-        { 
-            title: "Utah Prairie Dog Capstone", 
-            img: "Capstone Poster Final.png", 
-            desc: "Integration of DWR count data into a unified file geodatabase and interactive dashboard.", 
-            id: "utah-capstone" 
-        }
-    ];
+const projects=[
+  ["South Korea Historical Series","Early Kingdoms On the Korean Peninsula fixed2.jpg","Mapping the Early Kingdoms and Parhae provinces for the Lost Civilizations publication.","byu-2023"],
+  ["Nevada Watersheds","Mapping the Decline of Major Watersheds in Nevada.png","A geospatial investigation into watershed decline presented at the National AAG 2024 conference.","byu-2024"],
+  ["Utah Prairie Dog Capstone","Capstone Poster Final.png","Integration of DWR count data into a unified file geodatabase and interactive dashboard.","utah-capstone"]
+];
 
-    let heroInterval;
+let heroInterval;
 
-    function showRandomProject() {
-        const random = projects[Math.floor(Math.random() * projects.length)];
-        const hero = document.getElementById('featured-hero');
-        if (hero) {
-            hero.innerHTML = `
-                <div class="hero-content">
-                    <div style="font-family:var(--font-mono); font-size:0.8rem; margin-bottom:10px; color:rgba(255,255,255,0.7);">FEATURED PROJECT //</div>
-                    <h2>${random.title}</h2>
-                    <p style="color:rgba(255,255,255,0.85);">${random.desc}</p>
-                    <button class="cmd-btn" style="background:white; color:var(--earth-green); font-weight:700; margin-top:20px;" onclick="showSection('${random.id}')">View Full Project</button>
-                </div>
-                <div class="hero-img" style="background-image: url('${random.img}')" onclick="openModal('${random.img}')"></div>
-            `;
-        }
-    }
+function showRandomProject(){
+  const [title,img,desc,id]=projects[Math.floor(Math.random()*projects.length)];
+  document.getElementById("featured-hero").innerHTML=`
+    <div class="hero-content">
+      <div class="hero-label">FEATURED PROJECT //</div>
+      <h2>${title}</h2>
+      <p>${desc}</p>
+      <button class="cmd-btn" style="background:white;color:var(--green);font-weight:700;margin-top:20px" onclick="showSection('${id}')">View Full Project</button>
+    </div>
+    <div class="hero-img" style="background-image:url('${img}')" onclick="openModal('${img}')"></div>`;
+}
 
-    function openModal(imgSrc) {
-        const modal = document.getElementById("imgModal");
-        const modalImg = document.getElementById("modalImg");
-        modal.style.display = "flex";
-        modalImg.src = imgSrc;
-    }
+function openModal(src){
+  modalImg.src=src;
+  imgModal.style.display="flex";
+}
 
-    function closeModal() {
-        document.getElementById("imgModal").style.display = "none";
-    }
+function closeModal(){
+  imgModal.style.display="none";
+}
 
-    function toggleDropdown(id) {
-        document.querySelectorAll('.dropdown').forEach(d => {
-            if(d.id !== id) d.classList.remove('show');
-        });
-        document.getElementById(id).classList.toggle('show');
-    }
+function toggleDropdown(id){
+  document.querySelectorAll(".dropdown").forEach(d=>d.id!==id&&d.classList.remove("show"));
+  document.getElementById(id).classList.toggle("show");
+}
 
-    function showSection(id) {
-        document.getElementById('homeSection').style.display = 'none';
-        document.querySelectorAll('.portfolio-section').forEach(s => s.classList.remove('active'));
-        document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('show'));
-        document.querySelectorAll('.cmd-btn').forEach(b => b.classList.remove('active-tab'));
-        
-        const target = document.getElementById(id);
-        if(target) target.classList.add('active');
-        
-        clearInterval(heroInterval);
-    }
+function showSection(id){
+  homeSection.style.display="none";
+  document.querySelectorAll(".portfolio-section,.dropdown").forEach(el=>el.classList.remove("active","show"));
+  document.querySelectorAll(".cmd-btn").forEach(btn=>btn.classList.remove("active-tab"));
+  document.getElementById(id)?.classList.add("active");
+  clearInterval(heroInterval);
+}
 
-    function goHome() {
-        document.querySelectorAll('.portfolio-section').forEach(s => s.classList.remove('active'));
-        document.querySelectorAll('.cmd-btn').forEach(b => b.classList.remove('active-tab'));
-        document.getElementById('homeBtn').classList.add('active-tab');
-        document.getElementById('homeSection').style.display = 'block';
-        showRandomProject();
-        clearInterval(heroInterval);
-        heroInterval = setInterval(showRandomProject, 12000);
-    }
+function goHome(){
+  document.querySelectorAll(".portfolio-section").forEach(s=>s.classList.remove("active"));
+  document.querySelectorAll(".cmd-btn").forEach(b=>b.classList.remove("active-tab"));
+  homeBtn.classList.add("active-tab");
+  homeSection.style.display="block";
+  showRandomProject();
+  clearInterval(heroInterval);
+  heroInterval=setInterval(showRandomProject,12000);
+}
 
-    showRandomProject();
-    heroInterval = setInterval(showRandomProject, 12000);
+window.addEventListener("click",e=>{
+  if(!e.target.closest(".tab-group")) document.querySelectorAll(".dropdown").forEach(d=>d.classList.remove("show"));
+});
 
-    window.onclick = function(event) {
-        if (!event.target.matches('.cmd-btn')) {
-            document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('show'));
-        }
-    }
+goHome();
 </script>
-
 </body>
 </html>
