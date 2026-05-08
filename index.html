@@ -21,7 +21,11 @@
   --sans:'Inter',sans-serif;
 }
 
-*{box-sizing:border-box;-webkit-font-smoothing:antialiased}
+*{
+  box-sizing:border-box;
+  -webkit-font-smoothing:antialiased;
+}
+
 body{
   margin:0;
   font-family:var(--sans);
@@ -39,8 +43,7 @@ header,footer{
 }
 
 header{
-  position:sticky;
-  top:0;
+  position:static;
   z-index:1000;
   box-shadow:0 2px 10px rgba(0,0,0,.1);
 }
@@ -61,7 +64,9 @@ header h1{
   gap:40px;
 }
 
-.immersive-sidebar,.project-card,.dropdown{
+.immersive-sidebar,
+.project-card,
+.dropdown{
   background:white;
   border:1px solid var(--border);
   box-shadow:var(--shadow);
@@ -69,7 +74,7 @@ header h1{
 
 .immersive-sidebar{
   position:sticky;
-  top:100px;
+  top:30px;
   align-self:start;
   padding:30px;
   border-radius:20px;
@@ -84,7 +89,7 @@ header h1{
   border:3px solid var(--green);
   display:block;
   object-fit:cover;
-  background:url("Resized_BeautyPlus_20211011205536894_save.JPG") center/cover;
+  background:url("Resized_BeautyPlus_20211011205536894_save.JPG") center/cover no-repeat;
 }
 
 .section-header-mono{
@@ -97,10 +102,22 @@ header h1{
   letter-spacing:.15em;
 }
 
-.sidebar-text,.sidebar-list,.contact{font-size:.85rem}
-.sidebar-list{padding-left:18px;color:var(--muted)}
+.sidebar-text,
+.sidebar-list,
+.contact{
+  font-size:.85rem;
+}
 
-.info-grid{display:grid;gap:12px}
+.sidebar-list{
+  padding-left:18px;
+  color:var(--muted);
+}
+
+.info-grid{
+  display:grid;
+  gap:12px;
+}
+
 .info-grid-item{
   padding:12px;
   border:1px solid var(--border);
@@ -108,12 +125,32 @@ header h1{
   background:var(--soft);
   transition:.3s;
 }
-.info-grid-item:hover{background:#ebebe5;border-color:var(--green)}
-.info-label{font-size:.7rem;color:var(--muted)}
-.info-value{font-weight:600;font-size:.9rem}
 
-.main-showcase{display:flex;flex-direction:column;gap:40px}
-.command-center{display:flex;justify-content:flex-end}
+.info-grid-item:hover{
+  background:#ebebe5;
+  border-color:var(--green);
+}
+
+.info-label{
+  font-size:.7rem;
+  color:var(--muted);
+}
+
+.info-value{
+  font-weight:600;
+  font-size:.9rem;
+}
+
+.main-showcase{
+  display:flex;
+  flex-direction:column;
+  gap:40px;
+}
+
+.command-center{
+  display:flex;
+  justify-content:flex-end;
+}
 
 .cmd-bar{
   display:flex;
@@ -124,7 +161,9 @@ header h1{
   background:var(--soft);
 }
 
-.tab-group{position:relative}
+.tab-group{
+  position:relative;
+}
 
 .cmd-btn{
   border:0;
@@ -137,8 +176,13 @@ header h1{
   transition:.3s;
 }
 
-.cmd-btn:hover{background:#ebebe5;color:var(--text)}
-.active-tab,.cmd-btn.active-tab{
+.cmd-btn:hover{
+  background:#ebebe5;
+  color:var(--text);
+}
+
+.active-tab,
+.cmd-btn.active-tab{
   background:var(--green);
   color:white;
   box-shadow:0 4px 12px rgba(45,76,54,.2);
@@ -156,7 +200,11 @@ header h1{
   border-radius:12px;
   overflow:hidden;
 }
-.dropdown.show{display:flex}
+
+.dropdown.show{
+  display:flex;
+}
+
 .dropdown button{
   border:0;
   padding:14px 20px;
@@ -166,9 +214,16 @@ header h1{
   font:.8rem var(--mono);
   cursor:pointer;
 }
-.dropdown button:hover{background:var(--soft);color:var(--green)}
 
-.portfolio-section{display:none}
+.dropdown button:hover{
+  background:var(--soft);
+  color:var(--green);
+}
+
+.portfolio-section{
+  display:none;
+}
+
 .portfolio-section.active{
   display:grid;
   grid-template-columns:repeat(auto-fill,minmax(400px,1fr));
@@ -176,20 +231,28 @@ header h1{
   animation:fadeIn .4s ease;
 }
 
-@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes fadeIn{
+  from{opacity:0}
+  to{opacity:1}
+}
 
 .project-card{
   padding:24px;
   border-radius:20px;
   transition:.4s;
 }
+
 .project-card:hover{
   transform:translateY(-5px);
   border-color:var(--brown);
 }
-.span-2{grid-column:span 2}
 
-.project-card img,.hero-img{
+.span-2{
+  grid-column:span 2;
+}
+
+.project-card img,
+.hero-img{
   width:100%;
   border-radius:12px;
   cursor:zoom-in;
@@ -202,7 +265,10 @@ header h1{
   filter:sepia(.15);
   transition:.3s;
 }
-.project-card:hover img{filter:sepia(0)}
+
+.project-card:hover img{
+  filter:sepia(0);
+}
 
 .image-row{
   display:grid;
@@ -210,7 +276,11 @@ header h1{
   gap:10px;
   margin-bottom:15px;
 }
-.image-row img{height:180px;margin:0}
+
+.image-row img{
+  height:180px;
+  margin:0;
+}
 
 .hero-featured{
   min-height:450px;
@@ -231,16 +301,23 @@ header h1{
   line-height:1.1;
   color:white;
 }
-.hero-content p{color:rgba(255,255,255,.85)}
+
+.hero-content p{
+  color:rgba(255,255,255,.85);
+}
+
 .hero-label{
   font:.8rem var(--mono);
   margin-bottom:10px;
   color:rgba(255,255,255,.7);
 }
+
 .hero-img{
   height:350px;
   border:4px solid rgba(255,255,255,.1);
-  background:center/cover;
+  background-position:center;
+  background-size:cover;
+  background-repeat:no-repeat;
   box-shadow:0 15px 35px rgba(0,0,0,.2);
 }
 
@@ -253,6 +330,7 @@ header h1{
   border-radius:15px;
   border:1px solid var(--border);
 }
+
 .video-wrap iframe{
   position:absolute;
   inset:0;
@@ -272,6 +350,7 @@ header h1{
   backdrop-filter:blur(10px);
   cursor:zoom-out;
 }
+
 .modal-content{
   max-width:90%;
   max-height:90%;
@@ -279,27 +358,60 @@ header h1{
   box-shadow:0 0 30px rgba(0,0,0,.5);
   animation:zoomIn .3s cubic-bezier(.165,.84,.44,1);
 }
-@keyframes zoomIn{from{transform:scale(.8);opacity:0}to{transform:scale(1);opacity:1}}
+
+@keyframes zoomIn{
+  from{transform:scale(.8);opacity:0}
+  to{transform:scale(1);opacity:1}
+}
 
 footer{
+  width:100%;
   margin-top:60px;
   display:flex;
-  justify-content:space-between;
+  justify-content:center;
   font-size:.8rem;
 }
 
 @media(max-width:900px){
-  .main-container{grid-template-columns:1fr;padding:25px}
-  .immersive-sidebar{position:static}
-  .hero-featured{grid-template-columns:1fr;padding:35px}
-  .portfolio-section.active{grid-template-columns:1fr}
-  .span-2{grid-column:auto}
+  .main-container{
+    grid-template-columns:1fr;
+    padding:25px;
+  }
+
+  .immersive-sidebar{
+    position:static;
+  }
+
+  .command-center{
+    justify-content:center;
+  }
+
+  .cmd-bar{
+    flex-wrap:wrap;
+    border-radius:20px;
+    justify-content:center;
+  }
+
+  .hero-featured{
+    grid-template-columns:1fr;
+    padding:35px;
+  }
+
+  .portfolio-section.active{
+    grid-template-columns:1fr;
+  }
+
+  .span-2{
+    grid-column:auto;
+  }
 }
 </style>
 </head>
 
 <body>
-<header><h1>Ethan Schatz's GIS Portfolio</h1></header>
+<header>
+  <h1>Ethan Schatz's GIS Portfolio</h1>
+</header>
 
 <div id="imgModal" class="image-modal" onclick="closeModal()">
   <img class="modal-content" id="modalImg" alt="Zoomed view">
@@ -341,22 +453,22 @@ footer{
   <main class="main-showcase">
     <div class="command-center">
       <div class="cmd-bar">
-        <button class="cmd-btn active-tab" id="homeBtn" onclick="goHome()">Home</button>
+        <button class="cmd-btn active-tab" id="homeBtn" type="button" onclick="goHome()">Home</button>
 
         <div class="tab-group">
-          <button class="cmd-btn" onclick="toggleDropdown('byuDrop')">BYU ▾</button>
+          <button class="cmd-btn" type="button" onclick="toggleDropdown('byuDrop')">BYU ▾</button>
           <div class="dropdown" id="byuDrop">
-            <button onclick="showSection('byu-2022')">2022</button>
-            <button onclick="showSection('byu-2023')">2023</button>
-            <button onclick="showSection('byu-2024')">2024</button>
+            <button type="button" onclick="showSection('byu-2022')">2022</button>
+            <button type="button" onclick="showSection('byu-2023')">2023</button>
+            <button type="button" onclick="showSection('byu-2024')">2024</button>
           </div>
         </div>
 
         <div class="tab-group">
-          <button class="cmd-btn" onclick="toggleDropdown('utahDrop')">U of U ▾</button>
+          <button class="cmd-btn" type="button" onclick="toggleDropdown('utahDrop')">U of U ▾</button>
           <div class="dropdown" id="utahDrop">
-            <button onclick="showSection('utah-2025')">2025</button>
-            <button onclick="showSection('utah-capstone')">Capstone</button>
+            <button type="button" onclick="showSection('utah-2025')">2025</button>
+            <button type="button" onclick="showSection('utah-capstone')">Capstone</button>
           </div>
         </div>
       </div>
@@ -430,12 +542,11 @@ footer{
         </div>
       </div>
     </section>
-
-   </main>
-</div> <!-- closes main-container -->
+  </main>
+</div>
 
 <footer>
-    <div class="copyright">Ethan Schatz 2026</div>
+  <div class="copyright">Ethan Schatz 2026</div>
 </footer>
 
 <script>
@@ -447,9 +558,15 @@ const projects=[
 
 let heroInterval;
 
+const imgModal=document.getElementById("imgModal");
+const modalImg=document.getElementById("modalImg");
+const homeSection=document.getElementById("homeSection");
+const homeBtn=document.getElementById("homeBtn");
+const featuredHero=document.getElementById("featured-hero");
+
 function showRandomProject(){
   const [title,img,desc,id]=projects[Math.floor(Math.random()*projects.length)];
-  document.getElementById("featured-hero").innerHTML=`
+  featuredHero.innerHTML=`
     <div class="hero-content">
       <div class="hero-label">FEATURED PROJECT //</div>
       <h2>${title}</h2>
@@ -469,30 +586,62 @@ function closeModal(){
 }
 
 function toggleDropdown(id){
-  document.querySelectorAll(".dropdown").forEach(d=>d.id!==id&&d.classList.remove("show"));
+  document.querySelectorAll(".dropdown").forEach(d=>{
+    if(d.id!==id)d.classList.remove("show");
+  });
   document.getElementById(id).classList.toggle("show");
 }
 
 function showSection(id){
   homeSection.style.display="none";
-  document.querySelectorAll(".portfolio-section,.dropdown").forEach(el=>el.classList.remove("active","show"));
-  document.querySelectorAll(".cmd-btn").forEach(btn=>btn.classList.remove("active-tab"));
-  document.getElementById(id)?.classList.add("active");
+
+  document.querySelectorAll(".portfolio-section").forEach(section=>{
+    section.classList.remove("active");
+  });
+
+  document.querySelectorAll(".dropdown").forEach(dropdown=>{
+    dropdown.classList.remove("show");
+  });
+
+  document.querySelectorAll(".cmd-btn").forEach(btn=>{
+    btn.classList.remove("active-tab");
+  });
+
+  const selectedSection=document.getElementById(id);
+  if(selectedSection)selectedSection.classList.add("active");
+
   clearInterval(heroInterval);
 }
 
 function goHome(){
-  document.querySelectorAll(".portfolio-section").forEach(s=>s.classList.remove("active"));
-  document.querySelectorAll(".cmd-btn").forEach(b=>b.classList.remove("active-tab"));
+  document.querySelectorAll(".portfolio-section").forEach(section=>{
+    section.classList.remove("active");
+  });
+
+  document.querySelectorAll(".dropdown").forEach(dropdown=>{
+    dropdown.classList.remove("show");
+  });
+
+  document.querySelectorAll(".cmd-btn").forEach(btn=>{
+    btn.classList.remove("active-tab");
+  });
+
   homeBtn.classList.add("active-tab");
   homeSection.style.display="block";
+
   showRandomProject();
   clearInterval(heroInterval);
   heroInterval=setInterval(showRandomProject,12000);
 }
 
 window.addEventListener("click",e=>{
-  if(!e.target.closest(".tab-group")) document.querySelectorAll(".dropdown").forEach(d=>d.classList.remove("show"));
+  if(!e.target.closest(".tab-group")){
+    document.querySelectorAll(".dropdown").forEach(d=>d.classList.remove("show"));
+  }
+});
+
+document.addEventListener("keydown",e=>{
+  if(e.key==="Escape")closeModal();
 });
 
 goHome();
