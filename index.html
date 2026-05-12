@@ -568,7 +568,7 @@ function showRandomProject(){
   const [title,img,desc,id]=projects[Math.floor(Math.random()*projects.length)];
   featuredHero.innerHTML=`
     <div class="hero-content">
-      <div class="hero-label">FEATURED PROJECT //</div>
+      <div class="hero-label">FEATURED PROJECT</div>
       <h2>${title}</h2>
       <p>${desc}</p>
       <button class="cmd-btn" style="background:white;color:var(--green);font-weight:700;margin-top:20px" onclick="showSection('${id}')">View Full Project</button>
