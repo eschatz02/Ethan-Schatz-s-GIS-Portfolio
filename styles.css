@@ -1,249 +1,887 @@
-<style>
-    :root {
-        /* Earthy Light Mode Palette */
-        --bg-deep: #ffffff;         
-        --earth-green: #2d4c36;     
-        --earth-brown: #a65d37;     
-        --accent-orange: #8e4a2b;   
-        --text-main: #1a1c1a;       
-        --text-muted: #5c665e;      
-        --font-mono: 'Chivo Mono', monospace;
-        --font-sans: 'Inter', sans-serif;
-        --shadow-core: 0 10px 30px rgba(0,0,0,0.08);
-        --border-soft: rgba(0, 0, 0, 0.08);
-    }
 
-    * {
-        box-sizing: border-box;
-        -webkit-font-smoothing: antialiased;
-    }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GIS Portfolio | Ethan Schatz</title>
 
-    body {
-        font-family: var(--font-sans);
-        background-color: var(--bg-deep);
-        color: var(--text-main);
-        margin: 0;
-        overflow-x: hidden;
-        background-image: none; 
-        line-height: 1.5;
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
-    }
+  <link href="https://fonts.googleapis.com/css2?family=Chivo+Mono&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
 
-    /* --- NEW HEADER --- */
-    header {
-    background-color: var(--earth-green);
-    color: white;
-    padding: 15px 40px;
-    position: static;
-    z-index: 1000;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+<body>
+
+<header>
+  <h1>Ethan Schatz's GIS Portfolio</h1>
+</header>
+
+<!-- IMAGE ZOOM MODAL -->
+<div id="imgModal" class="image-modal" onclick="closeModal()">
+  <img class="modal-content" id="modalImg" alt="Enlarged project image">
+</div>
+
+<div class="main-container">
+
+  <!-- PROFILE SIDEBAR -->
+  <aside class="immersive-sidebar">
+
+    <div class="profile-img"></div>
+
+    <h3 class="section-header-mono">Profile</h3>
+    <p class="sidebar-text">
+      <strong>Ethan Schatz</strong><br>
+      MSGIS Student @ University of Utah<br>
+      Class of 2027
+    </p>
+
+    <h3 class="section-header-mono">Skills</h3>
+    <div class="info-grid">
+      <div class="info-grid-item">
+        <div class="info-label">GIS</div>
+        <div class="info-value">ArcGIS Pro / QGIS</div>
+      </div>
+      <div class="info-grid-item">
+        <div class="info-label">DEV</div>
+        <div class="info-value">Python / R</div>
+      </div>
+      <div class="info-grid-item">
+        <div class="info-label">DATA</div>
+        <div class="info-value">Excel / SQL</div>
+      </div>
+    </div>
+
+    <h3 class="section-header-mono">Accomplishments</h3>
+    <ul class="sidebar-list">
+      <li>AAG World Geography Bowl — 2nd</li>
+      <li>AAG GPRM Geography Bowl — 3rd Individual / 1st Team</li>
+      <li>Haslam Scholarship 2023</li>
+      <li>BYU Geography Merit Award</li>
+    </ul>
+
+    <div class="contact">
+      <p>✉️ ethan.m.schatz@gmail.com</p>
+      <p>📞 801-510-0327</p>
+      <p>📎 www.linkedin.com/in/ethan-schatz-5a4738211</p>
+    </div>
+
+  </aside>
+
+  <!-- MAIN PORTFOLIO -->
+  <main class="main-showcase">
+
+    <!-- NAVIGATION -->
+    <div class="command-center">
+      <div class="cmd-bar">
+
+        <button
+          class="cmd-btn active-tab"
+          id="homeBtn"
+          type="button"
+          onclick="goHome()">
+          Home
+        </button>
+
+        <div class="tab-group">
+          <button
+            class="cmd-btn"
+            type="button"
+            onclick="toggleDropdown('byuDrop')">
+            BYU ▾
+          </button>
+
+          <div class="dropdown" id="byuDrop">
+            <button type="button" onclick="showSection('byu-2022')">2022</button>
+            <button type="button" onclick="showSection('byu-2023')">2023</button>
+            <button type="button" onclick="showSection('byu-2024')">2024</button>
+          </div>
+        </div>
+
+        <div class="tab-group">
+          <button
+            class="cmd-btn"
+            type="button"
+            onclick="toggleDropdown('utahDrop')">
+            U of U ▾
+          </button>
+
+          <div class="dropdown" id="utahDrop">
+            <button type="button" onclick="showSection('utah-2025')">2025</button>
+            <button type="button" onclick="showSection('utah-2026')">2026</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- HOME -->
+    <section id="homeSection">
+      <div class="hero-featured" id="featured-hero"></div>
+    </section>
+
+    <!-- BYU 2022 -->
+    <section class="portfolio-section" id="byu-2022">
+
+      <div class="project-card span-2">
+        <img
+          src="Atlas Map Layout.jpg"
+          alt="Portugal Atlas Map"
+          onclick="openModal(this.src)">
+
+        <h3>Atlas Map: Portugal</h3>
+        <p>Geography 312: Cartographic design and layout.</p>
+
+        <button class="cmd-btn" type="button"
+          onclick="openProject('portugal')">
+          View Project Details
+        </button>
+      </div>
+
+    </section>
+
+    <!-- BYU 2023 -->
+    <section class="portfolio-section" id="byu-2023">
+
+      <div class="project-card">
+        <img
+          src="LDS Church Sites in Indonesia Draft Layout Final.jpg"
+          alt="Indonesia Mapping"
+          onclick="openModal(this.src)">
+
+        <h3>Indonesia Mapping</h3>
+        <p>Client project for Church history publication.</p>
+
+        <button class="cmd-btn" type="button"
+          onclick="openProject('indonesia')">
+          View Project Details
+        </button>
+      </div>
+
+      <div class="project-card">
+        <div class="image-row">
+          <img
+            src="Early Kingdoms On the Korean Peninsula fixed2.jpg"
+            alt="Early Korean Kingdoms"
+            onclick="openModal(this.src)">
+
+          <img
+            src="Parhae and the Provinces of Unified Shilla fixed2.jpg"
+            alt="Parhae and Unified Shilla"
+            onclick="openModal(this.src)">
+        </div>
+
+        <h3>Korean Peninsula History</h3>
+        <p>
+          Historical map series for
+          <em>Lost Civilizations</em>.
+        </p>
+
+        <button class="cmd-btn" type="button"
+          onclick="openProject('korea')">
+          View Project Details
+        </button>
+      </div>
+
+    </section>
+
+    <!-- BYU 2024 -->
+    <section class="portfolio-section" id="byu-2024">
+
+      <div class="project-card span-2">
+        <img
+          src="Mapping the Decline of Major Watersheds in Nevada.png"
+          alt="Nevada Watersheds"
+          onclick="openModal(this.src)">
+
+        <h3>Nevada Watersheds</h3>
+        <p>National AAG conference research presentation.</p>
+
+        <button class="cmd-btn" type="button"
+          onclick="openProject('nevada')">
+          View Project Details
+        </button>
+      </div>
+
+    </section>
+
+    <!-- UNIVERSITY OF UTAH 2025 -->
+    <section class="portfolio-section" id="utah-2025">
+
+      <!-- GEOG 6000 -->
+      <div class="project-card">
+        <img
+          src="Bills Layout.jpg"
+          alt="Legislation Risk Modeling"
+          onclick="openModal(this.src)">
+
+        <h3>Legislation Risk Modeling</h3>
+        <p>
+          GEOG 6000 — Health impacts analysis.
+        </p>
+
+        <button class="cmd-btn" type="button"
+          onclick="openProject('geog6000')">
+          View Project Details
+        </button>
+      </div>
+
+      <!-- GEOG 6110 -->
+      <div class="project-card">
+        <h3>GEOG 6110</h3>
+        <p>Project title and description coming soon.</p>
+
+        <button class="cmd-btn" type="button"
+          onclick="openProject('geog6110')">
+          View Project Details
+        </button>
+      </div>
+
+      <!-- GEOG 6150 -->
+      <div class="project-card">
+        <h3>GEOG 6150</h3>
+        <p>Project title and description coming soon.</p>
+
+        <button class="cmd-btn" type="button"
+          onclick="openProject('geog6150')">
+          View Project Details
+        </button>
+      </div>
+
+      <!-- GEOG 6160 -->
+      <div class="project-card">
+        <div class="image-row">
+          <img
+            src="Forecasted 2030 Growth Rates of Utah County.jpg"
+            alt="Utah County Growth Rates"
+            onclick="openModal(this.src)">
+
+          <img
+            src="Forecasted 2030 Population of Utah County Communities .jpg"
+            alt="Utah County Population Forecast"
+            onclick="openModal(this.src)">
+        </div>
+
+        <h3>Growth Forecasting</h3>
+        <p>
+          GEOG 6160 — Using machine learning to predict
+          Utah County population growth through 2030.
+        </p>
+
+        <button class="cmd-btn" type="button"
+          onclick="openProject('geog6160')">
+          View Project Details
+        </button>
+      </div>
+
+      <!-- GEOG 6165 -->
+      <div class="project-card">
+        <h3>GEOG 6165</h3>
+        <p>Project title and description coming soon.</p>
+
+        <button class="cmd-btn" type="button"
+          onclick="openProject('geog6165')">
+          View Project Details
+        </button>
+      </div>
+
+    </section>
+
+    <!-- UNIVERSITY OF UTAH 2026 -->
+    <section class="portfolio-section" id="utah-2026">
+
+      <!-- GEOG 5170 -->
+      <div class="project-card">
+        <h3>GEOG 5170</h3>
+        <p>Project title and description coming soon.</p>
+
+        <button class="cmd-btn" type="button"
+          onclick="openProject('geog5170')">
+          View Project Details
+        </button>
+      </div>
+
+      <!-- GEOG 6161 CAPSTONE -->
+      <div class="project-card">
+        <img
+          src="Capstone Poster Final.png"
+          alt="Utah Prairie Dog Dashboard Poster"
+          onclick="openModal(this.src)">
+
+        <h3>Utah Prairie Dog Dashboard</h3>
+        <p>
+          GEOG 6161 — GIS Capstone.
+          DWR population data integration and dashboard redesign.
+        </p>
+
+        <button class="cmd-btn" type="button"
+          onclick="openProject('geog6161')">
+          View Project Details
+        </button>
+
+        <div class="video-wrap">
+          <iframe
+            src="https://www.youtube.com/embed/wXUNR4JPbWI"
+            title="Utah Prairie Dog Dashboard Demo"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+
+      <!-- GEOG 6680 -->
+      <div class="project-card">
+        <h3>GEOG 6680</h3>
+        <p>Project title and description coming soon.</p>
+
+        <button class="cmd-btn" type="button"
+          onclick="openProject('geog6680')">
+          View Project Details
+        </button>
+      </div>
+
+    </section>
+
+    <!-- DEDICATED PROJECT DETAIL VIEW -->
+    <section
+      class="portfolio-section"
+      id="projectDetailSection"
+      aria-label="Project details">
+
+      <div class="project-card span-2">
+
+        <button
+          class="cmd-btn"
+          id="backToProjects"
+          type="button"
+          onclick="backToProjects()">
+          ← Back to Projects
+        </button>
+
+        <p id="detailCourse" class="section-header-mono"></p>
+
+        <h2 id="detailTitle"></h2>
+
+        <div id="detailGallery" class="image-row"></div>
+
+        <h3>Project Overview</h3>
+        <div id="detailOverview"></div>
+
+        <div id="detailMethodologySection">
+          <h3>Methodology</h3>
+          <div id="detailMethodology"></div>
+        </div>
+
+        <div id="detailResultsSection">
+          <h3>Results and Findings</h3>
+          <div id="detailResults"></div>
+        </div>
+
+        <div id="detailLimitationsSection">
+          <h3>Limitations</h3>
+          <div id="detailLimitations"></div>
+        </div>
+
+        <div id="detailVideoSection"></div>
+
+        <button
+          class="cmd-btn"
+          type="button"
+          onclick="backToProjects()">
+          ← Back to Projects
+        </button>
+
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  <div class="copyright">Ethan Schatz 2026</div>
+</footer>
+
+<script>
+
+// -----------------------------------------
+// PROJECT INFORMATION
+// -----------------------------------------
+
+const projectDetails = {
+
+  portugal: {
+    title: "Atlas Map: Portugal",
+    course: "BYU | 2022 | Geography 312",
+    section: "byu-2022",
+    images: ["Atlas Map Layout.jpg"],
+    overview: [
+      "A cartographic design and layout project focused on Portugal."
+    ]
+  },
+
+  indonesia: {
+    title: "Indonesia Mapping",
+    course: "BYU | 2023",
+    section: "byu-2023",
+    images: [
+      "LDS Church Sites in Indonesia Draft Layout Final.jpg"
+    ],
+    overview: [
+      "A client mapping project prepared for a Church history publication."
+    ]
+  },
+
+  korea: {
+    title: "Korean Peninsula History",
+    course: "BYU | 2023",
+    section: "byu-2023",
+    images: [
+      "Early Kingdoms On the Korean Peninsula fixed2.jpg",
+      "Parhae and the Provinces of Unified Shilla fixed2.jpg"
+    ],
+    overview: [
+      "A historical map series created for the Lost Civilizations publication, depicting the early kingdoms of the Korean Peninsula and the provinces of Parhae and Unified Shilla."
+    ]
+  },
+
+  nevada: {
+    title: "Nevada Watersheds",
+    course: "BYU | 2024",
+    section: "byu-2024",
+    images: [
+      "Mapping the Decline of Major Watersheds in Nevada.png"
+    ],
+    overview: [
+      "A geospatial investigation into the decline of major watersheds in Nevada, presented at the National AAG conference in 2024."
+    ]
+  },
+
+  geog6000: {
+    title: "Legislation Risk Modeling",
+    course: "University of Utah | 2025 | GEOG 6000",
+    section: "utah-2025",
+    images: ["Bills Layout.jpg"],
+    overview: [
+      "A project examining legislation and potential health impacts through a geographic analysis framework."
+    ]
+  },
+
+  geog6110: {
+    title: "GEOG 6110",
+    course: "University of Utah | 2025 | GEOG 6110",
+    section: "utah-2025",
+    images: [],
+    overview: ["Project details coming soon."]
+  },
+
+  geog6150: {
+    title: "GEOG 6150",
+    course: "University of Utah | 2025 | GEOG 6150",
+    section: "utah-2025",
+    images: [],
+    overview: ["Project details coming soon."]
+  },
+
+  geog6160: {
+    title: "Using Machine Learning to Predict the Future Growth of Utah County",
+    course: "University of Utah | 2025 | GEOG 6160 — Spatial Data Science in Practice",
+    section: "utah-2025",
+
+    images: [
+      "Forecasted 2030 Growth Rates of Utah County.jpg",
+      "Forecasted 2030 Population of Utah County Communities .jpg"
+    ],
+
+    overview: [
+      "This project was completed as the final project for GEOG 6160: Spatial Data Science in Practice. The objective was to predict municipal population growth in Utah County through 2030 using historical U.S. Census population data and a machine learning approach.",
+      "Utah County is one of the fastest-growing areas in Utah. Understanding future growth patterns can help inform planning decisions, infrastructure development, and resource allocation."
+    ],
+
+    methodology: [
+      "Population data from the 2000, 2010, and 2020 U.S. Censuses were manually joined to a municipal boundary shapefile obtained from the Utah Geospatial Resource Center (UGRC) using ArcGIS Pro.",
+      "A Python script was developed to apply linear regression to historical municipal population trends and forecast both population totals and growth rates through 2030.",
+      "The model was evaluated using five-fold cross-validation, producing a mean R² value of approximately 0.919."
+    ],
+
+    results: [
+      "The five municipalities projected to experience the highest growth rates by 2030 were Saratoga Springs, Eagle Mountain, Cedar Hills, Lehi, and Vineyard.",
+      "Provo was projected to remain the largest municipality in Utah County, with a population of approximately 120,000 residents in 2030.",
+      "The model achieved a mean cross-validation R² of approximately 0.919, indicating a strong fit to the historical population trends evaluated."
+    ],
+
+    limitations: [
+      "The forecasts were based on a limited historical dataset consisting of three decennial Census observations.",
+      "Future population growth may be affected by factors not represented in the model, including available developable land, changes in municipal boundaries, housing development, and local planning policies."
+    ]
+  },
+
+  geog6165: {
+    title: "GEOG 6165",
+    course: "University of Utah | 2025 | GEOG 6165",
+    section: "utah-2025",
+    images: [],
+    overview: ["Project details coming soon."]
+  },
+
+  geog5170: {
+    title: "GEOG 5170",
+    course: "University of Utah | 2026 | GEOG 5170",
+    section: "utah-2026",
+    images: [],
+    overview: ["Project details coming soon."]
+  },
+
+  geog6161: {
+    title: "Utah Prairie Dog Dashboard",
+    course: "University of Utah | 2026 | GEOG 6161 — GIS Capstone",
+    section: "utah-2026",
+
+    images: ["Capstone Poster Final.png"],
+
+    overview: [
+      "This GIS capstone project focused on redesigning a Utah prairie dog population dashboard for the Utah Division of Wildlife Resources (DWR).",
+      "Utah prairie dogs are an important part of southern Utah's ecosystem. Historical population counts provide valuable information for monitoring colonies and supporting conservation efforts."
+    ],
+
+    methodology: [
+      "The project involved consolidating historical population count data into a unified file geodatabase.",
+      "A Python script was developed to append population counts from 2021 through 2025 to the updated database.",
+      "The dashboard was redesigned to improve access to population records and allow users to explore data by year and colony boundaries."
+    ],
+
+    results: [
+      "The project produced an updated geodatabase and a redesigned dashboard for examining Utah prairie dog population trends.",
+      "The new structure supports more consistent data management and improved visualization of population counts across colonies and years."
+    ],
+
+    video: "https://www.youtube.com/embed/wXUNR4JPbWI"
+  },
+
+  geog6680: {
+    title: "GEOG 6680",
+    course: "University of Utah | 2026 | GEOG 6680",
+    section: "utah-2026",
+    images: [],
+    overview: ["Project details coming soon."]
+  }
+
+};
+
+
+// -----------------------------------------
+// FEATURED PROJECTS
+// -----------------------------------------
+
+const projects = [
+  [
+    "South Korea Historical Series",
+    "Early Kingdoms On the Korean Peninsula fixed2.jpg",
+    "Mapping the Early Kingdoms and Parhae provinces for the Lost Civilizations publication.",
+    "korea"
+  ],
+  [
+    "Nevada Watersheds",
+    "Mapping the Decline of Major Watersheds in Nevada.png",
+    "A geospatial investigation into watershed decline presented at the National AAG 2024 conference.",
+    "nevada"
+  ],
+  [
+    "Utah Prairie Dog Capstone",
+    "Capstone Poster Final.png",
+    "Integration of DWR count data into a unified file geodatabase and interactive dashboard.",
+    "geog6161"
+  ]
+];
+
+let heroInterval;
+let currentGallery = null;
+
+const imgModal = document.getElementById("imgModal");
+const modalImg = document.getElementById("modalImg");
+const homeSection = document.getElementById("homeSection");
+const homeBtn = document.getElementById("homeBtn");
+const featuredHero = document.getElementById("featured-hero");
+
+
+// -----------------------------------------
+// FEATURED PROJECT ROTATION
+// -----------------------------------------
+
+function showRandomProject() {
+
+  const [title, img, desc, id] =
+    projects[Math.floor(Math.random() * projects.length)];
+
+  featuredHero.innerHTML = `
+    <div class="hero-content">
+      <div class="hero-label">FEATURED PROJECT</div>
+      <h2>${title}</h2>
+      <p>${desc}</p>
+
+      <button
+        class="cmd-btn"
+        type="button"
+        onclick="openProject('${id}')">
+        View Full Project
+      </button>
+    </div>
+
+    <div
+      class="hero-img"
+      role="button"
+      tabindex="0"
+      aria-label="Enlarge featured project image"
+      style="background-image:url('${img}')"
+      onclick="openModal('${img}')"
+      onkeydown="if(event.key==='Enter')openModal('${img}')">
+    </div>
+  `;
 }
 
-    header h1 {
-        font-family: var(--font-mono);
-        font-size: 1.2rem;
-        margin: 0;
-        letter-spacing: 1px;
-    }
 
-    header nav a {
-        color: white;
-        text-decoration: none;
-        margin-left: 20px;
-        font-size: 0.9rem;
-        opacity: 0.8;
-        transition: opacity 0.3s;
-    }
+// -----------------------------------------
+// IMAGE MODAL
+// -----------------------------------------
 
-    header nav a:hover {
-        opacity: 1;
-    }
-
-    /* --- LAYOUT STRUCTURE --- */
-    .main-container {
-        width: 100%;
-        max-width: 1600px;
-        display: grid;
-        grid-template-columns: 350px 1fr;
-        gap: 40px;
-        padding: 40px;
-        flex: 1; /* Pushes footer down */
-        margin: 0 auto;
-    }
-
-    /* --- SIDEBAR --- */
-   .immersive-sidebar {
-    background-color: #fcfcf9; 
-    border: 1px solid var(--border-soft);
-    border-radius: 20px;
-    padding: 30px;
-    box-shadow: var(--shadow-core);
-    align-self: start;
-    position: static;
+function openModal(src) {
+  modalImg.src = src;
+  imgModal.style.display = "flex";
 }
 
-    .profile-img {
-        width: 140px;
-        height: 140px;
-        border-radius: 50%;
-        object-fit: cover;
-        border: 3px solid var(--earth-green);
-        margin: 0 auto 20px auto;
-        display: block;
-        box-shadow: 0 5px 15px rgba(45, 76, 54, 0.15);
-    }
-
-    .section-header-mono {
-        font-family: var(--font-mono);
-        font-size: 0.85rem;
-        color: var(--accent-orange);
-        text-transform: uppercase;
-        letter-spacing: 0.15em;
-        border-bottom: 1px solid var(--border-soft);
-        padding-bottom: 10px;
-        margin: 25px 0 15px 0;
-    }
-
-    .info-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 12px;
-    }
-
-    .info-grid-item {
-        background: #f4f4f0;
-        border: 1px solid var(--border-soft);
-        border-radius: 10px;
-        padding: 12px;
-        transition: all 0.3s ease;
-    }
-
-    .info-grid-item:hover {
-        background: #ebebe5;
-        border-color: var(--earth-green);
-    }
-
-    .info-label { font-size: 0.7rem; color: var(--text-muted); margin-bottom: 4px; }
-    .info-value { font-weight: 600; font-size: 0.9rem; color: var(--text-main); }
-
-    /* --- MAIN SHOWCASE --- */
-    .main-showcase { 
-        display: flex; 
-        flex-direction: column; 
-        gap: 40px; 
-    }
-
-    .command-center { 
-        display: flex; 
-        justify-content: flex-end; 
-    }
-
-    .cmd-bar {
-        background-color: #f4f4f0;
-        border: 1px solid var(--border-soft);
-        border-radius: 99px;
-        padding: 6px;
-        display: flex;
-        gap: 5px;
-    }
-
-    .tab-group { position: relative; }
-
-    .cmd-btn {
-        background: none;
-        border: none;
-        color: var(--text-muted);
-        font-family: var(--font-mono);
-        font-size: 0.8rem;
-        padding: 10px 22px;
-        cursor: pointer;
-        border-radius: 99px;
-        transition: all 0.3s ease;
-    }
-
-    .cmd-btn:hover { 
-        background: #ebebe5; 
-        color: var(--text-main); 
-    }
-
-    .active-tab { 
-        background: var(--earth-green); 
-        color: white; 
-        box-shadow: 0 4px 12px rgba(45, 76, 54, 0.2);
-    }
-
-    /* --- PROJECT CARDS --- */
-    .portfolio-section.active { 
-        display: grid; 
-        grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); 
-        gap: 25px; 
-    }
-
-    .project-card {
-        background: #ffffff;
-        border: 1px solid var(--border-soft);
-        border-radius: 20px;
-        padding: 24px;
-        transition: 0.4s ease;
-    }
-
-    .project-card:hover { 
-        transform: translateY(-5px); 
-        border-color: var(--earth-brown);
-        box-shadow: var(--shadow-core);
-    }
-
-    .project-card img {
-        width: 100%;
-        height: 240px;
-        object-fit: cover;
-        border-radius: 12px;
-        margin-bottom: 20px;
-        filter: sepia(0.15); 
-        transition: 0.3s;
-    }
-
-    /* --- HERO FEATURED --- */
-    .hero-featured {
-        background: var(--earth-green);
-        color: white;
-        border-radius: 30px;
-        padding: 60px;
-        min-height: 450px;
-        display: grid;
-        grid-template-columns: 1.2fr 1fr;
-        gap: 40px;
-        align-items: center;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .hero-content h2 { 
-        font-size: 3rem; 
-        margin: 10px 0 20px 0; 
-        line-height: 1.1;
-        font-weight: 700;
-        color: white;
-    }
-
-    /* --- UPDATED FOOTER --- */
-    footer {
-    width: 100%;
-    background-color: var(--earth-green);
-    color: white;
-    padding: 30px 40px;
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 0;
+function closeModal() {
+  imgModal.style.display = "none";
+  modalImg.removeAttribute("src");
 }
 
-    footer .copyright { opacity: 0.7; }
-</style>
+
+// -----------------------------------------
+// NAVIGATION
+// -----------------------------------------
+
+function toggleDropdown(id) {
+
+  document.querySelectorAll(".dropdown").forEach(dropdown => {
+    if (dropdown.id !== id) {
+      dropdown.classList.remove("show");
+    }
+  });
+
+  document.getElementById(id).classList.toggle("show");
+}
+
+function hideAllSections() {
+
+  homeSection.style.display = "none";
+
+  document.querySelectorAll(".portfolio-section").forEach(section => {
+    section.classList.remove("active");
+  });
+
+  document.querySelectorAll(".dropdown").forEach(dropdown => {
+    dropdown.classList.remove("show");
+  });
+
+  document.querySelectorAll(".cmd-btn").forEach(button => {
+    button.classList.remove("active-tab");
+  });
+
+  clearInterval(heroInterval);
+}
+
+function showSection(id) {
+
+  const selectedSection = document.getElementById(id);
+
+  if (!selectedSection) return;
+
+  hideAllSections();
+
+  selectedSection.classList.add("active");
+
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function goHome() {
+
+  hideAllSections();
+
+  homeBtn.classList.add("active-tab");
+  homeSection.style.display = "block";
+
+  showRandomProject();
+
+  heroInterval = setInterval(showRandomProject, 12000);
+
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+
+// -----------------------------------------
+// PROJECT DETAIL VIEWS
+// -----------------------------------------
+
+function setParagraphs(elementId, paragraphs) {
+
+  const container = document.getElementById(elementId);
+
+  container.replaceChildren();
+
+  (paragraphs || []).forEach(paragraph => {
+
+    const p = document.createElement("p");
+    p.textContent = paragraph;
+
+    container.appendChild(p);
+  });
+}
+
+function setOptionalSection(sectionId, contentId, paragraphs) {
+
+  const section = document.getElementById(sectionId);
+
+  section.hidden = !paragraphs || paragraphs.length === 0;
+
+  setParagraphs(contentId, paragraphs);
+}
+
+function openProject(projectId) {
+
+  const project = projectDetails[projectId];
+
+  if (!project) return;
+
+  // Remember which gallery the visitor came from.
+  currentGallery = project.section;
+
+  hideAllSections();
+
+  document.getElementById("detailCourse").textContent =
+    project.course;
+
+  document.getElementById("detailTitle").textContent =
+    project.title;
+
+  // Populate project image gallery.
+  const gallery = document.getElementById("detailGallery");
+
+  gallery.replaceChildren();
+  gallery.hidden = !project.images || project.images.length === 0;
+
+  (project.images || []).forEach(imageFile => {
+
+    const img = document.createElement("img");
+
+    img.src = imageFile;
+    img.alt = project.title;
+    img.loading = "lazy";
+
+    img.onclick = function() {
+      openModal(this.src);
+    };
+
+    gallery.appendChild(img);
+  });
+
+  // Project overview.
+  setParagraphs("detailOverview", project.overview);
+
+  // Optional project sections.
+  setOptionalSection(
+    "detailMethodologySection",
+    "detailMethodology",
+    project.methodology
+  );
+
+  setOptionalSection(
+    "detailResultsSection",
+    "detailResults",
+    project.results
+  );
+
+  setOptionalSection(
+    "detailLimitationsSection",
+    "detailLimitations",
+    project.limitations
+  );
+
+  // Optional project video.
+  const videoSection =
+    document.getElementById("detailVideoSection");
+
+  videoSection.replaceChildren();
+
+  if (project.video) {
+
+    const heading = document.createElement("h3");
+    heading.textContent = "Project Demonstration";
+
+    const wrapper = document.createElement("div");
+    wrapper.className = "video-wrap";
+
+    const iframe = document.createElement("iframe");
+
+    iframe.src = project.video;
+    iframe.title = project.title + " Demonstration";
+    iframe.allow =
+      "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+    iframe.allowFullscreen = true;
+    iframe.loading = "lazy";
+
+    wrapper.appendChild(iframe);
+
+    videoSection.appendChild(heading);
+    videoSection.appendChild(wrapper);
+  }
+
+  document.getElementById("projectDetailSection")
+    .classList.add("active");
+
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function backToProjects() {
+
+  if (currentGallery) {
+    showSection(currentGallery);
+  } else {
+    goHome();
+  }
+}
+
+
+// -----------------------------------------
+// GLOBAL EVENTS
+// -----------------------------------------
+
+window.addEventListener("click", event => {
+
+  if (!event.target.closest(".tab-group")) {
+
+    document.querySelectorAll(".dropdown").forEach(dropdown => {
+      dropdown.classList.remove("show");
+    });
+  }
+});
+
+document.addEventListener("keydown", event => {
+
+  if (event.key === "Escape") {
+
+    closeModal();
+
+    document.querySelectorAll(".dropdown").forEach(dropdown => {
+      dropdown.classList.remove("show");
+    });
+  }
+});
+
+
+// -----------------------------------------
+// INITIALIZE WEBSITE
+// -----------------------------------------
+
+goHome();
+
+</script>
+
+</body>
+</html>
