@@ -1,887 +1,935 @@
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GIS Portfolio | Ethan Schatz</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=Chivo+Mono&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-
-<header>
-  <h1>Ethan Schatz's GIS Portfolio</h1>
-</header>
-
-<!-- IMAGE ZOOM MODAL -->
-<div id="imgModal" class="image-modal" onclick="closeModal()">
-  <img class="modal-content" id="modalImg" alt="Enlarged project image">
-</div>
-
-<div class="main-container">
-
-  <!-- PROFILE SIDEBAR -->
-  <aside class="immersive-sidebar">
-
-    <div class="profile-img"></div>
-
-    <h3 class="section-header-mono">Profile</h3>
-    <p class="sidebar-text">
-      <strong>Ethan Schatz</strong><br>
-      MSGIS Student @ University of Utah<br>
-      Class of 2027
-    </p>
-
-    <h3 class="section-header-mono">Skills</h3>
-    <div class="info-grid">
-      <div class="info-grid-item">
-        <div class="info-label">GIS</div>
-        <div class="info-value">ArcGIS Pro / QGIS</div>
-      </div>
-      <div class="info-grid-item">
-        <div class="info-label">DEV</div>
-        <div class="info-value">Python / R</div>
-      </div>
-      <div class="info-grid-item">
-        <div class="info-label">DATA</div>
-        <div class="info-value">Excel / SQL</div>
-      </div>
-    </div>
-
-    <h3 class="section-header-mono">Accomplishments</h3>
-    <ul class="sidebar-list">
-      <li>AAG World Geography Bowl — 2nd</li>
-      <li>AAG GPRM Geography Bowl — 3rd Individual / 1st Team</li>
-      <li>Haslam Scholarship 2023</li>
-      <li>BYU Geography Merit Award</li>
-    </ul>
-
-    <div class="contact">
-      <p>✉️ ethan.m.schatz@gmail.com</p>
-      <p>📞 801-510-0327</p>
-      <p>📎 www.linkedin.com/in/ethan-schatz-5a4738211</p>
-    </div>
-
-  </aside>
-
-  <!-- MAIN PORTFOLIO -->
-  <main class="main-showcase">
-
-    <!-- NAVIGATION -->
-    <div class="command-center">
-      <div class="cmd-bar">
-
-        <button
-          class="cmd-btn active-tab"
-          id="homeBtn"
-          type="button"
-          onclick="goHome()">
-          Home
-        </button>
-
-        <div class="tab-group">
-          <button
-            class="cmd-btn"
-            type="button"
-            onclick="toggleDropdown('byuDrop')">
-            BYU ▾
-          </button>
-
-          <div class="dropdown" id="byuDrop">
-            <button type="button" onclick="showSection('byu-2022')">2022</button>
-            <button type="button" onclick="showSection('byu-2023')">2023</button>
-            <button type="button" onclick="showSection('byu-2024')">2024</button>
-          </div>
-        </div>
-
-        <div class="tab-group">
-          <button
-            class="cmd-btn"
-            type="button"
-            onclick="toggleDropdown('utahDrop')">
-            U of U ▾
-          </button>
-
-          <div class="dropdown" id="utahDrop">
-            <button type="button" onclick="showSection('utah-2025')">2025</button>
-            <button type="button" onclick="showSection('utah-2026')">2026</button>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- HOME -->
-    <section id="homeSection">
-      <div class="hero-featured" id="featured-hero"></div>
-    </section>
-
-    <!-- BYU 2022 -->
-    <section class="portfolio-section" id="byu-2022">
-
-      <div class="project-card span-2">
-        <img
-          src="Atlas Map Layout.jpg"
-          alt="Portugal Atlas Map"
-          onclick="openModal(this.src)">
-
-        <h3>Atlas Map: Portugal</h3>
-        <p>Geography 312: Cartographic design and layout.</p>
-
-        <button class="cmd-btn" type="button"
-          onclick="openProject('portugal')">
-          View Project Details
-        </button>
-      </div>
-
-    </section>
-
-    <!-- BYU 2023 -->
-    <section class="portfolio-section" id="byu-2023">
-
-      <div class="project-card">
-        <img
-          src="LDS Church Sites in Indonesia Draft Layout Final.jpg"
-          alt="Indonesia Mapping"
-          onclick="openModal(this.src)">
-
-        <h3>Indonesia Mapping</h3>
-        <p>Client project for Church history publication.</p>
-
-        <button class="cmd-btn" type="button"
-          onclick="openProject('indonesia')">
-          View Project Details
-        </button>
-      </div>
-
-      <div class="project-card">
-        <div class="image-row">
-          <img
-            src="Early Kingdoms On the Korean Peninsula fixed2.jpg"
-            alt="Early Korean Kingdoms"
-            onclick="openModal(this.src)">
-
-          <img
-            src="Parhae and the Provinces of Unified Shilla fixed2.jpg"
-            alt="Parhae and Unified Shilla"
-            onclick="openModal(this.src)">
-        </div>
-
-        <h3>Korean Peninsula History</h3>
-        <p>
-          Historical map series for
-          <em>Lost Civilizations</em>.
-        </p>
-
-        <button class="cmd-btn" type="button"
-          onclick="openProject('korea')">
-          View Project Details
-        </button>
-      </div>
-
-    </section>
-
-    <!-- BYU 2024 -->
-    <section class="portfolio-section" id="byu-2024">
-
-      <div class="project-card span-2">
-        <img
-          src="Mapping the Decline of Major Watersheds in Nevada.png"
-          alt="Nevada Watersheds"
-          onclick="openModal(this.src)">
-
-        <h3>Nevada Watersheds</h3>
-        <p>National AAG conference research presentation.</p>
-
-        <button class="cmd-btn" type="button"
-          onclick="openProject('nevada')">
-          View Project Details
-        </button>
-      </div>
-
-    </section>
-
-    <!-- UNIVERSITY OF UTAH 2025 -->
-    <section class="portfolio-section" id="utah-2025">
-
-      <!-- GEOG 6000 -->
-      <div class="project-card">
-        <img
-          src="Bills Layout.jpg"
-          alt="Legislation Risk Modeling"
-          onclick="openModal(this.src)">
-
-        <h3>Legislation Risk Modeling</h3>
-        <p>
-          GEOG 6000 — Health impacts analysis.
-        </p>
-
-        <button class="cmd-btn" type="button"
-          onclick="openProject('geog6000')">
-          View Project Details
-        </button>
-      </div>
-
-      <!-- GEOG 6110 -->
-      <div class="project-card">
-        <h3>GEOG 6110</h3>
-        <p>Project title and description coming soon.</p>
-
-        <button class="cmd-btn" type="button"
-          onclick="openProject('geog6110')">
-          View Project Details
-        </button>
-      </div>
-
-      <!-- GEOG 6150 -->
-      <div class="project-card">
-        <h3>GEOG 6150</h3>
-        <p>Project title and description coming soon.</p>
-
-        <button class="cmd-btn" type="button"
-          onclick="openProject('geog6150')">
-          View Project Details
-        </button>
-      </div>
-
-      <!-- GEOG 6160 -->
-      <div class="project-card">
-        <div class="image-row">
-          <img
-            src="Forecasted 2030 Growth Rates of Utah County.jpg"
-            alt="Utah County Growth Rates"
-            onclick="openModal(this.src)">
-
-          <img
-            src="Forecasted 2030 Population of Utah County Communities .jpg"
-            alt="Utah County Population Forecast"
-            onclick="openModal(this.src)">
-        </div>
-
-        <h3>Growth Forecasting</h3>
-        <p>
-          GEOG 6160 — Using machine learning to predict
-          Utah County population growth through 2030.
-        </p>
-
-        <button class="cmd-btn" type="button"
-          onclick="openProject('geog6160')">
-          View Project Details
-        </button>
-      </div>
-
-      <!-- GEOG 6165 -->
-      <div class="project-card">
-        <h3>GEOG 6165</h3>
-        <p>Project title and description coming soon.</p>
-
-        <button class="cmd-btn" type="button"
-          onclick="openProject('geog6165')">
-          View Project Details
-        </button>
-      </div>
-
-    </section>
-
-    <!-- UNIVERSITY OF UTAH 2026 -->
-    <section class="portfolio-section" id="utah-2026">
-
-      <!-- GEOG 5170 -->
-      <div class="project-card">
-        <h3>GEOG 5170</h3>
-        <p>Project title and description coming soon.</p>
-
-        <button class="cmd-btn" type="button"
-          onclick="openProject('geog5170')">
-          View Project Details
-        </button>
-      </div>
-
-      <!-- GEOG 6161 CAPSTONE -->
-      <div class="project-card">
-        <img
-          src="Capstone Poster Final.png"
-          alt="Utah Prairie Dog Dashboard Poster"
-          onclick="openModal(this.src)">
-
-        <h3>Utah Prairie Dog Dashboard</h3>
-        <p>
-          GEOG 6161 — GIS Capstone.
-          DWR population data integration and dashboard redesign.
-        </p>
-
-        <button class="cmd-btn" type="button"
-          onclick="openProject('geog6161')">
-          View Project Details
-        </button>
-
-        <div class="video-wrap">
-          <iframe
-            src="https://www.youtube.com/embed/wXUNR4JPbWI"
-            title="Utah Prairie Dog Dashboard Demo"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen>
-          </iframe>
-        </div>
-      </div>
-
-      <!-- GEOG 6680 -->
-      <div class="project-card">
-        <h3>GEOG 6680</h3>
-        <p>Project title and description coming soon.</p>
-
-        <button class="cmd-btn" type="button"
-          onclick="openProject('geog6680')">
-          View Project Details
-        </button>
-      </div>
-
-    </section>
-
-    <!-- DEDICATED PROJECT DETAIL VIEW -->
-    <section
-      class="portfolio-section"
-      id="projectDetailSection"
-      aria-label="Project details">
-
-      <div class="project-card span-2">
-
-        <button
-          class="cmd-btn"
-          id="backToProjects"
-          type="button"
-          onclick="backToProjects()">
-          ← Back to Projects
-        </button>
-
-        <p id="detailCourse" class="section-header-mono"></p>
-
-        <h2 id="detailTitle"></h2>
-
-        <div id="detailGallery" class="image-row"></div>
-
-        <h3>Project Overview</h3>
-        <div id="detailOverview"></div>
-
-        <div id="detailMethodologySection">
-          <h3>Methodology</h3>
-          <div id="detailMethodology"></div>
-        </div>
-
-        <div id="detailResultsSection">
-          <h3>Results and Findings</h3>
-          <div id="detailResults"></div>
-        </div>
-
-        <div id="detailLimitationsSection">
-          <h3>Limitations</h3>
-          <div id="detailLimitations"></div>
-        </div>
-
-        <div id="detailVideoSection"></div>
-
-        <button
-          class="cmd-btn"
-          type="button"
-          onclick="backToProjects()">
-          ← Back to Projects
-        </button>
-
-      </div>
-    </section>
-
-  </main>
-</div>
-
-<footer>
-  <div class="copyright">Ethan Schatz 2026</div>
-</footer>
-
-<script>
-
-// -----------------------------------------
-// PROJECT INFORMATION
-// -----------------------------------------
-
-const projectDetails = {
-
-  portugal: {
-    title: "Atlas Map: Portugal",
-    course: "BYU | 2022 | Geography 312",
-    section: "byu-2022",
-    images: ["Atlas Map Layout.jpg"],
-    overview: [
-      "A cartographic design and layout project focused on Portugal."
-    ]
-  },
-
-  indonesia: {
-    title: "Indonesia Mapping",
-    course: "BYU | 2023",
-    section: "byu-2023",
-    images: [
-      "LDS Church Sites in Indonesia Draft Layout Final.jpg"
-    ],
-    overview: [
-      "A client mapping project prepared for a Church history publication."
-    ]
-  },
-
-  korea: {
-    title: "Korean Peninsula History",
-    course: "BYU | 2023",
-    section: "byu-2023",
-    images: [
-      "Early Kingdoms On the Korean Peninsula fixed2.jpg",
-      "Parhae and the Provinces of Unified Shilla fixed2.jpg"
-    ],
-    overview: [
-      "A historical map series created for the Lost Civilizations publication, depicting the early kingdoms of the Korean Peninsula and the provinces of Parhae and Unified Shilla."
-    ]
-  },
-
-  nevada: {
-    title: "Nevada Watersheds",
-    course: "BYU | 2024",
-    section: "byu-2024",
-    images: [
-      "Mapping the Decline of Major Watersheds in Nevada.png"
-    ],
-    overview: [
-      "A geospatial investigation into the decline of major watersheds in Nevada, presented at the National AAG conference in 2024."
-    ]
-  },
-
-  geog6000: {
-    title: "Legislation Risk Modeling",
-    course: "University of Utah | 2025 | GEOG 6000",
-    section: "utah-2025",
-    images: ["Bills Layout.jpg"],
-    overview: [
-      "A project examining legislation and potential health impacts through a geographic analysis framework."
-    ]
-  },
-
-  geog6110: {
-    title: "GEOG 6110",
-    course: "University of Utah | 2025 | GEOG 6110",
-    section: "utah-2025",
-    images: [],
-    overview: ["Project details coming soon."]
-  },
-
-  geog6150: {
-    title: "GEOG 6150",
-    course: "University of Utah | 2025 | GEOG 6150",
-    section: "utah-2025",
-    images: [],
-    overview: ["Project details coming soon."]
-  },
-
-  geog6160: {
-    title: "Using Machine Learning to Predict the Future Growth of Utah County",
-    course: "University of Utah | 2025 | GEOG 6160 — Spatial Data Science in Practice",
-    section: "utah-2025",
-
-    images: [
-      "Forecasted 2030 Growth Rates of Utah County.jpg",
-      "Forecasted 2030 Population of Utah County Communities .jpg"
-    ],
-
-    overview: [
-      "This project was completed as the final project for GEOG 6160: Spatial Data Science in Practice. The objective was to predict municipal population growth in Utah County through 2030 using historical U.S. Census population data and a machine learning approach.",
-      "Utah County is one of the fastest-growing areas in Utah. Understanding future growth patterns can help inform planning decisions, infrastructure development, and resource allocation."
-    ],
-
-    methodology: [
-      "Population data from the 2000, 2010, and 2020 U.S. Censuses were manually joined to a municipal boundary shapefile obtained from the Utah Geospatial Resource Center (UGRC) using ArcGIS Pro.",
-      "A Python script was developed to apply linear regression to historical municipal population trends and forecast both population totals and growth rates through 2030.",
-      "The model was evaluated using five-fold cross-validation, producing a mean R² value of approximately 0.919."
-    ],
-
-    results: [
-      "The five municipalities projected to experience the highest growth rates by 2030 were Saratoga Springs, Eagle Mountain, Cedar Hills, Lehi, and Vineyard.",
-      "Provo was projected to remain the largest municipality in Utah County, with a population of approximately 120,000 residents in 2030.",
-      "The model achieved a mean cross-validation R² of approximately 0.919, indicating a strong fit to the historical population trends evaluated."
-    ],
-
-    limitations: [
-      "The forecasts were based on a limited historical dataset consisting of three decennial Census observations.",
-      "Future population growth may be affected by factors not represented in the model, including available developable land, changes in municipal boundaries, housing development, and local planning policies."
-    ]
-  },
-
-  geog6165: {
-    title: "GEOG 6165",
-    course: "University of Utah | 2025 | GEOG 6165",
-    section: "utah-2025",
-    images: [],
-    overview: ["Project details coming soon."]
-  },
-
-  geog5170: {
-    title: "GEOG 5170",
-    course: "University of Utah | 2026 | GEOG 5170",
-    section: "utah-2026",
-    images: [],
-    overview: ["Project details coming soon."]
-  },
-
-  geog6161: {
-    title: "Utah Prairie Dog Dashboard",
-    course: "University of Utah | 2026 | GEOG 6161 — GIS Capstone",
-    section: "utah-2026",
-
-    images: ["Capstone Poster Final.png"],
-
-    overview: [
-      "This GIS capstone project focused on redesigning a Utah prairie dog population dashboard for the Utah Division of Wildlife Resources (DWR).",
-      "Utah prairie dogs are an important part of southern Utah's ecosystem. Historical population counts provide valuable information for monitoring colonies and supporting conservation efforts."
-    ],
-
-    methodology: [
-      "The project involved consolidating historical population count data into a unified file geodatabase.",
-      "A Python script was developed to append population counts from 2021 through 2025 to the updated database.",
-      "The dashboard was redesigned to improve access to population records and allow users to explore data by year and colony boundaries."
-    ],
-
-    results: [
-      "The project produced an updated geodatabase and a redesigned dashboard for examining Utah prairie dog population trends.",
-      "The new structure supports more consistent data management and improved visualization of population counts across colonies and years."
-    ],
-
-    video: "https://www.youtube.com/embed/wXUNR4JPbWI"
-  },
-
-  geog6680: {
-    title: "GEOG 6680",
-    course: "University of Utah | 2026 | GEOG 6680",
-    section: "utah-2026",
-    images: [],
-    overview: ["Project details coming soon."]
-  }
-
-};
-
-
-// -----------------------------------------
-// FEATURED PROJECTS
-// -----------------------------------------
-
-const projects = [
-  [
-    "South Korea Historical Series",
-    "Early Kingdoms On the Korean Peninsula fixed2.jpg",
-    "Mapping the Early Kingdoms and Parhae provinces for the Lost Civilizations publication.",
-    "korea"
-  ],
-  [
-    "Nevada Watersheds",
-    "Mapping the Decline of Major Watersheds in Nevada.png",
-    "A geospatial investigation into watershed decline presented at the National AAG 2024 conference.",
-    "nevada"
-  ],
-  [
-    "Utah Prairie Dog Capstone",
-    "Capstone Poster Final.png",
-    "Integration of DWR count data into a unified file geodatabase and interactive dashboard.",
-    "geog6161"
-  ]
-];
-
-let heroInterval;
-let currentGallery = null;
-
-const imgModal = document.getElementById("imgModal");
-const modalImg = document.getElementById("modalImg");
-const homeSection = document.getElementById("homeSection");
-const homeBtn = document.getElementById("homeBtn");
-const featuredHero = document.getElementById("featured-hero");
-
-
-// -----------------------------------------
-// FEATURED PROJECT ROTATION
-// -----------------------------------------
-
-function showRandomProject() {
-
-  const [title, img, desc, id] =
-    projects[Math.floor(Math.random() * projects.length)];
-
-  featuredHero.innerHTML = `
-    <div class="hero-content">
-      <div class="hero-label">FEATURED PROJECT</div>
-      <h2>${title}</h2>
-      <p>${desc}</p>
-
-      <button
-        class="cmd-btn"
-        type="button"
-        onclick="openProject('${id}')">
-        View Full Project
-      </button>
-    </div>
-
-    <div
-      class="hero-img"
-      role="button"
-      tabindex="0"
-      aria-label="Enlarge featured project image"
-      style="background-image:url('${img}')"
-      onclick="openModal('${img}')"
-      onkeydown="if(event.key==='Enter')openModal('${img}')">
-    </div>
-  `;
+/* ==========================================
+   ETHAN SCHATZ — GIS PORTFOLIO
+   Main Stylesheet
+   ========================================== */
+
+/* ---------- COLOR PALETTE ---------- */
+
+:root {
+    --bg-deep: #ffffff;
+    --earth-green: #2d4c36;
+    --earth-brown: #a65d37;
+    --accent-orange: #8e4a2b;
+    --text-main: #1a1c1a;
+    --text-muted: #5c665e;
+    --font-mono: 'Chivo Mono', monospace;
+    --font-sans: 'Inter', sans-serif;
+    --shadow-core: 0 10px 30px rgba(0, 0, 0, 0.08);
+    --border-soft: rgba(0, 0, 0, 0.08);
+    --bg-soft: #f4f4f0;
+    --bg-card: #fcfcf9;
 }
 
+/* ---------- GLOBAL ---------- */
 
-// -----------------------------------------
-// IMAGE MODAL
-// -----------------------------------------
-
-function openModal(src) {
-  modalImg.src = src;
-  imgModal.style.display = "flex";
+* {
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
 }
 
-function closeModal() {
-  imgModal.style.display = "none";
-  modalImg.removeAttribute("src");
+html {
+    scroll-behavior: smooth;
 }
 
+body {
+    font-family: var(--font-sans);
+    background-color: var(--bg-deep);
+    color: var(--text-main);
+    margin: 0;
+    overflow-x: hidden;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
 
-// -----------------------------------------
-// NAVIGATION
-// -----------------------------------------
+button {
+    font-family: inherit;
+}
 
-function toggleDropdown(id) {
+button:focus-visible,
+a:focus-visible,
+[role="button"]:focus-visible {
+    outline: 3px solid var(--earth-brown);
+    outline-offset: 3px;
+}
 
-  document.querySelectorAll(".dropdown").forEach(dropdown => {
-    if (dropdown.id !== id) {
-      dropdown.classList.remove("show");
+[hidden] {
+    display: none !important;
+}
+
+/* ---------- HEADER ---------- */
+
+header {
+    background-color: var(--earth-green);
+    color: white;
+    padding: 18px 40px;
+    position: relative;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-family: var(--font-mono);
+    font-size: 1.2rem;
+    margin: 0;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* ---------- MAIN LAYOUT ---------- */
+
+.main-container {
+    width: 100%;
+    max-width: 1600px;
+    display: grid;
+    grid-template-columns: 350px minmax(0, 1fr);
+    gap: 40px;
+    padding: 40px;
+    flex: 1;
+    margin: 0 auto;
+    align-items: start;
+}
+
+.main-showcase {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    min-width: 0;
+}
+
+/* ---------- SIDEBAR ---------- */
+
+.immersive-sidebar {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-soft);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: var(--shadow-core);
+    align-self: start;
+    position: static;
+}
+
+.profile-img {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    border: 3px solid var(--earth-green);
+    margin: 0 auto 20px;
+    display: block;
+    box-shadow: 0 5px 15px rgba(45, 76, 54, 0.15);
+    background-image: url("Resized_BeautyPlus_20211011205536894_save.JPG");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.section-header-mono {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--accent-orange);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    border-bottom: 1px solid var(--border-soft);
+    padding-bottom: 10px;
+    margin: 25px 0 15px;
+}
+
+.sidebar-text,
+.sidebar-list,
+.contact {
+    font-size: 0.85rem;
+}
+
+.sidebar-text {
+    line-height: 1.7;
+}
+
+.sidebar-list {
+    padding-left: 20px;
+    color: var(--text-muted);
+}
+
+.sidebar-list li {
+    margin-bottom: 10px;
+}
+
+.contact {
+    margin-top: 25px;
+    padding-top: 15px;
+    border-top: 1px solid var(--border-soft);
+    overflow-wrap: anywhere;
+    color: var(--text-muted);
+}
+
+.contact p {
+    margin: 10px 0;
+}
+
+/* ---------- SKILLS ---------- */
+
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+}
+
+.info-grid-item {
+    background: var(--bg-soft);
+    border: 1px solid var(--border-soft);
+    border-radius: 10px;
+    padding: 12px;
+    transition: all 0.3s ease;
+}
+
+.info-grid-item:hover {
+    background: #ebebe5;
+    border-color: var(--earth-green);
+}
+
+.info-label {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+    font-family: var(--font-mono);
+}
+
+.info-value {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text-main);
+}
+
+/* ---------- NAVIGATION ---------- */
+
+.command-center {
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    z-index: 100;
+}
+
+.cmd-bar {
+    background-color: var(--bg-soft);
+    border: 1px solid var(--border-soft);
+    border-radius: 99px;
+    padding: 6px;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.tab-group {
+    position: relative;
+}
+
+.cmd-btn {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 11px 22px;
+    cursor: pointer;
+    border-radius: 99px;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.cmd-btn:hover {
+    background: #ebebe5;
+    color: var(--text-main);
+}
+
+.cmd-btn.active-tab,
+.active-tab {
+    background: var(--earth-green);
+    color: white;
+    box-shadow: 0 4px 12px rgba(45, 76, 54, 0.2);
+}
+
+.cmd-btn.active-tab:hover {
+    background: #233d2b;
+    color: white;
+}
+
+/* ---------- DROPDOWN MENUS ---------- */
+
+.dropdown {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    z-index: 200;
+    display: none;
+    flex-direction: column;
+    min-width: 180px;
+    background: white;
+    border: 1px solid var(--border-soft);
+    border-radius: 12px;
+    box-shadow: var(--shadow-core);
+    overflow: hidden;
+}
+
+.dropdown.show {
+    display: flex;
+}
+
+.dropdown button {
+    background: white;
+    border: none;
+    padding: 14px 20px;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.dropdown button:hover {
+    background: var(--bg-soft);
+    color: var(--earth-green);
+}
+
+/* ---------- PORTFOLIO GALLERIES ---------- */
+
+.portfolio-section {
+    display: none;
+    min-width: 0;
+}
+
+.portfolio-section.active {
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(min(100%, 340px), 1fr)
+    );
+    gap: 25px;
+    animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
     }
-  });
 
-  document.getElementById(id).classList.toggle("show");
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-function hideAllSections() {
+/* ---------- PROJECT CARDS ---------- */
 
-  homeSection.style.display = "none";
-
-  document.querySelectorAll(".portfolio-section").forEach(section => {
-    section.classList.remove("active");
-  });
-
-  document.querySelectorAll(".dropdown").forEach(dropdown => {
-    dropdown.classList.remove("show");
-  });
-
-  document.querySelectorAll(".cmd-btn").forEach(button => {
-    button.classList.remove("active-tab");
-  });
-
-  clearInterval(heroInterval);
+.project-card {
+    background: #ffffff;
+    border: 1px solid var(--border-soft);
+    border-radius: 20px;
+    padding: 24px;
+    transition: transform 0.3s ease,
+                border-color 0.3s ease,
+                box-shadow 0.3s ease;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
-function showSection(id) {
-
-  const selectedSection = document.getElementById(id);
-
-  if (!selectedSection) return;
-
-  hideAllSections();
-
-  selectedSection.classList.add("active");
-
-  window.scrollTo({ top: 0, behavior: "smooth" });
+.project-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--earth-brown);
+    box-shadow: var(--shadow-core);
 }
 
-function goHome() {
-
-  hideAllSections();
-
-  homeBtn.classList.add("active-tab");
-  homeSection.style.display = "block";
-
-  showRandomProject();
-
-  heroInterval = setInterval(showRandomProject, 12000);
-
-  window.scrollTo({ top: 0, behavior: "smooth" });
+.project-card h3 {
+    font-size: 1.25rem;
+    color: var(--earth-green);
+    margin: 0 0 10px;
+    line-height: 1.35;
 }
 
-
-// -----------------------------------------
-// PROJECT DETAIL VIEWS
-// -----------------------------------------
-
-function setParagraphs(elementId, paragraphs) {
-
-  const container = document.getElementById(elementId);
-
-  container.replaceChildren();
-
-  (paragraphs || []).forEach(paragraph => {
-
-    const p = document.createElement("p");
-    p.textContent = paragraph;
-
-    container.appendChild(p);
-  });
+.project-card p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin: 0 0 20px;
 }
 
-function setOptionalSection(sectionId, contentId, paragraphs) {
-
-  const section = document.getElementById(sectionId);
-
-  section.hidden = !paragraphs || paragraphs.length === 0;
-
-  setParagraphs(contentId, paragraphs);
+.project-card > .cmd-btn {
+    margin-top: auto;
+    background: var(--earth-green);
+    color: white;
+    border: 1px solid var(--earth-green);
+    padding: 12px 20px;
 }
 
-function openProject(projectId) {
-
-  const project = projectDetails[projectId];
-
-  if (!project) return;
-
-  // Remember which gallery the visitor came from.
-  currentGallery = project.section;
-
-  hideAllSections();
-
-  document.getElementById("detailCourse").textContent =
-    project.course;
-
-  document.getElementById("detailTitle").textContent =
-    project.title;
-
-  // Populate project image gallery.
-  const gallery = document.getElementById("detailGallery");
-
-  gallery.replaceChildren();
-  gallery.hidden = !project.images || project.images.length === 0;
-
-  (project.images || []).forEach(imageFile => {
-
-    const img = document.createElement("img");
-
-    img.src = imageFile;
-    img.alt = project.title;
-    img.loading = "lazy";
-
-    img.onclick = function() {
-      openModal(this.src);
-    };
-
-    gallery.appendChild(img);
-  });
-
-  // Project overview.
-  setParagraphs("detailOverview", project.overview);
-
-  // Optional project sections.
-  setOptionalSection(
-    "detailMethodologySection",
-    "detailMethodology",
-    project.methodology
-  );
-
-  setOptionalSection(
-    "detailResultsSection",
-    "detailResults",
-    project.results
-  );
-
-  setOptionalSection(
-    "detailLimitationsSection",
-    "detailLimitations",
-    project.limitations
-  );
-
-  // Optional project video.
-  const videoSection =
-    document.getElementById("detailVideoSection");
-
-  videoSection.replaceChildren();
-
-  if (project.video) {
-
-    const heading = document.createElement("h3");
-    heading.textContent = "Project Demonstration";
-
-    const wrapper = document.createElement("div");
-    wrapper.className = "video-wrap";
-
-    const iframe = document.createElement("iframe");
-
-    iframe.src = project.video;
-    iframe.title = project.title + " Demonstration";
-    iframe.allow =
-      "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
-    iframe.allowFullscreen = true;
-    iframe.loading = "lazy";
-
-    wrapper.appendChild(iframe);
-
-    videoSection.appendChild(heading);
-    videoSection.appendChild(wrapper);
-  }
-
-  document.getElementById("projectDetailSection")
-    .classList.add("active");
-
-  window.scrollTo({ top: 0, behavior: "smooth" });
+.project-card > .cmd-btn:hover {
+    background: #233d2b;
+    border-color: #233d2b;
+    color: white;
 }
 
-function backToProjects() {
-
-  if (currentGallery) {
-    showSection(currentGallery);
-  } else {
-    goHome();
-  }
+.span-2 {
+    grid-column: 1 / -1;
 }
 
+/* ---------- PROJECT IMAGES ---------- */
 
-// -----------------------------------------
-// GLOBAL EVENTS
-// -----------------------------------------
+.project-card img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    filter: sepia(0.15);
+    transition: filter 0.3s ease,
+                transform 0.3s ease;
+    cursor: zoom-in;
+}
 
-window.addEventListener("click", event => {
+.project-card img:hover {
+    filter: sepia(0);
+}
 
-  if (!event.target.closest(".tab-group")) {
+.image-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    width: 100%;
+    margin-bottom: 15px;
+}
 
-    document.querySelectorAll(".dropdown").forEach(dropdown => {
-      dropdown.classList.remove("show");
-    });
-  }
-});
+.image-row img {
+    height: 180px;
+    margin: 0;
+}
 
-document.addEventListener("keydown", event => {
+/* ---------- FEATURED HOME PROJECT ---------- */
 
-  if (event.key === "Escape") {
+.hero-featured {
+    background: var(--earth-green);
+    color: white;
+    border-radius: 30px;
+    padding: 60px;
+    min-height: 450px;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 40px;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
 
-    closeModal();
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
 
-    document.querySelectorAll(".dropdown").forEach(dropdown => {
-      dropdown.classList.remove("show");
-    });
-  }
-});
+.hero-label {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    color: rgba(255, 255, 255, 0.7);
+    text-transform: uppercase;
+}
 
+.hero-content h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin: 10px 0 20px;
+    line-height: 1.15;
+    font-weight: 700;
+    color: white;
+}
 
-// -----------------------------------------
-// INITIALIZE WEBSITE
-// -----------------------------------------
+.hero-content p {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 1rem;
+    line-height: 1.8;
+}
 
-goHome();
+.hero-content .cmd-btn {
+    margin-top: 20px;
+    background: white;
+    color: var(--earth-green);
+    font-weight: 700;
+}
 
-</script>
+.hero-content .cmd-btn:hover {
+    background: #f0f0e8;
+    color: var(--earth-green);
+}
 
-</body>
-</html>
+.hero-img {
+    width: 100%;
+    height: 350px;
+    border-radius: 12px;
+    border: 4px solid rgba(255, 255, 255, 0.12);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    cursor: zoom-in;
+}
+
+/* ==========================================
+   DEDICATED PROJECT DETAIL VIEW
+   ========================================== */
+
+/* Make the detail view span the full
+   available main-content width. */
+
+#projectDetailSection.active {
+    display: block;
+    width: 100%;
+}
+
+#projectDetailSection .project-card {
+    display: block;
+    padding: clamp(24px, 4vw, 50px);
+    border-radius: 24px;
+    background: white;
+    border: 1px solid var(--border-soft);
+    box-shadow: var(--shadow-core);
+}
+
+#projectDetailSection .project-card:hover {
+    transform: none;
+    border-color: var(--border-soft);
+}
+
+/* ---------- DETAIL PAGE HEADER ---------- */
+
+#detailCourse {
+    display: block;
+    color: var(--accent-orange);
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin: 30px 0 15px;
+}
+
+#detailTitle {
+    color: var(--earth-green);
+    font-size: clamp(1.8rem, 3.5vw, 2.7rem);
+    line-height: 1.2;
+    font-weight: 700;
+    margin: 0 0 30px;
+    overflow-wrap: anywhere;
+}
+
+/* ---------- DETAIL SECTION HEADINGS ---------- */
+
+#projectDetailSection h3 {
+    font-size: 1.2rem;
+    color: var(--earth-green);
+    margin: 35px 0 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-soft);
+}
+
+#projectDetailSection p {
+    font-size: 1rem;
+    color: var(--text-main);
+    line-height: 1.9;
+    margin-bottom: 18px;
+}
+
+/* ---------- DETAIL MAP GALLERY ---------- */
+
+#detailGallery {
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(min(100%, 260px), 1fr)
+    );
+    gap: 20px;
+    margin: 20px 0 35px;
+    width: 100%;
+}
+
+#detailGallery img {
+    width: 100%;
+    height: auto;
+    max-height: 550px;
+    object-fit: contain;
+    background: var(--bg-soft);
+    border: 1px solid var(--border-soft);
+    border-radius: 12px;
+    padding: 8px;
+    margin: 0;
+    filter: none;
+    cursor: zoom-in;
+}
+
+#detailGallery img:hover {
+    filter: none;
+}
+
+/* A single map receives more space. */
+
+#detailGallery img:only-child {
+    max-height: 650px;
+}
+
+/* ---------- DETAIL CONTENT ---------- */
+
+#detailOverview,
+#detailMethodology,
+#detailResults,
+#detailLimitations {
+    max-width: 850px;
+}
+
+#detailMethodologySection,
+#detailResultsSection,
+#detailLimitationsSection {
+    margin-top: 30px;
+}
+
+#detailResultsSection {
+    background: var(--bg-card);
+    border-left: 4px solid var(--earth-green);
+    padding: 5px 25px 15px;
+    border-radius: 0 12px 12px 0;
+}
+
+#detailLimitationsSection {
+    background: var(--bg-soft);
+    border-radius: 12px;
+    padding: 5px 25px 15px;
+}
+
+/* ---------- BACK TO PROJECTS BUTTON ---------- */
+
+#backToProjects {
+    background: transparent;
+    color: var(--earth-green);
+    border: 1px solid var(--earth-green);
+    padding: 11px 22px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+#backToProjects:hover {
+    background: var(--earth-green);
+    color: white;
+}
+
+/* Bottom return button. */
+
+#projectDetailSection .project-card > .cmd-btn:last-child {
+    margin-top: 35px;
+    background: var(--earth-green);
+    color: white;
+    border: 1px solid var(--earth-green);
+}
+
+#projectDetailSection .project-card > .cmd-btn:last-child:hover {
+    background: #233d2b;
+}
+
+/* ---------- VIDEO EMBEDS ---------- */
+
+.video-wrap {
+    margin-top: 25px;
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 15px;
+    border: 1px solid var(--border-soft);
+    background: #101010;
+}
+
+.video-wrap iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+#detailVideoSection {
+    margin-top: 35px;
+}
+
+#detailVideoSection .video-wrap {
+    max-width: 900px;
+}
+
+/* ---------- IMAGE ZOOM MODAL ---------- */
+
+.image-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.92);
+    backdrop-filter: blur(10px);
+    cursor: zoom-out;
+    padding: 20px;
+}
+
+.modal-content {
+    max-width: 95%;
+    max-height: 95%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 10px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    animation: zoomIn 0.3s ease;
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* ---------- FOOTER ---------- */
+
+footer {
+    width: 100%;
+    background-color: var(--earth-green);
+    color: white;
+    padding: 30px 40px;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0;
+}
+
+footer .copyright {
+    opacity: 0.7;
+}
+
+/* ==========================================
+   RESPONSIVE DESIGN
+   ========================================== */
+
+/* ---------- TABLETS ---------- */
+
+@media (max-width: 1100px) {
+
+    .main-container {
+        grid-template-columns: 280px minmax(0, 1fr);
+        gap: 25px;
+        padding: 30px;
+    }
+
+    .immersive-sidebar {
+        padding: 25px;
+    }
+
+    .hero-featured {
+        padding: 40px;
+        gap: 25px;
+    }
+
+    .hero-img {
+        height: 300px;
+    }
+}
+
+/* ---------- SMALL TABLETS / MOBILE ---------- */
+
+@media (max-width: 900px) {
+
+    .main-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 25px;
+    }
+
+    .immersive-sidebar {
+        position: static;
+        width: 100%;
+    }
+
+    .main-showcase {
+        gap: 25px;
+    }
+
+    .command-center {
+        justify-content: center;
+    }
+
+    .cmd-bar {
+        flex-wrap: wrap;
+        justify-content: center;
+        border-radius: 20px;
+    }
+
+    .hero-featured {
+        grid-template-columns: 1fr;
+        padding: 35px;
+        min-height: auto;
+    }
+
+    .hero-img {
+        height: 300px;
+    }
+
+    .portfolio-section.active {
+        grid-template-columns: repeat(
+            auto-fit,
+            minmax(min(100%, 300px), 1fr)
+        );
+    }
+
+    .span-2 {
+        grid-column: 1 / -1;
+    }
+
+    #projectDetailSection .project-card {
+        padding: 30px;
+    }
+}
+
+/* ---------- PHONES ---------- */
+
+@media (max-width: 600px) {
+
+    header {
+        padding: 18px 20px;
+        text-align: center;
+        justify-content: center;
+    }
+
+    header h1 {
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+
+    .main-container {
+        padding: 18px;
+        gap: 25px;
+    }
+
+    .immersive-sidebar {
+        padding: 22px;
+    }
+
+    .command-center {
+        width: 100%;
+    }
+
+    .cmd-bar {
+        width: 100%;
+        border-radius: 15px;
+        justify-content: center;
+    }
+
+    .cmd-btn {
+        padding: 10px 14px;
+        font-size: 0.75rem;
+    }
+
+    .dropdown {
+        min-width: 150px;
+    }
+
+    .portfolio-section.active {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .project-card {
+        padding: 20px;
+    }
+
+    .project-card img {
+        height: 210px;
+    }
+
+    .image-row {
+        gap: 8px;
+    }
+
+    .image-row img {
+        height: 140px;
+    }
+
+    .hero-featured {
+        padding: 25px;
+        border-radius: 20px;
+        gap: 25px;
+    }
+
+    .hero-content h2 {
+        font-size: 2rem;
+    }
+
+    .hero-img {
+        height: 230px;
+    }
+
+    #projectDetailSection .project-card {
+        padding: 22px;
+    }
+
+    #detailTitle {
+        font-size: 1.8rem;
+    }
+
+    #detailGallery {
+        grid-template-columns: 1fr;
+    }
+
+    #detailGallery img {
+        max-height: 450px;
+    }
+
+    #detailResultsSection,
+    #detailLimitationsSection {
+        padding: 10px 18px;
+    }
+
+    #projectDetailSection p {
+        font-size: 0.95rem;
+        line-height: 1.8;
+    }
+
+    footer {
+        padding: 25px 20px;
+    }
+}
+
+/* ---------- REDUCED MOTION ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
