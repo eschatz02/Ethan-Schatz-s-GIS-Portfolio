@@ -506,7 +506,7 @@ const projectDetails = {
 
   geog6160: {
     title: "Using Machine Learning to Predict the Future Growth of Utah County",
-    course: "University of Utah | 2025 | GEOG 6160 — Spatial Data Science in Practice",
+    course: "University of Utah | 2025 | Geography 6160 Spatial Data Science in Practice",
     section: "utah-2025",
 
     images: [
@@ -515,25 +515,24 @@ const projectDetails = {
     ],
 
     overview: [
-      "This project was completed as the final project for GEOG 6160: Spatial Data Science in Practice. The objective was to predict municipal population growth in Utah County through 2030 using historical U.S. Census population data and a machine learning approach.",
-      "Utah County is one of the fastest-growing areas in Utah. Understanding future growth patterns can help inform planning decisions, infrastructure development, and resource allocation."
+      "This project examines how useful machine learning is in help predict future populaiton groth based on past trends for the purpose of resource and land managment. "
     ],
 
     methodology: [
-      "Population data from the 2000, 2010, and 2020 U.S. Censuses were manually joined to a municipal boundary shapefile obtained from the Utah Geospatial Resource Center (UGRC) using ArcGIS Pro.",
-      "A Python script was developed to apply linear regression to historical municipal population trends and forecast both population totals and growth rates through 2030.",
-      "The model was evaluated using five-fold cross-validation, producing a mean R² value of approximately 0.919."
+      "Data from the U.S Census Buerau from the last three censuses were mannually joined to a munincpal boundary shapefile found on the Utah Geospatial Resource Centetial Resoure Center (UGRC) in ArcGIS Pro.",
+      "Using a Python, a liner regression model was created to record hisortical population trends and forcast the future population total and growth rates through the year 2030.",
+      "The model was validated using the five-fold corss-validation method withs produced a mean R² value of ~0.919."
     ],
 
     results: [
-      "The five municipalities projected to experience the highest growth rates by 2030 were Saratoga Springs, Eagle Mountain, Cedar Hills, Lehi, and Vineyard.",
-      "Provo was projected to remain the largest municipality in Utah County, with a population of approximately 120,000 residents in 2030.",
-      "The model achieved a mean cross-validation R² of approximately 0.919, indicating a strong fit to the historical population trends evaluated."
+      "Saratoga Springs, Eagle Mountain, Cedair Hills, Lehi, and Vineard are exepcted to be the five fast growing cites by 2030.",
+      "Provo retains its title as the largest city in Utah County with a populaiton around 120,000 by 2030.",
+      "The model achived a mean R² value of ~0.919 indicating past population trend strong influence future populaiton trends."
     ],
 
     limitations: [
-      "The forecasts were based on a limited historical dataset consisting of three decennial Census observations.",
-      "Future population growth may be affected by factors not represented in the model, including available developable land, changes in municipal boundaries, housing development, and local planning policies."
+      "Only three censues were used whihc limts the amount of data that could be extracted",
+      "Futre population trends were only affected by the trends and counts in the model, outside factors were not considred which led to Cedar Hills being among one of the fastest growing cites despite a slowdown in populaiton gorw. ."
     ]
   },
 
