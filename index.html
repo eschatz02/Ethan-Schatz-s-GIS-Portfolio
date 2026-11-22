@@ -401,6 +401,13 @@
         <h3>Project Overview</h3>
         <div id="detailOverview"></div>
 
+        
+        <div id="detailDataSourcesSection">
+          <h3>Data Sources</h3>
+          <div id="detailDataSources"></div>
+        </div>
+
+
         <div id="detailMethodologySection">
           <h3>Methodology</h3>
           <div id="detailMethodology"></div>
@@ -416,6 +423,13 @@
           <div id="detailLimitations"></div>
         </div>
 
+
+        <div id="detailConclusionSection">
+          <h3>Conclusion</h3>
+          <div id="detailConclusion"></div>
+        </div>
+
+        
         <div id="detailVideoSection"></div>
 
         <button
@@ -510,14 +524,14 @@ const projectDetails = {
     dataSources: [
       "LGBTQ+ mental health statistics were gathered from the Trevor Project's '2024 U.S. National Survey on the Mental Health of LGBTQ+ Young People by State.'",
       "Anti-LGBTQ+ legislation data was gathered from the ACLU's database mapping LGBTQ+ attacks by U.S. state legislators (c. 2024).",
-      "A state's partisan lean was deducted by looking at the AP's 2024 presidental election results >"
+      "A state's partisan lean was deducted by looking at the AP's 2024 presidential election results.>"
     ],
     
     methodology: [
       "A correlation analysis and a simple regression model were created to test if there was a correlation between suicidal ideation and discriminatory bills.", 
       "Three multiple linear regression models were created to test if the following factors affect suicidal ideation.",
       "- General Factors",
-      "- Politcal Factors (including bills and discrimination tied to political environment).",
+      "- Political Factors (including bills and discrimination tied to political environment).",
       "- Societal Factors (Includes factors such as health care access and community behavior)."
       ],
    
@@ -569,7 +583,7 @@ const projectDetails = {
     ],
 
     overview: [
-      "This project used SQL and GIS to evaluteate the climiate suitaiblty of parcles along Utah's Wastatch fron devleopment through 2050."
+      "This project used SQL and GIS to evaluate the climate suitability of parcels along Utah's Wastatch fron devleopment through 2050."
     ],
 
     dataSources: [
@@ -637,15 +651,19 @@ const projectDetails = {
     images: ["Utah's U.S. Highways.png"],
 
     overview: [
-      "An oral and geographical history exploring Utah's relationship with the U.S. Highway System."
+      "This project is an oral and cartographic history of Utah's U.S. Highway System before the advent of the Interstate Highway System."
     ],
 
     methodology: [
-      ""
+      "Atlas maps from around 1958 were acquired from the USGS TopView portal and used to create a mosaic for digitization.",
+      "U.S. Highways, along with the Lincoln Highway, were digitized in ArcGIS Pro using the atlas maps as a reference, with a separate feature class to distinguish between mainline and auxiliary U.S. Highways.",
+      "In ArcGIS Online, a StoryMap was created to showcase the historical network and 11 historical, cultural, and natural sites across Utah."
     ],
 
     results: [
-      ""
+      "A StoryMap showing the highway network and 11 significant landmarks in Utah.",
+      "A geodatabase is available for public download for research and posterity.",
+      "A map of the highway network."
     ],
 
     limitations: [
@@ -665,19 +683,25 @@ const projectDetails = {
     images: ["Slope-Aspect.png"],
 
     overview: [
-      "A field methods project focused on modeling Popperton Park."
+      "A compilation of projects derived from three field mapping exercises that provided hands-on experience with mapping in a fieldwork environment."
     ],
 
     methodology: [
-      ""
+      "Data were collected over three visits to Popperton Park in Salt Lake City, highlighting the practicality of GNSS receivers, DJI Drones for structure-from-motion (SfM), and LiDAR mapping.",
+      "The data were processed in either ArcGIS Pro or Agisoft Metashape depending on the data type. The resulting data were used to create terrain models, produce maps, and compare the accuracy of different datasets.",
+      "Reports mainly addressed the methodology's accuracy and external factors that could affect results."
     ],
 
     results: [
-      ""
+      "All projects provided practical experience with surveying and mapping methods applicable to future careers.",
+      "An accuracy of about 2 meters was determined using professional GNSS receivers over consumer-based receivers.",
+      "Separate orthomosaics and digital terrain models (DTMs) were created from different-quality DJI drones, where flight operator experience ended up determining accuracy.",
+      "Comparisons between DTMs derived from LiDAR and SFM-derived platforms demonstrated the practicality of using publicly available LiDAR data compared with costly LiDAR investments."
     ],
 
     limitations: [
-      ""
+      "Drone flight patterns, combined with operator experience, affect DTM output and accuracy.",
+      "Equipment behavior, collection method, and data processing introduced uncertainty into the results."
     ]
   },
 
@@ -689,24 +713,26 @@ const projectDetails = {
 
     images: ["Capstone Poster Final.png"],
 
-    overview: [
-      "This GIS capstone project focused on redesigning a Utah prairie dog population dashboard for the Utah Division of Wildlife Resources (DWR).",
-      "Utah prairie dogs are an important part of southern Utah's ecosystem. Historical population counts provide valuable information for monitoring colonies and supporting conservation efforts."
-    ],
+   overview: [
+  "My capstone project focused on optimizing and redesigning the Utah Division of Wildlife Resources (DWR) prairie dog (UPD) dashboard.",
+  "Utah prairie dogs are a keystone species in Southern Utah, and their near-extinction 50 years ago had drastic consequences for the region.",
+  "The old dashboard DWR had fragmented infrastructure and was not intuitive to use. My main task was to redesign the architecture using a new file geodatabase (FGDB) and rebuild the dashboard on it."
+],
 
-    methodology: [
-      "The project involved consolidating historical population count data into a unified file geodatabase.",
-      "A Python script was developed to append population counts from 2021 through 2025 to the updated database.",
-      "The dashboard was redesigned to improve access to population records and allow users to explore data by year and colony boundaries."
+methodology: [
+      "A unified architecture was developed using a relational diagram to guide the creation of a Python script.",
+      "A Python script was crafted to merge the old data into a new FGDB.",
+      "A new dynamic dashboard was developed from the old one, adding features such as filtering and infographics."
     ],
 
     results: [
-      "The project produced an updated geodatabase and a redesigned dashboard for examining Utah prairie dog population trends.",
-      "The new structure supports more consistent data management and improved visualization of population counts across colonies and years."
+      "A new FGDB was created with a unified architecture that includes a one-to-many relationship between UPD colonies and their active areas.",
+      "A new dashboard was developed with improved features, such as filtering and infographics that show trends in counts and occupied acreage."
     ],
 
     limitations: [
-      ""
+      "Schema issues and script problems delayed FGDB construction, which led to time constraints in building the dashboard.",
+      "More advanced features, such as live updates from the current season count, were dropped due to the aforementioned time constraints."
     ],
 
     video: "https://www.youtube.com/embed/wXUNR4JPbWI"
@@ -720,15 +746,19 @@ const projectDetails = {
     images: ["Sne.png"],
 
     overview: [
-      "Final project for GEOG 6680."
+      "This project analyzes the effectiveness of cloud seeding in increasing rainfall totals.",
     ],
 
     methodology: [
-      ""
+      "R and Quarto were used to store the code and analyze the data using several statistical methods.",
+      "A t-test was conducted to determine whether a relationship existed between cloud seeding and rainfall totals.",
+      "A multiple linear regression model examined the effects of seeding, cloud cover, pre-seeding wetness, echo radar motion, and suitability on rainfall totals."
     ],
 
     results: [
-      ""
+      "The t-test yielded a p-value of 0.7224, indicating that cloud seeding had no significant effect on rainfall totals.",
+      "The results of the multiple linear regression model found that none of the criteria were statistically significant at the 95% confidence level.",
+      "Suitability showed the strongest correlation with rainfall, with a negative relationship observed with cloud seeding."
     ],
 
     limitations: [
@@ -915,14 +945,15 @@ function setParagraphs(elementId, paragraphs) {
 }
 
 function setOptionalSection(sectionId, contentId, paragraphs) {
-
   const section = document.getElementById(sectionId);
 
   const validParagraphs = (paragraphs || []).filter(
-    paragraph => typeof paragraph === "string" && paragraph.trim()
+    paragraph =>
+      typeof paragraph === "string" && paragraph.trim()
   );
 
-  section.hidden = validParagraphs.length === 0;
+  section.style.display =
+    validParagraphs.length === 0 ? "none" : "";
 
   setParagraphs(contentId, validParagraphs);
 }
@@ -968,6 +999,18 @@ function openProject(projectId) {
   // Project overview.
   setParagraphs("detailOverview", project.overview);
 
+setOptionalSection(
+  "detailDataSourcesSection",
+  "detailDataSources",
+  project.dataSources
+);
+
+setOptionalSection(
+  "detailConclusionSection",
+  "detailConclusion",
+  project.conclusion
+);
+  
   // Optional project sections.
   setOptionalSection(
     "detailMethodologySection",
