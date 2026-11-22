@@ -398,6 +398,12 @@
 
         <div id="detailGallery" class="image-row"></div>
 
+        
+        <div id="detailDownloadSection" hidden>
+          <h3>Project Downloads</h3>
+          <div id="detailDownloadLinks"></div>
+        </div>
+
         <h3>Project Overview</h3>
         <div id="detailOverview"></div>
 
@@ -515,6 +521,7 @@ const projectDetails = {
     course: "University of Utah | 2025 | GEOG 6000 — Advanced Data Analysis",
     section: "utah-2025",
     images: ["Bills Layout.jpg"],
+    report: "6000 Report.pdf", 
 
     overview: [
       "This project examines whether political factors such as anti-LGBTQ+ bills have an impact on suicidal ideation among LGBTQ+ individuals at the state level."
@@ -524,7 +531,7 @@ const projectDetails = {
     dataSources: [
       "LGBTQ+ mental health statistics were gathered from the Trevor Project's '2024 U.S. National Survey on the Mental Health of LGBTQ+ Young People by State.'",
       "Anti-LGBTQ+ legislation data was gathered from the ACLU's database mapping LGBTQ+ attacks by U.S. state legislators (c. 2024).",
-      "A state's partisan lean was deducted by looking at the AP's 2024 presidential election results.>"
+      "A state's partisan lean was deducted by looking at the AP's 2024 presidential election results."
     ],
     
     methodology: [
@@ -536,7 +543,7 @@ const projectDetails = {
       ],
    
     results: [
-      "Results betwen anti-LGBTQ+ legislaiton and suicidal ideation showed a statsiclly weak and insignicant relationship with an R²  value of 0.07 and a p value of 0.0603.",
+      "Results between anti-LGBTQ+ legislation and suicidal ideation showed a statistically weak and insignificant relationship, with an R² value of 0.07 and a p-value of 0.0603.",
       "The multiple linear regression models identified several variables that had a significant relationship with suicidal ideation. These variables include depression, discrimination, suicide attempts, and community acceptance.",
       "The societal model performed best among the multiple linear regression models, with about 55% of the model variation explained by the variables in the model."   
     ],
@@ -552,6 +559,7 @@ const projectDetails = {
     course: "University of Utah | 2025 | GEOG 6110 — Remote Sensing",
     section: "utah-2025",
     images: ["Change.png"],
+    report: "6110 Report.pdf", 
 
     overview: [
       "This project examines whether the Eaton fire near Los Angeles can be visualized using remote-sensing satellite imagery and assesses its effects on land cover."
@@ -581,9 +589,10 @@ const projectDetails = {
     images: [
       "2050 Climate Sustainability of Wastach Front Parcels.jpg"
     ],
+    report: "6150 Report.pdf", 
 
     overview: [
-      "This project used SQL and GIS to evaluate the climate suitability of parcels along Utah's Wastatch fron devleopment through 2050."
+      "This project used SQL and GIS to evaluate the climate suitability of parcels along Utah's Wasatch Front for development through 2050."
     ],
 
     dataSources: [
@@ -620,6 +629,7 @@ const projectDetails = {
       "Forecasted 2030 Growth Rates of Utah County.jpg",
       "Forecasted 2030 Population of Utah County Communities .jpg"
     ],
+    report: "6160 Report.pdf", 
 
     overview: [
       "This project examines how useful machine learning is for predicting future population growth based on past trends for resource and land management."
@@ -649,6 +659,7 @@ const projectDetails = {
     course: "University of Utah | 2025 | GEOG 6165 — Web GIS",
     section: "utah-2025",
     images: ["Utah's U.S. Highways.png"],
+    report: "6165 Report.pdf", 
 
     overview: [
       "This project is an oral and cartographic history of Utah's U.S. Highway System before the advent of the Interstate Highway System."
@@ -681,6 +692,20 @@ const projectDetails = {
     course: "University of Utah | 2026 | GEOG 5170 — Field Methods",
     section: "utah-2026",
     images: ["Slope-Aspect.png"],
+    reports: [
+  {
+    label: "Download Report 1 (PDF)",
+    file: "5170 Report 1.pdf"
+  },
+  {
+    label: "Download Report 2 (ZIP)",
+    file: "5170 Report 2.zip"
+  },
+  {
+    label: "Download Report 3 (ZIP)",
+    file: "5170 Report 3.zip"
+  }
+],
 
     overview: [
       "A compilation of projects derived from three field mapping exercises that provided hands-on experience with mapping in a fieldwork environment."
@@ -710,8 +735,9 @@ const projectDetails = {
     title: "Utah Prairie Dog Dashboard",
     course: "University of Utah | 2026 | GEOG 6161 — GIS Capstone",
     section: "utah-2026",
-
     images: ["Capstone Poster Final.png"],
+    report: "6161 Report.pdf", 
+    
 
    overview: [
   "My capstone project focused on optimizing and redesigning the Utah Division of Wildlife Resources (DWR) prairie dog (UPD) dashboard.",
@@ -975,6 +1001,42 @@ function openProject(projectId) {
   document.getElementById("detailTitle").textContent =
     project.title;
 
+
+  // ==========================================
+  // PROJECT DOWNLOADS
+  // ==========================================
+
+  const downloadSection =
+    document.getElementById("detailDownloadSection");
+
+  const downloadLinks =
+    document.getElementById("detailDownloadLinks");
+
+  downloadLinks.replaceChildren();
+
+  // Supports both single and multiple reports.
+  const reports = project.reports ||
+    (project.report
+      ? [{
+          label: "Download Project Report (PDF)",
+          file: project.report
+        }]
+      : []);
+
+  reports.forEach(report => {
+    const link = document.createElement("a");
+
+    link.href = report.file;
+    link.download = report.file.split("/").pop();
+    link.className = "cmd-btn";
+    link.textContent = "↓ " + report.label;
+
+    downloadLinks.appendChild(link);
+  });
+
+  downloadSection.hidden = reports.length === 0;
+
+  
   // Populate project image gallery.
   const gallery = document.getElementById("detailGallery");
 
