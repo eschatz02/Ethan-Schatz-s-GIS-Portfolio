@@ -506,17 +506,29 @@ const projectDetails = {
       "This project examines whether political factors such as anti-LGBTQ+ bills have an impact on suicidal ideation among LGBTQ+ individuals at the state level."
     ],
 
-    methodology: [
+
+    data sources: [
       "LGBTQ+ mental health statistics were gathered from the Trevor Project's '2024 U.S. National Survey on the Mental Health of LGBTQ+ Young People by State.'",
-      "Anti-LGBTQ+ legislation data was gathered from the ACLU's database mapping LGBTQ+ attacks by U.S. state legislators (c. 2024)."
+      "Anti-LGBTQ+ legislation data was gathered from the ACLU's database mapping LGBTQ+ attacks by U.S. state legislators (c. 2024).",
+      "A state's partisan lean was deducted by looking at the AP's 2024 presidental election results >"
     ],
-
+    
+    methodology: [
+      "A correlation analysis and a simple regression model were created to test if there was a correlation between suicidal ideation and discriminatory bills.", 
+      "Three multiple linear regression models were created to test if the following factors affect suicidal ideation.",
+      "- General Factors",
+      "- Politcal Factors (including bills and discrimination tied to political environment).",
+      "- Societal Factors (Includes factors such as health care access and community behavior)."
+      ],
+   
     results: [
-      ""
+      "Results betwen anti-LGBTQ+ legislaiton and suicidal ideation showed a statsiclly weak and insignicant relationship with an R²  value of 0.07 and a p value of 0.0603.",
+      "The multiple linear regression models identified several variables that had a significant relationship with suicidal ideation. These variables include depression, discrimination, suicide attempts, and community acceptance.",
+      "The societal model performed best among the multiple linear regression models, with about 55% of the model variation explained by the variables in the model."   
     ],
 
-    limitations: [
-      ""
+    conclusion: [
+      "This study highlights the importance of social and mental health factors in suicidal ideation among LGBTQ+ youth while acknowledging the influence of political conditions."
     ]
   },
 
@@ -528,19 +540,22 @@ const projectDetails = {
     images: ["Change.png"],
 
     overview: [
-      "A remote sensing project visualizing changes associated with the Eaton Fire."
+      "This project examines whether the Eaton fire near Los Angeles can be visualized using remote-sensing satellite imagery and assesses its effects on land cover."
     ],
 
     methodology: [
-      ""
+      "Land scenes from before and after the fire were obtained from Landsat 8 data available through USGS EarthExplorer.",
+      "A supervised classification was run on both scenes using the following variables: vegetation, urban impervious surfaces, non-vegetated surfaces, and water.",
+      "Multiple change algorithms were tested, with Maximum Likelihood chosen as the algorithm, as it was fairly accurate while retaining recognizable ground features.",
+      "Change detection was run on the scene and clipped to the fire perimeter to show land-cover differences before and after the fire."
     ],
 
     results: [
-      ""
+      "Around 80% of the pre-fire vegetation within the fire boundary was reclassified as non-vegetative surfaces in the post-fire dataset. This represents around 8,129 acres of vegetation being burned."
     ],
 
     limitations: [
-      ""
+      "While remote sensing can be effective for visualizing fire damage, inaccuracies and biases in the training data could limit its usefulness."
     ]
   },
 
@@ -554,19 +569,30 @@ const projectDetails = {
     ],
 
     overview: [
-      "A project examining climate suitability for future development along the Wasatch Front."
+      "This project used SQL and GIS to evaluteate the climiate suitaiblty of parcles along Utah's Wastatch fron devleopment through 2050."
     ],
 
+    data sources: [
+      "Parcel data were obtained from the UGRC's GIS portal.",
+      "Historical climatic records were acquired from NOAA's National Centers for Environmental Information (NCEI) portal.",
+      "Land-cover data were obtained from the Multi-Resolution Land Characterization (MRLC) Consortium."
+    ],
+    
     methodology: [
-      ""
+      "Climate trends were forecast through the year 2050 and joined to parcel data using PostgreSQL/PostGIS in QGIS.",
+      "Using SQL queries, a parcel suitability score between 0.0 and 1.0 was assigned to each parcel based on criteria such as projected temperature and precipitation."
     ],
-
+    
     results: [
-      ""
+      "Parcels deemed 'highly suitable' were identified near Provo Bay, Spanish Fork, and the Snowbird and Alta ski resorts.",
+      "In comparison, areas with rapid growth, such as Saratoga Springs and Eagle Mountain, received lower scores."
     ],
 
     limitations: [
-      ""
+      "The study only covered Salt Lake and Utah counties.",
+      "The database excluded water availability, terrain characteristics, and preexisting infrastructure.",
+      "Accuracy was limited by using the nearest weather station."
+      "An error in filtering allowed federal parcels to be included in the database."
     ]
   },
 
