@@ -404,6 +404,12 @@
           <div id="detailDownloadLinks"></div>
         </div>
 
+        <!-- EXTERNAL PROJECT LINKS -->
+        <div id="detailLinksSection" hidden>
+          <h3>Project Links</h3>
+          <div id="detailExternalLinks"></div>
+        </div>
+
         <h3>Project Overview</h3>
         <div id="detailOverview"></div>
 
@@ -531,7 +537,7 @@ const projectDetails = {
     dataSources: [
       "LGBTQ+ mental health statistics were gathered from the Trevor Project's '2024 U.S. National Survey on the Mental Health of LGBTQ+ Young People by State.'",
       "Anti-LGBTQ+ legislation data was gathered from the ACLU's database mapping LGBTQ+ attacks by U.S. state legislators (c. 2024).",
-      "A state's partisan lean was deducted by looking at the AP's 2024 presidential election results."
+      "A state's partisan lean was inferred by looking at the AP's 2024 presidential election results."
     ],
     
     methodology: [
@@ -660,6 +666,13 @@ const projectDetails = {
     section: "utah-2025",
     images: ["Utah's U.S. Highways.png"],
     report: "6165 Report.pdf", 
+    links: [
+        {
+            label: "View ArcGIS StoryMap",
+            url: "https://storymaps.arcgis.com/stories/05310f001c804d7a93369d33c66cc6fe"
+        }
+    ],
+
 
     overview: [
       "This project is an oral and cartographic history of Utah's U.S. Highway System before the advent of the Interstate Highway System."
@@ -770,6 +783,14 @@ methodology: [
     course: "University of Utah | 2026 | GEOG 6680 — Intro to R",
     section: "utah-2026",
     images: ["Sne.png"],
+    
+    links: [
+        {
+          label: "View R Quarto Report",
+          url: "6680 Final Project.html"
+        }
+    ],
+
 
     overview: [
       "This project analyzes the effectiveness of cloud seeding in increasing rainfall totals.",
@@ -1036,6 +1057,34 @@ function openProject(projectId) {
 
   downloadSection.hidden = reports.length === 0;
 
+  
+// ==========================================
+// EXTERNAL PROJECT LINKS
+// ==========================================
+
+const linksSection =
+    document.getElementById("detailLinksSection");
+
+const externalLinks =
+    document.getElementById("detailExternalLinks");
+
+externalLinks.replaceChildren();
+
+const projectLinks = project.links || [];
+
+projectLinks.forEach(projectLink => {
+    const link = document.createElement("a");
+
+    link.href = projectLink.url;
+    link.textContent = "↗ " + projectLink.label;
+    link.className = "cmd-btn";
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+
+    externalLinks.appendChild(link);
+});
+
+linksSection.hidden = projectLinks.length === 0;
   
   // Populate project image gallery.
   const gallery = document.getElementById("detailGallery");
